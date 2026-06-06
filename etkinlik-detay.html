@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Enerji Sisteminde Küresel Dönüşüm ve Türkiye — Etkinlik — TADEV</title>
+<meta name="description" content="FES (Friedrich-Ebert-Stiftung) ve AHK iş birliğiyle düzenlenen, küresel enerji dönüşümünü ve Türkiye'nin konumunu ele alan TADEV semineri.">
+<link rel="icon" href="assets/tadev-logo-ember.png">
+<link rel="stylesheet" href="css/brand.css">
+<link rel="stylesheet" href="css/site.css">
+<style>
+/* ---- event hero ---- */
+.ehero{background:var(--onyx);color:#EDEAE6;position:relative;overflow:hidden;padding-top:clamp(34px,4.5vw,58px);padding-bottom:clamp(40px,5vw,68px)}
+.ehero::before{content:"";position:absolute;inset:0;background:
+  linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px) 0 0/100% 44px,
+  linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px) 0 0/44px 100%;
+  -webkit-mask:linear-gradient(180deg,#000,transparent 92%);mask:linear-gradient(180deg,#000,transparent 92%)}
+.ehero__in{position:relative;z-index:2;max-width:none}
+.ehero .crumb{margin-bottom:22px}
+.ehero__flags{display:flex;gap:10px;align-items:center;margin-bottom:20px}
+.eflag{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;padding:7px 13px;border-radius:100px;white-space:nowrap}
+.eflag--cat{background:var(--ember);color:#fff}
+.eflag--state{border:1px solid rgba(255,255,255,.26);color:#EDEAE6}
+.ehero h1{color:#fff;font-size:clamp(32px,4.6vw,62px);letter-spacing:-.035em;line-height:1.02;font-weight:700;font-family:var(--display);max-width:20ch}
+.ehero__sum{color:#C9C4CC;font-size:clamp(16px,1.7vw,19px);line-height:1.55;margin-top:22px;max-width:62ch}
+.ehero__meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+.emeta-chip{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:11px;padding:11px 16px;font-size:14px;color:#EDEAE6}
+.emeta-chip svg{width:16px;height:16px;color:var(--ember-hot);flex-shrink:0}
+.emeta-chip b{font-weight:600;color:#fff}
+
+/* ---- hero image ---- */
+.eshot{margin-top:clamp(-30px,-2.4vw,-20px)}
+.eshot image-slot{display:block;width:100%;height:clamp(260px,38vw,520px);border-radius:18px;overflow:hidden;border:1px solid var(--line)}
+
+/* ---- body grid ---- */
+.ebody{display:grid;grid-template-columns:1fr 340px;gap:clamp(34px,4vw,68px);align-items:start}
+.earticle h2{font-size:clamp(24px,2.6vw,32px);margin:0 0 16px}
+.earticle h2:not(:first-child){margin-top:44px}
+.earticle p{font-size:17px;color:var(--slate-deep);line-height:1.66;margin-bottom:18px;max-width:64ch}
+.earticle p.lede{font-size:20px;color:var(--ink)}
+.earticle ul.notes{list-style:none;display:flex;flex-direction:column;gap:12px;margin:6px 0 8px}
+.earticle ul.notes li{position:relative;padding-left:26px;color:var(--slate-deep);font-size:16px;line-height:1.55}
+.earticle ul.notes li::before{content:"";position:absolute;left:0;top:8px;width:9px;height:9px;background:var(--ember);border-radius:2px}
+
+/* agenda */
+.agenda{display:flex;flex-direction:column;margin-top:6px}
+.agenda__row{display:grid;grid-template-columns:96px 1fr;gap:22px;padding:18px 0;border-top:1px solid var(--line)}
+.agenda__row:last-child{border-bottom:1px solid var(--line)}
+.agenda__t{font-family:var(--mono);font-size:13px;letter-spacing:.04em;color:var(--ember);font-weight:700;padding-top:2px}
+.agenda__c h4{font-size:17px;margin-bottom:4px}
+.agenda__c p{font-size:14.5px;margin:0;color:var(--slate-deep)}
+
+/* sidebar */
+.eside{position:sticky;top:88px;display:flex;flex-direction:column;gap:18px}
+.ecard-detail{border:1px solid var(--line);border-radius:18px;background:#fff;overflow:hidden}
+.ecard-detail__hd{background:var(--mist);padding:20px 24px;border-bottom:1px solid var(--line)}
+.ecard-detail__hd .lbl{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--slate);font-weight:700}
+.ecard-detail__hd .big{font-family:var(--display);font-weight:700;font-size:26px;color:var(--onyx);letter-spacing:-.02em;margin-top:6px}
+.ecard-detail__body{padding:8px 24px 24px}
+.drow{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid var(--line-soft)}
+.drow:last-child{border-bottom:0}
+.drow .k{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--slate);padding-top:2px}
+.drow .v{font-size:14.5px;color:var(--ink);text-align:right;font-weight:600;max-width:60%}
+.ecard-detail__cta{padding:0 24px 24px}
+.ecard-detail__cta .btn{width:100%;justify-content:center}
+.share{display:flex;align-items:center;gap:10px;padding:18px 24px;border-top:1px solid var(--line)}
+.share span{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--slate);margin-right:auto}
+.share a{width:36px;height:36px;border:1px solid var(--line);border-radius:9px;display:flex;align-items:center;justify-content:center;color:var(--slate-deep);transition:.18s}
+.share a:hover{border-color:var(--onyx);color:var(--onyx)}
+.share a svg{width:16px;height:16px}
+
+/* related */
+.ecards{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,2vw,24px)}
+.ecard{border:1px solid var(--line);border-radius:16px;background:#fff;display:flex;flex-direction:column;overflow:hidden;transition:.2s}
+.ecard:hover{border-color:var(--onyx);transform:translateY(-3px)}
+.ecard__top{display:flex;gap:18px;padding:24px 24px 0}
+.datebox{flex-shrink:0;width:62px;text-align:center;border:1px solid var(--line);border-radius:11px;overflow:hidden}
+.datebox .m{background:var(--onyx);color:#fff;font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;padding:5px 0}
+.datebox .d{font-family:var(--display);font-weight:700;font-size:26px;color:var(--onyx);padding:7px 0 9px;line-height:1}
+.datebox--tba .d{font-size:15px;padding:11px 4px;color:var(--ember)}
+.ecard__hd{display:flex;flex-direction:column;gap:7px}
+.ecard__hd .cat{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ember);font-weight:700}
+.ecard__hd h3{font-size:19px;line-height:1.2}
+.ecard__b{padding:16px 24px 24px;display:flex;flex-direction:column;gap:14px;flex:1}
+.ecard__b p{color:var(--slate-deep);font-size:14px;line-height:1.55}
+.ecard__loc{margin-top:auto;display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;letter-spacing:.05em;color:var(--slate);padding-top:6px;border-top:1px solid var(--line-soft)}
+
+@media(max-width:920px){.ebody{grid-template-columns:1fr}.eside{position:static}.ecards{grid-template-columns:1fr}}
+@media(max-width:680px){.agenda__row{grid-template-columns:1fr;gap:4px}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav__in">
+    <a class="nav__brand" href="index.html"><img src="assets/tadev-logo.png" alt="TADEV"><span>TADEV</span></a>
+    <div class="nav__links">
+      <a href="index.html">Anasayfa</a><a href="kurulus.html">Kuruluş</a><a href="amaclar.html">Amaçlarımız</a><a href="organlar.html">Organlarımız</a><a href="faaliyetler.html">Faaliyetler</a><a href="etkinlikler.html" class="active">Etkinlikler</a><a href="duyurular.html">Duyurular</a></div>
+    <div class="nav__right">
+      <div class="lang"><button data-lang="TR">TR</button><button data-lang="DE">DE</button><button data-lang="EN">EN</button></div>
+      <a class="nav__cta nav__cta--sub" href="iletisim.html">İletişim</a>
+      <a class="nav__cta" href="iletisim.html#mutevelli">Mütevelli Olun</a>
+      <button class="nav__burger" id="burger" aria-label="Menü"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="mnav" id="mnav">
+  <div class="mnav__top"><a class="nav__brand" href="index.html" style="color:#fff"><img src="assets/tadev-logo-white.png" alt="TADEV" style="height:28px"><span>TADEV</span></a><button class="mnav__close" id="mclose" aria-label="Kapat">✕</button></div>
+  <a href="index.html">Anasayfa</a><a href="kurulus.html">Kuruluş</a><a href="amaclar.html">Amaçlarımız</a><a href="organlar.html">Organlarımız</a><a href="faaliyetler.html">Faaliyetler</a><a href="etkinlikler.html">Etkinlikler</a><a href="duyurular.html">Duyurular</a><a href="iletisim.html">İletişim</a>
+  <div class="mnav__foot"><div class="lang"><button data-lang="TR">TR</button><button data-lang="DE">DE</button><button data-lang="EN">EN</button></div><a class="nav__cta nav__cta--sub" href="iletisim.html">İletişim</a>
+      <a class="nav__cta" href="iletisim.html#mutevelli">Mütevelli Olun</a></div>
+</div>
+
+<!-- EVENT HERO -->
+<header class="ehero">
+  <div class="wrap ehero__in">
+    <div class="crumb"><a href="index.html">Anasayfa</a> / <a href="etkinlikler.html">Etkinlikler</a> / <span>Enerji Sisteminde Küresel Dönüşüm</span></div>
+    <div class="ehero__flags">
+      <span class="eflag eflag--cat">Seminer</span>
+      <span class="eflag eflag--state">İş birliği etkinliği</span>
+    </div>
+    <h1>Enerji Sisteminde Küresel Dönüşüm ve Türkiye</h1>
+    <p class="ehero__sum">Friedrich-Ebert-Stiftung (FES) ve Alman-Türk Ticaret Odası (AHK) iş birliğiyle düzenlenen seminer, küresel enerji dönüşümünü ve Türkiye'nin bu dönüşümdeki konumunu uzmanlarla masaya yatırıyor.</p>
+    <div class="ehero__meta">
+      <div class="emeta-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> <span>Tarih: <b>Yakında duyurulacak</b></span></div>
+      <div class="emeta-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg> <span><b>İstanbul</b></span></div>
+      <div class="emeta-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg> <span>Düzenleyen: <b>TADEV</b></span></div>
+      <div class="emeta-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Z"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg> <span>İş birliği: <b>FES &amp; AHK</b></span></div>
+    </div>
+  </div>
+</header>
+
+<!-- HERO IMAGE -->
+<section class="wrap eshot">
+  <image-slot id="ev-seminar-hero" placeholder="Etkinlik ana görseli — seminer salonu / panel (geniş, yatay 16:9)"></image-slot>
+</section>
+
+<!-- BODY -->
+<section class="band band--tight wrap">
+  <div class="ebody">
+    <article class="earticle reveal">
+      <h2>Etkinlik hakkında</h2>
+      <p class="lede">Enerji, bugün hem ekonomilerin hem de uluslararası ilişkilerin merkezinde yer alan stratejik bir başlık. Bu seminer, küresel enerji sistemindeki dönüşümü ve Türkiye'nin bu dönüşüm içindeki rolünü ele alıyor.</p>
+      <p>TADEV'in ekonomik ve bilimsel faaliyet alanlarının kesiştiği noktada düzenlenen program; akademisyenleri, iş dünyası temsilcilerini ve kurumsal paydaşları aynı masada buluşturuyor. Amaç, Türk-Alman bilgi birikimini ortak bir tartışma zeminine taşımak.</p>
+      <p>Seminer, vakfın iki ülke arasında köprü kurma misyonunun somut bir örneği olarak; enerji dönüşümünün getirdiği fırsatları ve riskleri hem küresel hem de Türkiye ölçeğinde değerlendiriyor.</p>
+
+      <h2>Ele alınan başlıklar</h2>
+      <ul class="notes">
+        <li>Küresel enerji sisteminde yaşanan yapısal dönüşüm ve yönelimler</li>
+        <li>Türkiye'nin enerji geçişindeki konumu, fırsatları ve zorlukları</li>
+        <li>Türk-Alman iş birliğinin enerji ve ekonomi alanındaki potansiyeli</li>
+        <li>Sürdürülebilir politika ve yatırım perspektifleri</li>
+      </ul>
+
+      <h2>Program</h2>
+      <div class="agenda">
+        <div class="agenda__row"><div class="agenda__t">Açılış</div><div class="agenda__c"><h4>Karşılama ve açılış konuşması</h4><p>TADEV adına açılış ve seminerin çerçevesinin sunulması.</p></div></div>
+        <div class="agenda__row"><div class="agenda__t">Oturum I</div><div class="agenda__c"><h4>Küresel enerji dönüşümü</h4><p>Dünya genelindeki dönüşümün ana hatları ve sürükleyici dinamikler.</p></div></div>
+        <div class="agenda__row"><div class="agenda__t">Ara</div><div class="agenda__c"><h4>Kahve arası &amp; tanışma</h4><p>Katılımcılar arasında ağ kurma fırsatı.</p></div></div>
+        <div class="agenda__row"><div class="agenda__t">Oturum II</div><div class="agenda__c"><h4>Türkiye'nin konumu ve fırsatlar</h4><p>Türkiye ölçeğinde değerlendirme ve Türk-Alman iş birliği perspektifi.</p></div></div>
+        <div class="agenda__row"><div class="agenda__t">Kapanış</div><div class="agenda__c"><h4>Soru-cevap ve değerlendirme</h4><p>Katılımcı soruları ve kapanış değerlendirmesi.</p></div></div>
+      </div>
+
+      <h2>İş birliği</h2>
+      <p>Bu etkinlik, Türk-Alman ilişkilerinin köklü kurumları olan Friedrich-Ebert-Stiftung (FES) ve Alman-Türk Ticaret ve Sanayi Odası (AHK) ile birlikte hayata geçirilmektedir. Bu ortaklık, programa hem akademik hem de iş dünyası perspektifi kazandırmaktadır.</p>
+    </article>
+
+    <!-- SIDEBAR -->
+    <aside class="eside reveal">
+      <div class="ecard-detail">
+        <div class="ecard-detail__hd">
+          <div class="lbl">Etkinlik tarihi</div>
+          <div class="big">Yakında duyurulacak</div>
+        </div>
+        <div class="ecard-detail__body">
+          <div class="drow"><span class="k">Tür</span><span class="v">Seminer</span></div>
+          <div class="drow"><span class="k">Yer</span><span class="v">İstanbul</span></div>
+          <div class="drow"><span class="k">Düzenleyen</span><span class="v">TADEV</span></div>
+          <div class="drow"><span class="k">İş birliği</span><span class="v">FES &amp; AHK</span></div>
+          <div class="drow"><span class="k">Dil</span><span class="v">Türkçe / Almanca</span></div>
+          <div class="drow"><span class="k">Katılım</span><span class="v">Davet & kayıt ile</span></div>
+        </div>
+        <div class="ecard-detail__cta">
+          <a class="btn btn--primary btn--md" href="iletisim.html">Kayıt için iletişim →</a>
+        </div>
+        <div class="share">
+          <span>Paylaş</span>
+          <a href="#" aria-label="Bağlantıyı kopyala"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.5 1.5"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7L12 19"/></svg></a>
+          <a href="#" aria-label="E-posta ile paylaş"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></a>
+          <a href="#" aria-label="LinkedIn'de paylaş"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6Z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+        </div>
+      </div>
+      <a class="btn btn--line btn--md" href="etkinlikler.html" style="width:100%;justify-content:center">← Tüm etkinlikler</a>
+    </aside>
+  </div>
+</section>
+
+<!-- RELATED -->
+<section class="band--mist">
+  <div class="band band--tight wrap">
+    <div class="sec-head sec-head--row reveal"><div><div class="eyebrow-num">İlgili etkinlikler</div><h2 class="h2" style="margin-top:14px">Bunlar da ilginizi çekebilir</h2></div><a class="btn btn--line btn--md" href="etkinlikler.html" style="background:#fff">Tüm takvim →</a></div>
+    <div class="ecards reveal">
+      <a class="ecard" href="etkinlikler.html">
+        <div class="ecard__top"><div class="datebox"><div class="m">Şubat</div><div class="d">—</div></div><div class="ecard__hd"><span class="cat">Toplantı</span><h3>Mütevelliler Heyeti Olağan Toplantısı</h3></div></div>
+        <div class="ecard__b"><p>Vakfın en yetkili karar organının her yıl Şubat ayında gerçekleşen olağan toplantısı.</p><div class="ecard__loc"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg> İstinye Merkez, İstanbul</div></div>
+      </a>
+      <a class="ecard" href="etkinlikler.html">
+        <div class="ecard__top"><div class="datebox datebox--tba"><div class="m">Tarih</div><div class="d">Yakında</div></div><div class="ecard__hd"><span class="cat">Tören</span><h3>Dönem Sonu Burs Töreni</h3></div></div>
+        <div class="ecard__b"><p>Burs Yönetmeliği kapsamında desteklenen başarılı öğrencilerle bir araya geldiğimiz tören.</p><div class="ecard__loc"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg> İstanbul</div></div>
+      </a>
+      <a class="ecard" href="etkinlikler.html">
+        <div class="ecard__top"><div class="datebox datebox--tba"><div class="m">Tarih</div><div class="d">Yakında</div></div><div class="ecard__hd"><span class="cat">Buluşma</span><h3>Mütevelli Buluşması</h3></div></div>
+        <div class="ecard__b"><p>Mütevelliler arasında dayanışmayı ve iş birliğini güçlendiren sosyal buluşma.</p><div class="ecard__loc"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg> İstanbul</div></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="band band--tight wrap">
+  <div class="cta reveal">
+    <img class="cta__mark" src="assets/tadev-logo-white.png" alt="">
+    <div class="kicker" style="color:rgba(255,255,255,.8)">Haberdar olun</div>
+    <h2 style="margin-top:16px">Bir sonraki etkinlikte görüşelim.</h2>
+    <p>Etkinlik takvimimizden haberdar olmak ve davetlerimize katılmak için bizimle iletişimde kalın.</p>
+    <div class="cta__actions">
+      <a class="btn btn--white btn--lg" href="duyurular.html">Duyuruları görün →</a>
+      <a class="btn btn--dark btn--lg" href="iletisim.html#mutevelli">Mütevelli Olun</a>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__top">
+      <div><div class="foot__brand"><img src="assets/tadev-logo-white.png" alt="TADEV"><strong>TADEV</strong></div><p>Türk-Alman Dayanışma ve Eğitim Vakfı.<br>İki ülke, üç kuşak, ortak bir gelecek.</p></div>
+      <div class="foot__col"><h4>Vakıf</h4><a href="kurulus.html">Kuruluş</a><a href="amaclar.html">Amaçlarımız</a><a href="organlar.html">Organlarımız</a></div>
+      <div class="foot__col"><h4>Çalışmalar</h4><a href="faaliyetler.html">Faaliyetler</a><a href="etkinlikler.html">Etkinlikler</a><a href="duyurular.html">Duyurular</a><a href="iletisim.html#mutevelli">Mütevelli Olun</a></div>
+      <div class="foot__col"><h4>İletişim</h4><p>İstinye Caddesi Mertoğlu Apt.<br>No: 52/6, İstinye – Sarıyer<br>İstanbul 34460</p><p style="margin-top:10px"><a href="tel:+902122299201">+90 212 229 92 01</a><br><a href="mailto:tadev@tadev.org.tr">tadev@tadev.org.tr</a></p></div>
+    </div>
+    <div class="foot__bottom">
+      <p>© <span data-year></span> TADEV — Türk-Alman Dayanışma ve Eğitim Vakfı. Tüm hakları saklıdır.</p>
+      <div class="lang"><button data-lang="TR">TR</button><button data-lang="DE">DE</button><button data-lang="EN">EN</button></div>
+    </div>
+    <div class="foot__credit"><a href="https://svenkoksal.com" target="_blank" rel="noopener">Tasarım & geliştirme — Sven Ata Can Köksal</a></div>
+  </div>
+</footer>
+
+<script src="image-slot.js"></script>
+<script src="js/site.js"></script>
+</body>
+</html>

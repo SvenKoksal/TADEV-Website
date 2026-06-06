@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Organlarımız — TADEV</title>
+<meta name="description" content="TADEV'in yönetişim yapısı: Mütevelliler Heyeti, Yönetim Kurulu, Denetim Kurulu ve Danışma Divanı.">
+<link rel="icon" href="assets/tadev-logo-ember.png">
+<link rel="stylesheet" href="css/brand.css">
+<link rel="stylesheet" href="css/site.css">
+<style>
+.orgwrap{display:flex;flex-direction:column;gap:clamp(18px,2vw,26px)}
+.org{display:grid;grid-template-columns:auto 1fr auto;gap:clamp(24px,3vw,48px);align-items:start;border:1px solid var(--line);border-radius:18px;padding:clamp(30px,3.4vw,46px);background:#fff;transition:.2s}
+.org:hover{border-color:var(--onyx)}
+.org__n{font-family:var(--display);font-weight:700;font-size:clamp(38px,4vw,58px);color:var(--ember);letter-spacing:-.04em;line-height:.85}
+.org__body{max-width:64ch}
+.org .tag{color:var(--steel);margin-bottom:10px;display:block}
+.org h2{font-size:clamp(23px,2.6vw,32px);margin-bottom:12px}
+.org p{color:var(--slate-deep);font-size:15.5px;line-height:1.6;margin-bottom:14px}
+.org__facts{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.fact{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--slate-deep);background:var(--mist);border-radius:100px;padding:8px 14px}
+.fact b{color:var(--ember);font-family:var(--display);letter-spacing:0}
+.org__big{font-family:var(--display);font-weight:700;font-size:clamp(54px,7vw,96px);color:var(--cloud);letter-spacing:-.04em;line-height:.8;text-align:right}
+.org:hover .org__big{color:var(--ember)}
+.org__big small{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--slate);font-weight:700;margin-top:8px}
+.flowmap{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.12);border-radius:16px;overflow:hidden;margin-top:10px}
+.flowmap__c{background:var(--onyx);padding:26px 22px}
+.flowmap__c .step{font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--ember-hot);margin-bottom:10px}
+.flowmap__c h4{color:#fff;font-size:16px;font-family:var(--display);margin-bottom:6px}
+.flowmap__c p{color:#A39FA8;font-size:13px;line-height:1.45}
+@media(max-width:820px){.org{grid-template-columns:auto 1fr}.org__big{display:none}.flowmap{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.org{grid-template-columns:1fr}.flowmap{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav__in">
+    <a class="nav__brand" href="index.html"><img src="assets/tadev-logo.png" alt="TADEV"><span>TADEV</span></a>
+    <div class="nav__links">
+      <a href="index.html">Anasayfa</a><a href="kurulus.html">Kuruluş</a><a href="amaclar.html">Amaçlarımız</a><a href="organlar.html" class="active">Organlarımız</a><a href="faaliyetler.html">Faaliyetler</a><a href="etkinlikler.html">Etkinlikler</a><a href="duyurular.html">Duyurular</a></div>
+    <div class="nav__right">
+      <div class="lang"><button data-lang="TR">TR</button><button data-lang="DE">DE</button><button data-lang="EN">EN</button></div>
+      <a class="nav__cta nav__cta--sub" href="iletisim.html">İletişim</a>
+      <a class="nav__cta" href="iletisim.html#mutevelli">Mütevelli Olun</a>
+      <button class="nav__burger" id="burger" aria-label="Menü"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="mnav" id="mnav">
+  <div class="mnav__top"><a class="nav__brand" href="index.html" style="color:#fff"><img src="assets/tadev-logo-white.png" alt="TADEV" style="height:28px"><span>TADEV</span></a><button class="mnav__close" id="mclose" aria-label="Kapat">✕</button></div>
+  <a href="index.html">Anasayfa</a><a href="kurulus.html">Kuruluş</a><a href="amaclar.html">Amaçlarımız</a><a href="organlar.html">Organlarımız</a><a href="faaliyetler.html">Faaliyetler</a><a href="etkinlikler.html">Etkinlikler</a><a href="duyurular.html">Duyurular</a><a href="iletisim.html">İletişim</a>
+  <div class="mnav__foot"><div class="lang"><button data-lang="TR">TR</button><button data-lang="DE">DE</button><button data-lang="EN">EN</button></div><a class="nav__cta nav__cta--sub" href="iletisim.html">İletişim</a>
+      <a class="nav__cta" href="iletisim.html#mutevelli">Mütevelli Olun</a></div>
+</div>
+
+<header class="phead">
+  <img class="phead__mark" src="assets/tadev-logo-ember.png" alt="">
+  <div class="wrap phead__in">
+    <div class="crumb"><a href="index.html">Anasayfa</a> / <span>Organlarımız</span></div>
+    <h1>Şeffaf yönetişim,<br>dört organ.</h1>
+    <p class="lead">TADEV; karar, yürütme, denetim ve danışma işlevlerini birbirinden ayıran dört organ aracılığıyla yönetilir. Bu yapı, vakfın hesap verebilir ve sürdürülebilir biçimde çalışmasını sağlar.</p>
+  </div>
+</header>
+
+<!-- ORGANS -->
+<section class="band band--tight wrap">
+  <div class="orgwrap reveal">
+    <article class="org">
+      <div class="org__n">01</div>
+      <div class="org__body">
+        <span class="tag">En yetkili karar organı</span>
+        <h2>Mütevelliler Heyeti</h2>
+        <p>Vakfın tüm kurucu mütevellilerinden oluşan en yetkili karar organıdır. Vakfın genel politikalarını belirler, organlarını seçer ve faaliyetlerini onaylar.</p>
+        <div class="org__facts"><span class="fact">Toplanma · <b>Her yıl Şubat</b></span><span class="fact">Üyelik · <b>Tüm mütevelliler</b></span></div>
+      </div>
+      <div class="org__big">51<small>Kurucu mütevelli</small></div>
+    </article>
+
+    <article class="org">
+      <div class="org__n">02</div>
+      <div class="org__body">
+        <span class="tag">Yürütme organı</span>
+        <h2>Yönetim Kurulu</h2>
+        <p>Mütevelliler Heyeti tarafından iki yılda bir seçilen yedi üyeli yürütme ve uygulama organıdır. Vakfın günlük işleyişini yönetir ve alınan kararları hayata geçirir.</p>
+        <div class="org__facts"><span class="fact">Görev süresi · <b>2 yıl</b></span><span class="fact">Seçim · <b>Mütevelliler Heyeti</b></span></div>
+      </div>
+      <div class="org__big">7<small>Üye</small></div>
+    </article>
+
+    <article class="org">
+      <div class="org__n">03</div>
+      <div class="org__body">
+        <span class="tag">Denetim organı</span>
+        <h2>Denetim Kurulu</h2>
+        <p>Vakfın mali ve idari işleyişini bağımsız olarak denetler; faaliyet ve hesapların vakıf senedine ve mevzuata uygunluğunu gözetir.</p>
+        <div class="org__facts"><span class="fact">İşlev · <b>Bağımsız denetim</b></span><span class="fact">Kapsam · <b>Mali & idari</b></span></div>
+      </div>
+      <div class="org__big">—<small>Bağımsız</small></div>
+    </article>
+
+    <article class="org">
+      <div class="org__n">04</div>
+      <div class="org__body">
+        <span class="tag">Danışma organı</span>
+        <h2>Danışma Divanı</h2>
+        <p>Vakfın amaç ve faaliyet alanlarına yönelik araştırma ve değerlendirme yapan on bir kişilik danışma kuruludur. Stratejik yönelim konusunda organlara görüş bildirir.</p>
+        <div class="org__facts"><span class="fact">İşlev · <b>Araştırma & danışma</b></span><span class="fact">Odak · <b>Amaç & faaliyet</b></span></div>
+      </div>
+      <div class="org__big">11<small>Üye</small></div>
+    </article>
+  </div>
+</section>
+
+<!-- DECISION FLOW -->
+<section class="band band--tight band--onyx">
+  <div class="wrap">
+    <div class="sec-head reveal"><div class="eyebrow-num">Karar akışı</div><h2 class="h2">Bir karar nasıl alınır?</h2></div>
+    <div class="flowmap reveal">
+      <div class="flowmap__c"><div class="step">Adım 01</div><h4>Danışma</h4><p>Danışma Divanı araştırır ve görüş bildirir.</p></div>
+      <div class="flowmap__c"><div class="step">Adım 02</div><h4>Karar</h4><p>Mütevelliler Heyeti politikayı belirler.</p></div>
+      <div class="flowmap__c"><div class="step">Adım 03</div><h4>Yürütme</h4><p>Yönetim Kurulu uygular ve hayata geçirir.</p></div>
+      <div class="flowmap__c"><div class="step">Adım 04</div><h4>Denetim</h4><p>Denetim Kurulu sonucu denetler.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="band band--tight wrap">
+  <div class="cta reveal">
+    <img class="cta__mark" src="assets/tadev-logo-white.png" alt="">
+    <div class="kicker" style="color:rgba(255,255,255,.8)">Mütevelli Olun</div>
+    <h2 style="margin-top:16px">Karar masasında yerinizi alın.</h2>
+    <p>Mütevelli olarak vakfın yönetişimine katılın ve geleceğin yönünü birlikte belirleyelim.</p>
+    <div class="cta__actions">
+      <a class="btn btn--white btn--lg" href="iletisim.html#mutevelli">Mütevelli Olun →</a>
+      <a class="btn btn--dark btn--lg" href="kurulus.html">Vakfı tanıyın</a>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__top">
+      <div><div class="foot__brand"><img src="assets/tadev-logo-white.png" alt="TADEV"><strong>TADEV</strong></div><p>Türk-Alman Dayanışma ve Eğitim Vakfı.<br>İki ülke, üç kuşak, ortak bir gelecek.</p></div>
+      <div class="foot__col"><h4>Vakıf</h4><a href="kurulus.html">Kuruluş</a><a href="amaclar.html">Amaçlarımız</a><a href="organlar.html">Organlarımız</a></div>
+      <div class="foot__col"><h4>Çalışmalar</h4><a href="faaliyetler.html">Faaliyetler</a><a href="etkinlikler.html">Etkinlikler</a><a href="duyurular.html">Duyurular</a><a href="iletisim.html#mutevelli">Mütevelli Olun</a></div>
+      <div class="foot__col"><h4>İletişim</h4><p>İstinye Caddesi Mertoğlu Apt.<br>No: 52/6, İstinye – Sarıyer<br>İstanbul 34460</p><p style="margin-top:10px"><a href="tel:+902122299201">+90 212 229 92 01</a><br><a href="mailto:tadev@tadev.org.tr">tadev@tadev.org.tr</a></p></div>
+    </div>
+    <div class="foot__bottom">
+      <p>© <span data-year></span> TADEV — Türk-Alman Dayanışma ve Eğitim Vakfı. Tüm hakları saklıdır.</p>
+      <div class="lang"><button data-lang="TR">TR</button><button data-lang="DE">DE</button><button data-lang="EN">EN</button></div>
+    </div>
+    <div class="foot__credit"><a href="https://svenkoksal.com" target="_blank" rel="noopener">Tasarım & geliştirme — Sven Ata Can Köksal</a></div>
+  </div>
+</footer>
+
+<script src="image-slot.js"></script>
+<script src="js/site.js"></script>
+</body>
+</html>

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TADEV — Direction A</title>
+<link rel="stylesheet" href="css/brand.css">
+<style>
+/* ===== Direction A — Editorial Institution ===== */
+.navA .nav__links a{font-size:11.5px}
+.lang{display:flex;gap:2px;border:1px solid var(--line);border-radius:8px;padding:3px;background:#fff}
+.lang button{font-family:var(--mono);font-size:11px;letter-spacing:.1em;font-weight:700;color:var(--slate);padding:5px 9px;border:0;background:transparent;border-radius:5px;cursor:pointer;transition:.15s}
+.lang button.on{background:var(--onyx);color:#fff}
+.nav__cta{font-family:var(--sans);font-weight:700;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:var(--ember);padding:10px 16px;border-radius:8px;white-space:nowrap}
+
+/* hero */
+.heroA{padding-top:clamp(40px,6vw,84px);padding-bottom:clamp(48px,7vw,96px);overflow:hidden}
+.heroA__grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(32px,4vw,64px);align-items:end}
+.heroA h1{font-size:clamp(46px,5.6vw,82px);line-height:.98;letter-spacing:-.04em;color:var(--onyx)}
+.heroA h1 em{font-style:normal;color:var(--ember)}
+.heroA .lead{margin-top:26px;max-width:46ch}
+.heroA__actions{margin-top:34px;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.btn-primary{font-family:var(--sans);font-weight:700;font-size:14px;letter-spacing:.02em;color:#fff;background:var(--ember);padding:15px 26px;border-radius:10px;display:inline-flex;align-items:center;gap:10px;transition:.18s}
+.btn-primary:hover{background:var(--ember-deep)}
+.btn-ghost{font-family:var(--sans);font-weight:700;font-size:14px;color:var(--onyx);padding:15px 22px;border-radius:10px;border:1px solid var(--line);transition:.18s}
+.btn-ghost:hover{border-color:var(--onyx)}
+.heroA__media{position:relative}
+.heroA__media image-slot{display:block;width:100%;height:clamp(340px,42vw,520px);border-radius:16px;overflow:hidden}
+.heroA__cap{position:absolute;left:18px;bottom:18px;background:rgba(24,22,26,.82);color:#fff;font-family:var(--mono);font-size:11px;letter-spacing:.08em;padding:8px 13px;border-radius:7px;backdrop-filter:blur(4px)}
+.heroA__mark{position:absolute;top:-10px;right:-6px;width:78px;opacity:.9}
+
+.statbar{border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:clamp(40px,5vw,72px)}
+.statbar__in{display:grid;grid-template-columns:repeat(4,1fr)}
+.stat{padding:30px 0;border-left:1px solid var(--line)}
+.stat:first-child{border-left:0}
+.stat .n{font-family:var(--display);font-weight:700;font-size:clamp(30px,3.4vw,46px);letter-spacing:-.03em;color:var(--onyx);line-height:1}
+.stat .l{margin-top:9px;font-family:var(--mono);font-size:11.5px;letter-spacing:.07em;color:var(--slate);text-transform:uppercase}
+.stat--em .n{color:var(--ember)}
+
+/* intro / founding */
+.lede-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(36px,5vw,80px);align-items:start}
+.lede-grid h2{font-size:clamp(28px,3.2vw,42px)}
+.body-flow p{font-size:18px;color:var(--slate-deep);margin-bottom:18px;line-height:1.62}
+.body-flow p:first-child{font-size:21px;color:var(--ink)}
+
+/* aims */
+.aimA{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.aimA__c{background:#fff;padding:34px 30px;display:flex;flex-direction:column;gap:14px;min-height:230px}
+.aimA__c .num{font-family:var(--mono);font-size:12px;letter-spacing:.14em;color:var(--ember)}
+.aimA__c h3{font-size:21px}
+.aimA__c p{font-size:15px;color:var(--slate-deep);line-height:1.55}
+.aimA__c--lead{background:var(--onyx);color:#EDEAE6}
+.aimA__c--lead h3{color:#fff}
+.aimA__c--lead p{color:#B9B5B0}
+.aimA__c--lead .num{color:var(--ember-hot)}
+
+/* governance */
+.govA{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.govA__c{border:1px solid var(--line);border-radius:14px;padding:26px;background:#fff;display:flex;flex-direction:column;gap:12px}
+.govA__c .tag{color:var(--steel)}
+.govA__c h3{font-size:19px}
+.govA__c p{font-size:14px;color:var(--slate-deep);line-height:1.5}
+.govA__c .big{font-family:var(--display);font-weight:700;font-size:34px;color:var(--onyx);letter-spacing:-.02em}
+
+/* activities */
+.actA{display:grid;grid-template-columns:1.3fr 1fr;gap:clamp(28px,3vw,48px);align-items:stretch}
+.actA__media image-slot{display:block;width:100%;height:100%;min-height:360px;border-radius:16px;overflow:hidden}
+.actList{display:flex;flex-direction:column}
+.actRow{display:grid;grid-template-columns:auto 1fr;gap:20px;padding:24px 0;border-top:1px solid var(--line)}
+.actRow:last-child{border-bottom:1px solid var(--line)}
+.actRow .rn{font-family:var(--mono);font-size:13px;color:var(--ember)}
+.actRow h3{font-size:20px;margin-bottom:6px}
+.actRow p{font-size:14.5px;color:var(--slate-deep);line-height:1.5}
+
+/* news */
+.newsA{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.newsCard{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff;transition:.2s;display:flex;flex-direction:column}
+.newsCard:hover{border-color:var(--onyx);transform:translateY(-3px)}
+.newsCard image-slot{display:block;width:100%;height:170px}
+.newsCard__b{padding:22px;display:flex;flex-direction:column;gap:10px;flex:1}
+.newsCard .date{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--slate)}
+.newsCard h3{font-size:18px;line-height:1.2}
+.newsCard .more{margin-top:auto;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ember);font-weight:700}
+
+/* cta */
+.ctaA{background:var(--onyx);border-radius:22px;padding:clamp(40px,5vw,72px);display:grid;grid-template-columns:1.3fr .7fr;gap:40px;align-items:center;color:#fff;position:relative;overflow:hidden}
+.ctaA h2{color:#fff;font-size:clamp(30px,3.4vw,48px)}
+.ctaA p{color:#B9B5B0;font-size:17px;margin-top:16px;max-width:48ch}
+.ctaA__mark{position:absolute;right:-40px;top:-40px;width:280px;opacity:.08}
+.ctaA__actions{display:flex;flex-direction:column;gap:12px}
+.ctaA .btn-primary{justify-content:center}
+.ctaA .btn-light{background:#fff;color:var(--onyx);font-family:var(--sans);font-weight:700;font-size:14px;padding:15px 26px;border-radius:10px;text-align:center;transition:.18s}
+.ctaA .btn-light:hover{background:var(--mist)}
+
+@media(max-width:980px){.heroA__grid,.lede-grid,.actA,.ctaA{grid-template-columns:1fr}.statbar__in{grid-template-columns:repeat(2,1fr)}.aimA,.govA,.newsA{grid-template-columns:1fr}.stat{border-left:0;border-top:1px solid var(--line);padding:22px 0}.stat:first-child{border-top:0}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav navA">
+  <div class="nav__in">
+    <a class="nav__brand" href="#"><img src="assets/tadev-logo.png" alt="TADEV"><span>TADEV</span></a>
+    <div class="nav__links">
+      <a href="#">Anasayfa</a>
+      <a href="#kurulus">Kuruluş</a>
+      <a href="#amaclar">Amaçlarımız</a>
+      <a href="#organlar">Organlarımız</a>
+      <a href="#etkinlikler">Etkinlikler</a>
+      <a href="#duyurular">Duyurular</a>
+      <a href="#iletisim">İletişim</a>
+    </div>
+    <div style="display:flex;align-items:center;gap:14px">
+      <div class="lang">
+        <button class="on">TR</button><button>DE</button><button>EN</button>
+      </div>
+      <a class="nav__cta" href="#cta">Mütevelli Olun</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="heroA wrap">
+  <div class="heroA__grid">
+    <div>
+      <div class="kicker">Türk-Alman Dayanışma ve Eğitim Vakfı</div>
+      <h1 style="margin-top:22px">Almanya'nın bilgisini, Türkiye'nin <em>geleceğiyle</em> buluşturuyoruz.</h1>
+      <p class="lead">1937'den bu yana Alman üniversitelerinde okuyan, uzmanlaşan ve bilim üreten üç kuşağın birikimini; eğitim, bilim ve iş dünyası için ortak bir değere dönüştürüyoruz.</p>
+      <div class="heroA__actions">
+        <a class="btn-primary" href="#cta">Mütevelli Olun →</a>
+        <a class="btn-ghost" href="#kurulus">Vakfı Tanıyın</a>
+      </div>
+    </div>
+    <div class="heroA__media">
+      <img class="heroA__mark" src="assets/tadev-logo.png" alt="">
+      <image-slot id="a-hero" shape="rounded" radius="16" placeholder="Hero görseli — vakıf etkinliği / Boğaz / akademik ortam (dikey 4:5)"></image-slot>
+      <div class="heroA__cap">İstanbul · Berlin · Köln · Münih</div>
+    </div>
+  </div>
+</section>
+
+<!-- STAT BAR -->
+<div class="statbar">
+  <div class="wrap statbar__in">
+    <div class="stat"><div class="n">1993</div><div class="l">Kuruluş yılı</div></div>
+    <div class="stat"><div class="n">51</div><div class="l">Kurucu mütevelli</div></div>
+    <div class="stat stat--em"><div class="n">131</div><div class="l">Kurucu katılımcı</div></div>
+    <div class="stat"><div class="n">1995</div><div class="l">İlk burslardan beri</div></div>
+  </div>
+</div>
+
+<!-- FOUNDING -->
+<section class="band band--tight wrap" id="kurulus">
+  <div class="lede-grid">
+    <div>
+      <div class="sec-num">01 — Kuruluş</div>
+      <h2 style="margin-top:14px">Bir yıllık hazırlığın ardından, ortak bir amaç etrafında.</h2>
+    </div>
+    <div class="body-flow">
+      <p>Kısaca TADEV olarak anılan Türk-Alman Dayanışma ve Eğitim Vakfı, 15 Mart 1993 tarihinde 51 kurucu mütevelli ve 131 kurucu katılımcı tarafından resmen tescil edildi.</p>
+      <p>Vakıf; Almanya ile bağlantılı yüksek öğrenim, uzmanlık, araştırma, iş ve akademik geçmişe sahip kişiler tarafından kuruldu. Amacı, bu kişilerin mesleki bilgisini, deneyimini ve Almanya bağlantılarını Türkiye'nin gelişimi ve daha güçlü Türk-Alman ilişkileri için kullanmaktır.</p>
+      <p>Bugün TADEV; mütevellileri, akademisyenleri ve iş insanları aracılığıyla iki ülke arasında köprü kuran kurumsal bir yapıya dönüşmüştür.</p>
+    </div>
+  </div>
+</section>
+
+<!-- AIMS -->
+<section class="band band--tight wrap" id="amaclar">
+  <div class="sec-head">
+    <div class="sec-num">02 — Amaçlarımız</div>
+    <h2>Önceliğimiz eğitim; ufkumuz altı faaliyet alanı.</h2>
+    <p class="lead">Eğitim, toplumların ve ülkelerin gelişimi için temel ihtiyaç olarak kabul edilir ve TADEV'in birinci öncelikli faaliyet alanıdır.</p>
+  </div>
+  <div class="aimA">
+    <div class="aimA__c aimA__c--lead">
+      <div class="num">01 / Öncelik</div>
+      <h3>Eğitim Faaliyetleri</h3>
+      <p>Başarılı öğrencilere karşılıksız burslar; Türk ve Alman üniversiteleri ile bilimsel kurumlar arasında iş birliği.</p>
+    </div>
+    <div class="aimA__c"><div class="num">02</div><h3>Bilimsel Faaliyetler</h3><p>Mütevelli akademisyenler aracılığıyla araştırma ve bilimsel kurumlar arasında bağ kurma.</p></div>
+    <div class="aimA__c"><div class="num">03</div><h3>Ekonomik Faaliyetler</h3><p>Türkiye ve Almanya arasında ikili ticari ilişkileri destekleyen çalışmalar.</p></div>
+    <div class="aimA__c"><div class="num">04</div><h3>Sosyal Faaliyetler</h3><p>Mütevelliler arasında dayanışma, yakınlaşma ve iş birliği fırsatları.</p></div>
+    <div class="aimA__c"><div class="num">05</div><h3>Sportif Faaliyetler</h3><p>Topluluk bağını güçlendiren ve katılımı artıran sosyal-sportif etkinlikler.</p></div>
+    <div class="aimA__c"><div class="num">06</div><h3>Tanıtım Faaliyetleri</h3><p>Sanat ve kültür yoluyla Türkiye'yi Almanya'da tanıtan çalışmalar.</p></div>
+  </div>
+</section>
+
+<!-- GOVERNANCE -->
+<section class="band--mist">
+  <div class="band band--tight wrap" id="organlar" style="padding-block:clamp(56px,8vw,104px)">
+    <div class="sec-head">
+      <div class="sec-num">03 — Organlarımız</div>
+      <h2>Şeffaf yönetişim, dört organ.</h2>
+    </div>
+    <div class="govA">
+      <div class="govA__c"><span class="tag">En yetkili karar</span><h3>Mütevelliler Heyeti</h3><p>Tüm kurucu mütevellilerden oluşan, vakfın en yetkili karar organı. Şubat ayında yılda bir toplanır.</p></div>
+      <div class="govA__c"><span class="tag">Yürütme</span><h3>Yönetim Kurulu</h3><div class="big">7</div><p>İki yılda bir seçilen yedi üyeli yürütme ve uygulama organı.</p></div>
+      <div class="govA__c"><span class="tag">Denetim</span><h3>Denetim Kurulu</h3><p>Vakfın mali ve idari işleyişini denetleyen bağımsız organ.</p></div>
+      <div class="govA__c"><span class="tag">Danışma</span><h3>Danışma Divanı</h3><div class="big">11</div><p>Vakfın amaç ve faaliyet alanlarına yönelik araştırma yapan on bir kişilik danışma kurulu.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ACTIVITIES -->
+<section class="band band--tight wrap" id="etkinlikler">
+  <div class="sec-head">
+    <div class="sec-num">04 — Etkinlikler</div>
+    <h2>1995'ten bu yana karşılıksız burslar ve köprü kuran çalışmalar.</h2>
+  </div>
+  <div class="actA">
+    <div class="actA__media">
+      <image-slot id="a-act" shape="rounded" radius="16" placeholder="Etkinlik görseli — burs töreni / seminer / üniversite ziyareti"></image-slot>
+    </div>
+    <div class="actList">
+      <div class="actRow"><span class="rn">01</span><div><h3>Eğitim Bursları</h3><p>1995'ten itibaren, Burs Yönetmeliği kapsamında başarılı öğrencilere her dönem karşılıksız burs.</p></div></div>
+      <div class="actRow"><span class="rn">02</span><div><h3>Seminerler & İş Birlikleri</h3><p>FES ve AHK ile düzenlenen "Enerji Sisteminde Küresel Dönüşüm ve Türkiye" gibi seminerler.</p></div></div>
+      <div class="actRow"><span class="rn">03</span><div><h3>İş Dünyasına Yönelik Çalışmalar</h3><p>İki ülke arasındaki ticari ilişkileri ve ekonomik kuruluşlarla iş birliğini güçlendirme.</p></div></div>
+      <div class="actRow"><span class="rn">04</span><div><h3>Üniversite İş Birliği</h3><p>Türkiye'de Almanca eğitim veren bir üniversitenin kurulmasına verilen destek.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWS -->
+<section class="band--mist">
+  <div class="band band--tight wrap" id="duyurular" style="padding-block:clamp(56px,8vw,104px)">
+    <div class="sec-head" style="flex-direction:row;justify-content:space-between;align-items:flex-end;max-width:none">
+      <div><div class="sec-num">05 — Duyurular</div><h2 style="margin-top:14px">Güncel</h2></div>
+      <a class="btn-ghost" href="#" style="background:#fff">Tümünü görün</a>
+    </div>
+    <div class="newsA">
+      <article class="newsCard"><image-slot id="a-n1" placeholder="Duyuru görseli"></image-slot><div class="newsCard__b"><span class="date">02.03.2024</span><h3>Genel Kurul, İstinye'de gerçekleşti</h3><span class="more">Devamını oku →</span></div></article>
+      <article class="newsCard"><image-slot id="a-n2" placeholder="Duyuru görseli"></image-slot><div class="newsCard__b"><span class="date">2023</span><h3>Yönetim Kurulu, TAÜ Yeni Rektörünü ziyaret etti</h3><span class="more">Devamını oku →</span></div></article>
+      <article class="newsCard"><image-slot id="a-n3" placeholder="Duyuru görseli"></image-slot><div class="newsCard__b"><span class="date">Seminer</span><h3>Federal Almanya İstanbul Başkonsolosu'na ziyaret</h3><span class="more">Devamını oku →</span></div></article>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="band band--tight wrap" id="cta">
+  <div class="ctaA">
+    <img class="ctaA__mark" src="assets/tadev-logo-white.png" alt="">
+    <div>
+      <div class="kicker" style="color:var(--ember-hot)">Mütevelli Olun</div>
+      <h2 style="margin-top:16px">Almanya'da eğitim gören her öğrenci, geleceğin bir TADEV mütevellisidir.</h2>
+      <p>Birikiminizi, bağlantılarınızı ve deneyiminizi Türkiye'nin gelişimi ve Türk-Alman dostluğu için paylaşın.</p>
+    </div>
+    <div class="ctaA__actions">
+      <a class="btn-primary" href="#iletisim">Başvuru için iletişim →</a>
+      <a class="btn-light" href="#kurulus">Vakfı tanıyın</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer" id="iletisim">
+  <div class="wrap" style="display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px">
+    <div>
+      <div style="display:flex;align-items:center;gap:11px;margin-bottom:18px"><img src="assets/tadev-logo-white.png" style="height:30px" alt="TADEV"><strong style="font-family:var(--display);color:#fff;font-size:18px">TADEV</strong></div>
+      <p style="max-width:38ch;color:#B9B5B0">Türk-Alman Dayanışma ve Eğitim Vakfı. İki ülke, üç kuşak, ortak bir gelecek.</p>
+    </div>
+    <div>
+      <div class="tag" style="color:#777;margin-bottom:14px">İletişim</div>
+      <p style="color:#B9B5B0;line-height:1.7">İstinye Caddesi Mertoğlu Apt.<br>No: 52/6, İstinye – Sarıyer<br>İstanbul 34460<br>+90 212 229 92 01<br>tadev@tadev.org.tr</p>
+    </div>
+    <div>
+      <div class="tag" style="color:#777;margin-bottom:14px">Bağlantılar</div>
+      <p style="color:#B9B5B0;line-height:2"><a href="#kurulus">Kuruluş</a><br><a href="#amaclar">Amaçlarımız</a><br><a href="#organlar">Organlarımız</a><br><a href="#etkinlikler">Etkinlikler</a></p>
+    </div>
+  </div>
+</footer>
+
+<script src="image-slot.js"></script>
+</body>
+</html>

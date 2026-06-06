@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TADEV — Türk-Alman Dayanışma ve Eğitim Vakfı</title>
+<meta name="description" content="Türk-Alman Dayanışma ve Eğitim Vakfı (TADEV). 1993'ten bu yana eğitim, bilim ve iş dünyasında Türkiye ile Almanya arasında köprü kuruyoruz.">
+<link rel="icon" href="assets/tadev-logo-ember.png">
+<link rel="stylesheet" href="css/brand.css">
+<link rel="stylesheet" href="css/site.css">
+<style>
+/* homepage events strip */
+.evstrip{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,1.8vw,22px)}
+.evmini{display:flex;gap:16px;align-items:flex-start;border:1px solid var(--line);border-radius:14px;background:#fff;padding:22px;transition:.2s}
+.evmini:hover{border-color:var(--onyx);transform:translateY(-3px)}
+.evmini .datebox{flex-shrink:0;width:60px;text-align:center;border:1px solid var(--line);border-radius:11px;overflow:hidden}
+.evmini .datebox .m{background:var(--onyx);color:#fff;font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;padding:5px 0}
+.evmini .datebox .d{font-family:var(--display);font-weight:700;font-size:24px;color:var(--onyx);padding:7px 0 9px;line-height:1}
+.evmini .datebox--tba .d{font-size:13px;padding:11px 3px;color:var(--ember)}
+.evmini .evcat{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ember);font-weight:700;display:block;margin-bottom:6px}
+.evmini h3{font-size:16.5px;line-height:1.22;margin-bottom:8px}
+.evmini .evloc{font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:var(--slate)}
+@media(max-width:820px){.evstrip{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav__in">
+    <a class="nav__brand" href="index.html"><img src="assets/tadev-logo.png" alt="TADEV"><span>TADEV</span></a>
+    <div class="nav__links">
+      <a href="index.html" class="active">Anasayfa</a>
+      <a href="kurulus.html">Kuruluş</a>
+      <a href="amaclar.html">Amaçlarımız</a>
+      <a href="organlar.html">Organlarımız</a>
+      <a href="faaliyetler.html">Faaliyetler</a><a href="etkinlikler.html">Etkinlikler</a>
+      <a href="duyurular.html">Duyurular</a>
+      </div>
+    <div class="nav__right">
+      <div class="lang">
+        <button data-lang="TR">TR</button><button data-lang="DE">DE</button><button data-lang="EN">EN</button>
+      </div>
+      <a class="nav__cta nav__cta--sub" href="iletisim.html">İletişim</a>
+      <a class="nav__cta" href="iletisim.html#mutevelli">Mütevelli Olun</a>
+      <button class="nav__burger" id="burger" aria-label="Menü"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<!-- MOBILE DRAWER -->
+<div class="mnav" id="mnav">
+  <div class="mnav__top">
+    <a class="nav__brand" href="index.html" style="color:#fff"><img src="assets/tadev-logo-white.png" alt="TADEV" style="height:28px"><span>TADEV</span></a>
+    <button class="mnav__close" id="mclose" aria-label="Kapat">✕</button>
+  </div>
+  <a href="index.html">Anasayfa</a>
+  <a href="kurulus.html">Kuruluş</a>
+  <a href="amaclar.html">Amaçlarımız</a>
+  <a href="organlar.html">Organlarımız</a>
+  <a href="faaliyetler.html">Faaliyetler</a><a href="etkinlikler.html">Etkinlikler</a>
+  <a href="duyurular.html">Duyurular</a>
+  <a href="iletisim.html">İletişim</a>
+  <div class="mnav__foot">
+    <div class="lang">
+      <button data-lang="TR">TR</button><button data-lang="DE">DE</button><button data-lang="EN">EN</button>
+    </div>
+    <a class="nav__cta nav__cta--sub" href="iletisim.html">İletişim</a>
+      <a class="nav__cta" href="iletisim.html#mutevelli">Mütevelli Olun</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <img class="hero__mark" src="assets/tadev-logo-ember.png" alt="">
+  <div class="wrap hero__in">
+    <div class="kicker">Türk-Alman Dayanışma ve Eğitim Vakfı · İstanbul 1993</div>
+    <h1>
+      <span>Dayanışma.</span>
+      <span>Eğitim.</span>
+      <span class="em">Bir köprü.</span>
+    </h1>
+    <div class="hero__sub">
+      <p class="lead">1937'den bu yana Alman üniversitelerinde yetişen üç kuşağın bilgisini, deneyimini ve bağlantılarını Türkiye'nin gelişimi ve daha güçlü Türk-Alman ilişkileri için bir araya getiriyoruz.</p>
+      <div class="hero__actions">
+        <a class="btn btn--primary btn--lg" href="iletisim.html#mutevelli">Mütevelli Olun →</a>
+        <a class="btn btn--line-light btn--lg" href="kurulus.html">Vakfı Tanıyın</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="tick">
+  <div class="wrap tick__in">
+    <div class="tick__i"><b>15 Mart 1993</b> · Resmi tescil</div>
+    <div class="tick__i"><b>51</b> · Kurucu mütevelli</div>
+    <div class="tick__i"><b>131</b> · Kurucu katılımcı</div>
+    <div class="tick__i"><b>1995'ten beri</b> · Karşılıksız burs</div>
+  </div>
+</div>
+
+<!-- MANIFESTO / FOUNDING -->
+<section class="band band--tight wrap">
+  <div class="man reveal">
+    <div class="man__lbl">01 — KURULUŞ</div>
+    <div>
+      <h2 style="width: 614px;">İki ülke, üç kuşak, <em>ortak bir amaç.</em></h2>
+      <div class="man__body">
+        <p>Kısaca TADEV olarak anılan Türk-Alman Dayanışma ve Eğitim Vakfı, yaklaşık bir yıllık hazırlığın ardından 15 Mart 1993'te 51 kurucu mütevelli ve 131 kurucu katılımcı tarafından resmen kuruldu.</p>
+        <p>Vakıf; Almanya ile bağlantılı yüksek öğrenim, uzmanlık, araştırma ve iş geçmişine sahip kişilerin birikimini, Türkiye'nin gelişimi ve daha güçlü Türk-Alman ilişkileri için ortak bir değere dönüştürmeyi amaçlar.</p>
+        <p>Almanya'da öğrenimini sürdüren her öğrenci ve akademisyen, potansiyel bir TADEV mütevellisidir.</p>
+      </div>
+      <a class="pagelink" href="kurulus.html" style="margin-top:24px">Kuruluş hikâyemiz →</a>
+    </div>
+  </div>
+</section>
+
+<!-- AIMS -->
+<section class="band--mist">
+  <div class="band band--tight wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow-num">02 — Amaçlarımız</div>
+      <h2 class="h2">Önceliğimiz eğitim.</h2>
+      <p class="lead">Eğitim, toplumların ve ülkelerin gelişimi için temel ihtiyaçtır — ve TADEV'in birinci öncelikli faaliyet alanıdır.</p>
+    </div>
+    <div class="aim reveal">
+      <div class="aim__row"><div class="aim__n">01</div><div class="aim__t"><h3>Eğitim Faaliyetleri</h3><p>Başarılı öğrencilere karşılıksız burs; Türk-Alman üniversite ve bilim kurumları arasında iş birliği.</p></div><span class="aim__tag hot">Öncelik</span></div>
+      <div class="aim__row"><div class="aim__n">02</div><div class="aim__t"><h3>Bilimsel Faaliyetler</h3><p>Mütevelli akademisyenler aracılığıyla araştırma ve bilim kurumları arasında bağ kurma.</p></div><span class="aim__tag">Bilim</span></div>
+      <div class="aim__row"><div class="aim__n">03</div><div class="aim__t"><h3>Ekonomik Faaliyetler</h3><p>Türkiye ve Almanya arasında ikili ticari ilişkileri destekleyen çalışmalar.</p></div><span class="aim__tag">Ekonomi</span></div>
+      <div class="aim__row"><div class="aim__n">04</div><div class="aim__t"><h3>Sosyal & Sportif</h3><p>Mütevelliler arasında dayanışma, yakınlaşma ve topluluk bağını güçlendiren etkinlikler.</p></div><span class="aim__tag">Sosyal</span></div>
+      <div class="aim__row"><div class="aim__n">05</div><div class="aim__t"><h3>Tanıtım Faaliyetleri</h3><p>Sanat ve kültür yoluyla Türkiye'yi Almanya'da tanıtan çalışmalar.</p></div><span class="aim__tag">Kültür</span></div>
+    </div>
+    <a class="btn btn--line btn--md reveal" href="amaclar.html" style="margin-top:36px;background:#fff">Tüm amaçlarımız →</a>
+  </div>
+</section>
+
+<!-- GOVERNANCE (dark) -->
+<section class="band band--tight band--onyx">
+  <div class="wrap">
+    <div class="sec-head reveal"><div class="eyebrow-num">03 — Organlarımız</div><h2 class="h2">Şeffaf yönetişim, dört organ.</h2></div>
+    <div class="gov reveal">
+      <div class="gov__c"><span class="tag">En yetkili karar</span><h3>Mütevelliler Heyeti</h3><p>Tüm kurucu mütevellilerden oluşur; her yıl Şubat ayında olağan toplanır.</p></div>
+      <div class="gov__c"><span class="tag">Yürütme</span><h3>Yönetim Kurulu</h3><p>İki yılda bir seçilen yürütme ve uygulama organı.</p><div class="big">7</div></div>
+      <div class="gov__c"><span class="tag">Denetim</span><h3>Denetim Kurulu</h3><p>Mali ve idari işleyişi denetleyen bağımsız organ.</p></div>
+      <div class="gov__c"><span class="tag">Danışma</span><h3>Danışma Divanı</h3><p>Amaç ve faaliyet alanlarına yönelik araştırma yapar.</p><div class="big">11</div></div>
+    </div>
+    <a class="btn btn--line-light btn--md reveal" href="organlar.html" style="margin-top:36px">Organlarımızı inceleyin →</a>
+  </div>
+</section>
+
+<!-- ACTIVITIES -->
+<section class="band band--tight wrap">
+  <div class="feat reveal">
+    <div class="feat__media"><image-slot id="home-feat" shape="rounded" radius="18" placeholder="Etkinlik görseli — burs töreni / seminer / üniversite ziyareti (yatay 4:3)"></image-slot></div>
+    <div class="feat__list">
+      <div class="kicker">04 — Faaliyetler</div>
+      <div class="featrow"><span class="rn">01</span><div><h3>Eğitim Bursları</h3><p>1995'ten beri Burs Yönetmeliği kapsamında başarılı öğrencilere her dönem karşılıksız burs.</p></div></div>
+      <div class="featrow"><span class="rn">02</span><div><h3>Seminerler & İş Birlikleri</h3><p>FES ve AHK ile "Enerji Sisteminde Küresel Dönüşüm ve Türkiye" semineri.</p></div></div>
+      <div class="featrow"><span class="rn">03</span><div><h3>İş Dünyasına Yönelik Çalışmalar</h3><p>İki ülke arasındaki ticari ilişkileri ve ekonomik iş birliğini güçlendirme.</p></div></div>
+      <div class="featrow"><span class="rn">04</span><div><h3>Üniversite Desteği</h3><p>Türkiye'de Almanca eğitim veren bir üniversitenin kurulmasına verilen destek.</p></div></div>
+      <a class="pagelink" href="faaliyetler.html" style="margin-top:22px">Tüm faaliyetler →</a>
+    </div>
+  </div>
+</section>
+
+<!-- EVENTS -->
+<section class="band--mist">
+  <div class="band band--tight wrap">
+    <div class="sec-head sec-head--row reveal">
+      <div><div class="eyebrow-num">05 — Etkinlikler</div><h2 class="h2" style="margin-top:14px">Yaklaşan etkinlikler</h2></div>
+      <a class="btn btn--line btn--md" href="etkinlikler.html" style="background:#fff">Tüm takvim →</a>
+    </div>
+    <div class="evstrip reveal">
+      <a class="evmini" href="etkinlikler.html">
+        <div class="datebox"><div class="m">Şubat</div><div class="d">—</div></div>
+        <div><span class="evcat">Toplantı</span><h3>Mütevelliler Heyeti Olağan Toplantısı</h3><span class="evloc">İstinye Merkez, İstanbul</span></div>
+      </a>
+      <a class="evmini" href="etkinlikler.html">
+        <div class="datebox datebox--tba"><div class="m">Tarih</div><div class="d">Yakında</div></div>
+        <div><span class="evcat">Seminer</span><h3>Enerji Sisteminde Küresel Dönüşüm ve Türkiye</h3><span class="evloc">FES &amp; AHK · İstanbul</span></div>
+      </a>
+      <a class="evmini" href="etkinlikler.html">
+        <div class="datebox datebox--tba"><div class="m">Tarih</div><div class="d">Yakında</div></div>
+        <div><span class="evcat">Tören</span><h3>Dönem Sonu Burs Töreni</h3><span class="evloc">İstanbul</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- NEWS (dark) -->
+<section class="band band--tight band--onyx">
+  <div class="wrap">
+    <div class="sec-head sec-head--row reveal"><div><div class="eyebrow-num">06 — Duyurular</div><h2 class="h2" style="margin-top:14px">Güncel</h2></div><a class="btn btn--line-light btn--md" href="duyurular.html">Tümü →</a></div>
+    <div class="newsrows reveal">
+      <a class="newsrow" href="duyurular.html"><span class="date">02.03.2024</span><h3>Genel Kurul, İstinye'de gerçekleşti</h3><span class="ar">→</span></a>
+      <a class="newsrow" href="duyurular.html"><span class="date">2023</span><h3>Yönetim Kurulu, TAÜ Yeni Rektörünü ziyaret etti</h3><span class="ar">→</span></a>
+      <a class="newsrow" href="duyurular.html"><span class="date">2022</span><h3>Federal Almanya İstanbul Başkonsolosu'na ziyaret</h3><span class="ar">→</span></a>
+      <a class="newsrow" href="duyurular.html"><span class="date">Seminer</span><h3>Enerji Sisteminde Küresel Dönüşüm ve Türkiye</h3><span class="ar">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="band band--tight wrap">
+  <div class="cta reveal">
+    <img class="cta__mark" src="assets/tadev-logo-white.png" alt="">
+    <div class="kicker" style="color:rgba(255,255,255,.8)">Mütevelli Olun</div>
+    <h2 style="margin-top:16px">Bu köprünün bir parçası olun.</h2>
+    <p>Birikiminizi, bağlantılarınızı ve deneyiminizi Türkiye'nin gelişimi ve Türk-Alman dostluğu için paylaşın.</p>
+    <div class="cta__actions">
+      <a class="btn btn--white btn--lg" href="iletisim.html#mutevelli">Mütevelli Olun →</a>
+      <a class="btn btn--dark btn--lg" href="kurulus.html">Vakfı tanıyın</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__top">
+      <div>
+        <div class="foot__brand"><img src="assets/tadev-logo-white.png" alt="TADEV"><strong>TADEV</strong></div>
+        <p>Türk-Alman Dayanışma ve Eğitim Vakfı.<br>İki ülke, üç kuşak, ortak bir gelecek.</p>
+      </div>
+      <div class="foot__col">
+        <h4>Vakıf</h4>
+        <a href="kurulus.html">Kuruluş</a>
+        <a href="amaclar.html">Amaçlarımız</a>
+        <a href="organlar.html">Organlarımız</a>
+      </div>
+      <div class="foot__col">
+        <h4>Çalışmalar</h4>
+        <a href="faaliyetler.html">Faaliyetler</a><a href="etkinlikler.html">Etkinlikler</a>
+        <a href="duyurular.html">Duyurular</a>
+        <a href="iletisim.html#mutevelli">Mütevelli Olun</a>
+      </div>
+      <div class="foot__col">
+        <h4>İletişim</h4>
+        <p>İstinye Caddesi Mertoğlu Apt.<br>No: 52/6, İstinye – Sarıyer<br>İstanbul 34460</p>
+        <p style="margin-top:10px"><a href="tel:+902122299201">+90 212 229 92 01</a><br><a href="mailto:tadev@tadev.org.tr">tadev@tadev.org.tr</a></p>
+      </div>
+    </div>
+    <div class="foot__bottom">
+      <p>© <span data-year></span> TADEV — Türk-Alman Dayanışma ve Eğitim Vakfı. Tüm hakları saklıdır.</p>
+      <div class="lang">
+        <button data-lang="TR">TR</button><button data-lang="DE">DE</button><button data-lang="EN">EN</button>
+      </div>
+    </div>
+    <div class="foot__credit"><a href="https://svenkoksal.com" target="_blank" rel="noopener">Tasarım & geliştirme — Sven Ata Can Köksal</a></div>
+  </div>
+</footer>
+
+<script src="image-slot.js"></script>
+<script src="js/site.js"></script>
+</body>
+</html>

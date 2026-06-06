@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kuruluş — TADEV</title>
+<meta name="description" content="TADEV 15 Mart 1993'te 51 kurucu mütevelli ve 131 kurucu katılımcı tarafından kuruldu. Vakfın kuruluş hikâyesi ve değerleri.">
+<link rel="icon" href="assets/tadev-logo-ember.png">
+<link rel="stylesheet" href="css/brand.css">
+<link rel="stylesheet" href="css/site.css">
+<style>
+.story{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(36px,5vw,80px);align-items:start}
+.story h2{font-size:clamp(28px,3.2vw,42px)}
+.tl{display:flex;flex-direction:column}
+.tl__row{display:grid;grid-template-columns:140px 1fr;gap:30px;padding:28px 0;border-top:1px solid var(--line)}
+.tl__row:last-child{border-bottom:1px solid var(--line)}
+.tl__yr{font-family:var(--display);font-weight:700;font-size:clamp(28px,3vw,40px);color:var(--ember);letter-spacing:-.03em;line-height:1}
+.tl__row h3{font-size:21px;margin-bottom:8px}
+.tl__row p{color:var(--slate-deep);font-size:15.5px;line-height:1.55;max-width:60ch}
+.vals{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.vals__c{background:#fff;padding:34px 30px;display:flex;flex-direction:column;gap:13px;min-height:210px}
+.vals__c .num{font-family:var(--mono);font-size:12px;letter-spacing:.14em;color:var(--ember)}
+.vals__c h3{font-size:20px}.vals__c p{font-size:14.5px;color:var(--slate-deep);line-height:1.5}
+.vals__c--lead{background:var(--onyx)}.vals__c--lead h3{color:#fff}.vals__c--lead p{color:#A39FA8}.vals__c--lead .num{color:var(--ember-hot)}
+.quote{border-left:3px solid var(--ember);padding:6px 0 6px 30px;margin:8px 0}
+.quote p{font-family:var(--display);font-weight:500;font-size:clamp(22px,2.6vw,32px);line-height:1.3;letter-spacing:-.02em;color:var(--onyx)}
+@media(max-width:820px){.story{grid-template-columns:1fr}.tl__row{grid-template-columns:1fr;gap:8px}.vals{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav__in">
+    <a class="nav__brand" href="index.html"><img src="assets/tadev-logo.png" alt="TADEV"><span>TADEV</span></a>
+    <div class="nav__links">
+      <a href="index.html">Anasayfa</a>
+      <a href="kurulus.html" class="active">Kuruluş</a>
+      <a href="amaclar.html">Amaçlarımız</a>
+      <a href="organlar.html">Organlarımız</a>
+      <a href="faaliyetler.html">Faaliyetler</a><a href="etkinlikler.html">Etkinlikler</a>
+      <a href="duyurular.html">Duyurular</a>
+      </div>
+    <div class="nav__right">
+      <div class="lang"><button data-lang="TR">TR</button><button data-lang="DE">DE</button><button data-lang="EN">EN</button></div>
+      <a class="nav__cta nav__cta--sub" href="iletisim.html">İletişim</a>
+      <a class="nav__cta" href="iletisim.html#mutevelli">Mütevelli Olun</a>
+      <button class="nav__burger" id="burger" aria-label="Menü"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="mnav" id="mnav">
+  <div class="mnav__top"><a class="nav__brand" href="index.html" style="color:#fff"><img src="assets/tadev-logo-white.png" alt="TADEV" style="height:28px"><span>TADEV</span></a><button class="mnav__close" id="mclose" aria-label="Kapat">✕</button></div>
+  <a href="index.html">Anasayfa</a><a href="kurulus.html">Kuruluş</a><a href="amaclar.html">Amaçlarımız</a><a href="organlar.html">Organlarımız</a><a href="faaliyetler.html">Faaliyetler</a><a href="etkinlikler.html">Etkinlikler</a><a href="duyurular.html">Duyurular</a><a href="iletisim.html">İletişim</a>
+  <div class="mnav__foot"><div class="lang"><button data-lang="TR">TR</button><button data-lang="DE">DE</button><button data-lang="EN">EN</button></div><a class="nav__cta nav__cta--sub" href="iletisim.html">İletişim</a>
+      <a class="nav__cta" href="iletisim.html#mutevelli">Mütevelli Olun</a></div>
+</div>
+
+<!-- PAGE HEADER -->
+<header class="phead">
+  <img class="phead__mark" src="assets/tadev-logo-ember.png" alt="">
+  <div class="wrap phead__in">
+    <div class="crumb"><a href="index.html">Anasayfa</a> / <span>Kuruluş</span></div>
+    <h1>Bir köprünün<br>kuruluş hikâyesi.</h1>
+    <p class="lead">Yaklaşık bir yıllık hazırlığın ardından, Almanya ile Türkiye arasında eğitim ve dayanışma için kurulan bir vakıf.</p>
+  </div>
+</header>
+
+<!-- TICKER -->
+<div class="tick">
+  <div class="wrap tick__in">
+    <div class="tick__i"><b>15 Mart 1993</b> · Resmi tescil</div>
+    <div class="tick__i"><b>51</b> · Kurucu mütevelli</div>
+    <div class="tick__i"><b>131</b> · Kurucu katılımcı</div>
+    <div class="tick__i"><b>İstanbul</b> · Merkez</div>
+  </div>
+</div>
+
+<!-- STORY -->
+<section class="band band--tight wrap">
+  <div class="story reveal">
+    <div>
+      <div class="kicker">Kuruluş</div>
+      <h2 style="margin-top:16px">Ortak bir amaç etrafında bir araya gelen 51 kurucu.</h2>
+    </div>
+    <div class="prose">
+      <p class="lede">Kısaca TADEV olarak anılan Türk-Alman Dayanışma ve Eğitim Vakfı, 15 Mart 1993 tarihinde 51 kurucu mütevelli ve 131 kurucu katılımcı tarafından resmen tescil edildi.</p>
+      <p>Vakfın kurucuları; Almanya ile bağlantılı yüksek öğrenim görmüş, uzmanlaşmış, araştırma yapmış veya iş hayatında deneyim kazanmış kişilerden oluşur. Bu kişiler, edindikleri mesleki bilgi, deneyim ve Almanya bağlantılarını Türkiye'nin gelişimi ve daha güçlü Türk-Alman ilişkileri için bir değere dönüştürmek amacıyla bir araya geldiler.</p>
+      <p>Vakıf, kuruluşundan bu yana eğitimi birinci öncelik olarak benimsemiş; bilim, ekonomi, sosyal ve kültürel alanlarda iki ülke arasında köprü kuran bir kurum hâline gelmiştir.</p>
+      <div class="quote"><p>"Almanya'da öğrenimini sürdüren her öğrenci, potansiyel bir TADEV mütevellisidir."</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="band--mist">
+  <div class="band band--tight wrap">
+    <div class="sec-head reveal"><div class="eyebrow-num">Kilometre taşları</div><h2 class="h2">Kuruluştan bugüne.</h2></div>
+    <div class="tl reveal">
+      <div class="tl__row"><div class="tl__yr">1992</div><div><h3>Hazırlık süreci</h3><p>Almanya bağlantılı akademisyen, uzman ve iş insanları, ortak bir vakıf fikri etrafında yaklaşık bir yıl süren hazırlık çalışmalarına başladı.</p></div></div>
+      <div class="tl__row"><div class="tl__yr">1993</div><div><h3>Resmi kuruluş</h3><p>15 Mart 1993'te 51 kurucu mütevelli ve 131 kurucu katılımcı ile TADEV resmen tescil edildi ve faaliyetlerine başladı.</p></div></div>
+      <div class="tl__row"><div class="tl__yr">1995</div><div><h3>İlk burslar</h3><p>Burs Yönetmeliği çerçevesinde başarılı öğrencilere karşılıksız burs verilmeye başlandı — bu, vakfın bugün de süren öncelikli faaliyetidir.</p></div></div>
+      <div class="tl__row"><div class="tl__yr">Bugün</div><div><h3>Kurumsal köprü</h3><p>TADEV; mütevellileri, akademisyenleri ve iş insanları aracılığıyla eğitim, bilim ve iş dünyasında iki ülke arasında köprü kuran kurumsal bir yapıya dönüşmüştür.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="band band--tight wrap">
+  <div class="sec-head reveal"><div class="eyebrow-num">Değerlerimiz</div><h2 class="h2">Bizi bir arada tutan ilkeler.</h2></div>
+  <div class="vals reveal">
+    <div class="vals__c vals__c--lead"><div class="num">01</div><h3>Dayanışma</h3><p>Mütevelliler arasında karşılıklı destek, yakınlaşma ve ortak bir amaç etrafında birliktelik.</p></div>
+    <div class="vals__c"><div class="num">02</div><h3>Eğitim Önceliği</h3><p>Toplumların gelişiminin temeli olarak eğitime verilen kesintisiz öncelik.</p></div>
+    <div class="vals__c"><div class="num">03</div><h3>Köprü Kurmak</h3><p>Türkiye ile Almanya arasında bilgi, deneyim ve kültür akışını sürekli kılmak.</p></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="band band--tight wrap">
+  <div class="cta reveal">
+    <img class="cta__mark" src="assets/tadev-logo-white.png" alt="">
+    <div class="kicker" style="color:rgba(255,255,255,.8)">Mütevelli Olun</div>
+    <h2 style="margin-top:16px">Bu hikâyenin bir parçası olun.</h2>
+    <p>Birikiminizi ve Almanya bağlantılarınızı Türkiye'nin geleceği için paylaşın.</p>
+    <div class="cta__actions">
+      <a class="btn btn--white btn--lg" href="iletisim.html#mutevelli">Mütevelli Olun →</a>
+      <a class="btn btn--dark btn--lg" href="organlar.html">Organlarımız</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__top">
+      <div><div class="foot__brand"><img src="assets/tadev-logo-white.png" alt="TADEV"><strong>TADEV</strong></div><p>Türk-Alman Dayanışma ve Eğitim Vakfı.<br>İki ülke, üç kuşak, ortak bir gelecek.</p></div>
+      <div class="foot__col"><h4>Vakıf</h4><a href="kurulus.html">Kuruluş</a><a href="amaclar.html">Amaçlarımız</a><a href="organlar.html">Organlarımız</a></div>
+      <div class="foot__col"><h4>Çalışmalar</h4><a href="faaliyetler.html">Faaliyetler</a><a href="etkinlikler.html">Etkinlikler</a><a href="duyurular.html">Duyurular</a><a href="iletisim.html#mutevelli">Mütevelli Olun</a></div>
+      <div class="foot__col"><h4>İletişim</h4><p>İstinye Caddesi Mertoğlu Apt.<br>No: 52/6, İstinye – Sarıyer<br>İstanbul 34460</p><p style="margin-top:10px"><a href="tel:+902122299201">+90 212 229 92 01</a><br><a href="mailto:tadev@tadev.org.tr">tadev@tadev.org.tr</a></p></div>
+    </div>
+    <div class="foot__bottom">
+      <p>© <span data-year></span> TADEV — Türk-Alman Dayanışma ve Eğitim Vakfı. Tüm hakları saklıdır.</p>
+      <div class="lang"><button data-lang="TR">TR</button><button data-lang="DE">DE</button><button data-lang="EN">EN</button></div>
+    </div>
+    <div class="foot__credit"><a href="https://svenkoksal.com" target="_blank" rel="noopener">Tasarım & geliştirme — Sven Ata Can Köksal</a></div>
+  </div>
+</footer>
+
+<script src="image-slot.js"></script>
+<script src="js/site.js"></script>
+</body>
+</html>

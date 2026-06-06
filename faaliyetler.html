@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Faaliyetler — TADEV</title>
+<meta name="description" content="TADEV'in faaliyetleri: 1995'ten beri karşılıksız burslar, bilimsel ve ekonomik iş birlikleri, sosyal ve kültürel çalışmalar, üniversite desteği ve kurumsal ortaklıklar.">
+<link rel="icon" href="assets/tadev-logo-ember.png">
+<link rel="stylesheet" href="css/brand.css">
+<link rel="stylesheet" href="css/site.css">
+<style>
+/* overview stat strip */
+.fstrip{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff}
+.fstrip > div{padding:clamp(24px,2.6vw,34px);border-left:1px solid var(--line)}
+.fstrip > div:first-child{border-left:0}
+.fstrip .n{font-family:var(--display);font-weight:700;font-size:clamp(30px,3.4vw,46px);letter-spacing:-.03em;color:var(--onyx);line-height:1}
+.fstrip .n.em{color:var(--ember)}
+.fstrip .l{margin-top:10px;font-family:var(--mono);font-size:11.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--slate)}
+
+/* scholarship */
+.schol{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,3.4vw,56px);align-items:center}
+.schol__media image-slot{display:block;width:100%;height:clamp(360px,42vw,540px);border-radius:18px;overflow:hidden}
+.schol__panel .pill{margin-bottom:20px}
+.schol__panel h2{font-size:clamp(28px,3.4vw,46px);margin-bottom:18px}
+.schol__panel p{color:var(--slate-deep);font-size:16.5px;line-height:1.62;margin-bottom:16px;max-width:54ch}
+.schol__stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-top:26px}
+.schol__stats div{background:#fff;padding:22px 24px}
+.schol__stats .n{font-family:var(--display);font-weight:700;font-size:clamp(28px,3vw,40px);color:var(--onyx);letter-spacing:-.03em;line-height:1}
+.schol__stats .l{font-family:var(--mono);font-size:11.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--slate);margin-top:8px}
+
+/* process */
+.proc{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(16px,2vw,22px)}
+.pstep{border:1px solid var(--line);border-radius:14px;padding:clamp(24px,2.4vw,30px);background:#fff;display:flex;flex-direction:column;gap:12px;position:relative}
+.pstep .pn{font-family:var(--display);font-weight:700;font-size:clamp(34px,4vw,52px);color:var(--cloud);letter-spacing:-.04em;line-height:.85}
+.pstep:hover .pn{color:var(--ember)}
+.pstep h3{font-size:19px}
+.pstep p{color:var(--slate-deep);font-size:14px;line-height:1.55}
+
+/* domain grid */
+.fareas{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,1.8vw,22px)}
+.facard{border:1px solid var(--line);border-radius:16px;padding:clamp(26px,2.6vw,34px);background:#fff;display:flex;flex-direction:column;gap:13px;transition:.2s}
+.facard:hover{border-color:var(--onyx);transform:translateY(-3px)}
+.facard__h{display:flex;align-items:baseline;justify-content:space-between;gap:14px}
+.facard .fn{font-family:var(--display);font-weight:700;font-size:30px;color:var(--cloud);letter-spacing:-.03em}
+.facard:hover .fn{color:var(--ember)}
+.facard .tag{color:var(--steel)}
+.facard h3{font-size:20px}
+.facard p{color:var(--slate-deep);font-size:14.5px;line-height:1.55}
+.facard--lead{background:var(--onyx)}
+.facard--lead h3{color:#fff}.facard--lead p{color:#A39FA8}
+.facard--lead .tag{color:var(--ember-hot)}.facard--lead .fn{color:#39363c}
+.facard--lead:hover .fn{color:var(--ember)}
+
+/* featured works */
+.work{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,2vw,26px)}
+.wcard{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff;display:flex;flex-direction:column;transition:.2s}
+.wcard:hover{border-color:var(--onyx);transform:translateY(-3px)}
+.wcard image-slot{display:block;width:100%;height:200px}
+.wcard__b{padding:26px;display:flex;flex-direction:column;gap:12px;flex:1}
+.wcard .cat{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ember);font-weight:700}
+.wcard h3{font-size:21px;line-height:1.18}
+.wcard p{color:var(--slate-deep);font-size:14.5px;line-height:1.55}
+
+/* partners */
+.spotlight{background:var(--rhine);border-radius:20px;padding:clamp(34px,4vw,60px);color:#DCE6EF;position:relative;overflow:hidden;display:grid;grid-template-columns:auto 1fr;gap:clamp(24px,3vw,48px);align-items:center}
+.spotlight__tag{writing-mode:vertical-rl;font-family:var(--mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--steel)}
+.spotlight h2{color:#fff;font-size:clamp(24px,3vw,38px);margin-bottom:14px;max-width:24ch}
+.spotlight p{color:#B7C6D6;font-size:16px;line-height:1.6;max-width:60ch;margin-bottom:14px}
+.spotlight .partners{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+.spotlight .partners span{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;border:1px solid rgba(255,255,255,.24);border-radius:100px;padding:8px 14px;color:#DCE6EF}
+
+/* contribute (onyx) */
+.contrib{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.1);border-radius:18px;overflow:hidden}
+.contrib__c{background:var(--onyx);padding:30px 26px;display:flex;flex-direction:column;gap:12px;min-height:200px}
+.contrib__c .cn{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--ember-hot)}
+.contrib__c h3{color:#fff;font-size:19px}
+.contrib__c p{color:#A39FA8;font-size:14px;line-height:1.5}
+
+@media(max-width:900px){.fstrip,.proc{grid-template-columns:repeat(2,1fr)}.fstrip > div:nth-child(3){border-left:0}.fareas,.work,.contrib{grid-template-columns:1fr 1fr}}
+@media(max-width:820px){.schol,.spotlight{grid-template-columns:1fr}.spotlight__tag{writing-mode:horizontal-tb}}
+@media(max-width:600px){.fstrip,.proc,.fareas,.work,.contrib{grid-template-columns:1fr}.fstrip > div{border-left:0;border-top:1px solid var(--line)}.fstrip > div:first-child{border-top:0}.schol__stats{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav__in">
+    <a class="nav__brand" href="index.html"><img src="assets/tadev-logo.png" alt="TADEV"><span>TADEV</span></a>
+    <div class="nav__links">
+      <a href="index.html">Anasayfa</a><a href="kurulus.html">Kuruluş</a><a href="amaclar.html">Amaçlarımız</a><a href="organlar.html">Organlarımız</a><a href="faaliyetler.html" class="active">Faaliyetler</a><a href="etkinlikler.html">Etkinlikler</a><a href="duyurular.html">Duyurular</a></div>
+    <div class="nav__right">
+      <div class="lang"><button data-lang="TR">TR</button><button data-lang="DE">DE</button><button data-lang="EN">EN</button></div>
+      <a class="nav__cta nav__cta--sub" href="iletisim.html">İletişim</a>
+      <a class="nav__cta" href="iletisim.html#mutevelli">Mütevelli Olun</a>
+      <button class="nav__burger" id="burger" aria-label="Menü"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="mnav" id="mnav">
+  <div class="mnav__top"><a class="nav__brand" href="index.html" style="color:#fff"><img src="assets/tadev-logo-white.png" alt="TADEV" style="height:28px"><span>TADEV</span></a><button class="mnav__close" id="mclose" aria-label="Kapat">✕</button></div>
+  <a href="index.html">Anasayfa</a><a href="kurulus.html">Kuruluş</a><a href="amaclar.html">Amaçlarımız</a><a href="organlar.html">Organlarımız</a><a href="faaliyetler.html">Faaliyetler</a><a href="etkinlikler.html">Etkinlikler</a><a href="duyurular.html">Duyurular</a><a href="iletisim.html">İletişim</a>
+  <div class="mnav__foot"><div class="lang"><button data-lang="TR">TR</button><button data-lang="DE">DE</button><button data-lang="EN">EN</button></div><a class="nav__cta nav__cta--sub" href="iletisim.html">İletişim</a>
+      <a class="nav__cta" href="iletisim.html#mutevelli">Mütevelli Olun</a></div>
+</div>
+
+<header class="phead">
+  <img class="phead__mark" src="assets/tadev-logo-ember.png" alt="">
+  <div class="wrap phead__in">
+    <div class="crumb"><a href="index.html">Anasayfa</a> / <span>Faaliyetler</span></div>
+    <h1>Köprü kuran<br>çalışmalar.</h1>
+    <p class="lead">Burslardan bilimsel iş birliklerine, iş dünyası bağlarından kültürel tanıtıma kadar; amaçlarımızı sürekli ve somut faaliyetlere dönüştürüyoruz. İşte vakfın gündelik işine dönüşen çalışmalar.</p>
+  </div>
+</header>
+
+<!-- OVERVIEW -->
+<section class="band band--tight wrap">
+  <div class="sec-head reveal" style="max-width:62ch">
+    <div class="eyebrow-num">Genel bakış</div>
+    <h2 class="h2">Eğitim öncelikli, altı alanda süren bir çalışma düzeni.</h2>
+    <p class="lead">TADEV'in faaliyetleri tek bir ilkeye dayanır: Almanya ile bağ kurmuş kişilerin bilgisini, deneyimini ve ilişkilerini Türkiye'nin gelişimi için ortak bir değere dönüştürmek. Bu çalışmaların merkezinde, 1995'ten bu yana kesintisiz sürdürdüğümüz karşılıksız burslar yer alır.</p>
+  </div>
+  <div class="fstrip reveal">
+    <div><div class="n">1993</div><div class="l">Kuruluştan beri</div></div>
+    <div><div class="n em">1995</div><div class="l">Kesintisiz burs</div></div>
+    <div><div class="n">6</div><div class="l">Faaliyet alanı</div></div>
+    <div><div class="n">2</div><div class="l">Ülke arası köprü</div></div>
+  </div>
+</section>
+
+<!-- SCHOLARSHIP SPOTLIGHT -->
+<section class="band--mist">
+  <div class="band band--tight wrap">
+    <div class="schol reveal">
+      <div class="schol__media"><image-slot id="etk-schol" shape="rounded" radius="18" placeholder="Burs töreni / öğrenciler — dikey ya da kare görsel"></image-slot></div>
+      <div class="schol__panel">
+        <span class="pill pill--ember">Amiral gemimiz</span>
+        <h2>1995'ten beri karşılıksız burslar.</h2>
+        <p>Vakfın en köklü çalışması, başarılı öğrencilere verilen karşılıksız burslardır. 1995 yılından bu yana, Burs Yönetmeliği çerçevesinde her dönem öğrencilere düzenli destek sağlıyoruz.</p>
+        <p>Bursumuzun tek beklentisi başarı ve gayrettir; geri ödeme yoktur. Bursiyerlerimiz, eğitim önceliğimizin en somut karşılığıdır — bugünün öğrencileri, yarının köprü kuran mütevellileridir.</p>
+        <div class="schol__stats">
+          <div><div class="n">1995</div><div class="l">İlk burslardan beri</div></div>
+          <div><div class="n">Karşılıksız</div><div class="l">Burs ilkesi</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCHOLARSHIP PROCESS -->
+<section class="band band--tight wrap">
+  <div class="sec-head reveal"><div class="eyebrow-num">Burs süreci</div><h2 class="h2">Başvurudan desteğe, dört adım.</h2><p class="lead">Burslar, Burs Yönetmeliği'nde tanımlı ölçütlere göre şeffaf biçimde değerlendirilir ve tahsis edilir.</p></div>
+  <div class="proc reveal">
+    <div class="pstep"><div class="pn">01</div><h3>Başvuru</h3><p>Öğrenciler, Burs Yönetmeliği'nde belirtilen koşullar çerçevesinde başvurularını iletir.</p></div>
+    <div class="pstep"><div class="pn">02</div><h3>Değerlendirme</h3><p>Başvurular akademik başarı ve ihtiyaç ölçütlerine göre titizlikle değerlendirilir.</p></div>
+    <div class="pstep"><div class="pn">03</div><h3>Tahsis</h3><p>Uygun görülen öğrencilere her dönem için karşılıksız burs tahsis edilir.</p></div>
+    <div class="pstep"><div class="pn">04</div><h3>Takip</h3><p>Bursiyerlerin eğitim yolculuğu dönem boyunca izlenir ve desteklenir.</p></div>
+  </div>
+</section>
+
+<!-- ACTIVITY DOMAINS -->
+<section class="band--mist">
+  <div class="band band--tight wrap">
+    <div class="sec-head reveal"><div class="eyebrow-num">Faaliyet alanları</div><h2 class="h2">Eğitimin etrafında örülen altı alan.</h2></div>
+    <div class="fareas reveal">
+      <div class="facard facard--lead">
+        <div class="facard__h"><span class="tag">Öncelik</span><span class="fn">01</span></div>
+        <h3>Eğitim</h3>
+        <p>Başarılı öğrencilere karşılıksız burs; Türk ve Alman üniversiteleri ile bilim kurumları arasında eğitim iş birliği.</p>
+      </div>
+      <div class="facard">
+        <div class="facard__h"><span class="tag">Bilim</span><span class="fn">02</span></div>
+        <h3>Bilimsel Çalışmalar</h3>
+        <p>Mütevelli akademisyenler aracılığıyla ortak araştırma, akademik değişim ve bilim kurumları arasında bağ kurma.</p>
+      </div>
+      <div class="facard">
+        <div class="facard__h"><span class="tag">Ekonomi</span><span class="fn">03</span></div>
+        <h3>Ekonomik Çalışmalar</h3>
+        <p>Türkiye ile Almanya arasındaki ikili ticari ilişkileri ve ekonomik kuruluşlarla iş birliğini güçlendiren faaliyetler.</p>
+      </div>
+      <div class="facard">
+        <div class="facard__h"><span class="tag">Sosyal</span><span class="fn">04</span></div>
+        <h3>Sosyal Çalışmalar</h3>
+        <p>Mütevelliler arasında dayanışmayı, yakınlaşmayı ve iş birliğini artıran buluşmalar ve topluluk etkinlikleri.</p>
+      </div>
+      <div class="facard">
+        <div class="facard__h"><span class="tag">Spor</span><span class="fn">05</span></div>
+        <h3>Sportif Çalışmalar</h3>
+        <p>Topluluk bağını güçlendiren, geniş katılıma açık sosyal-sportif etkinlikler ve buluşmalar.</p>
+      </div>
+      <div class="facard">
+        <div class="facard__h"><span class="tag">Kültür</span><span class="fn">06</span></div>
+        <h3>Tanıtım Çalışmaları</h3>
+        <p>Sanat ve kültür yoluyla Türkiye'yi Almanya'da tanıtan, iki ülke arasındaki kültürel anlayışı derinleştiren projeler.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED WORKS -->
+<section class="band band--tight wrap">
+  <div class="sec-head reveal"><div class="eyebrow-num">Öne çıkan çalışmalar</div><h2 class="h2">Somutlaşan iş birlikleri.</h2></div>
+  <div class="work reveal">
+    <article class="wcard"><image-slot id="etk-w1" placeholder="Seminer görseli"></image-slot><div class="wcard__b"><span class="cat">Seminer</span><h3>Enerji Sisteminde Küresel Dönüşüm ve Türkiye</h3><p>FES (Friedrich-Ebert-Stiftung) ve AHK iş birliğiyle düzenlenen, küresel enerji dönüşümünü ve Türkiye'nin konumunu uzmanlarla ele alan seminer.</p></div></article>
+    <article class="wcard"><image-slot id="etk-w2" placeholder="İş dünyası görseli"></image-slot><div class="wcard__b"><span class="cat">İş Dünyası</span><h3>İkili Ticari İlişkiler</h3><p>Türkiye ve Almanya arasındaki ticari ilişkileri ve ekonomik kuruluşlarla iş birliğini güçlendiren; iki ülke iş dünyasını buluşturan çalışmalar.</p></div></article>
+    <article class="wcard"><image-slot id="etk-w3" placeholder="Üniversite görseli"></image-slot><div class="wcard__b"><span class="cat">Eğitim İş Birliği</span><h3>Üniversite Desteği</h3><p>Türkiye'de Almanca eğitim veren bir üniversitenin kurulması ve gelişimine; akademik köprülerin güçlenmesine verilen kurumsal destek.</p></div></article>
+  </div>
+</section>
+
+<!-- PARTNER SPOTLIGHT -->
+<section class="band band--tight wrap" style="padding-top:0">
+  <div class="spotlight reveal">
+    <div class="spotlight__tag">İş birliği</div>
+    <div>
+      <div class="kicker kicker--steel" style="color:#7FA8CE">Kurumsal ortaklıklar</div>
+      <h2 style="margin-top:14px">Güçlü kurumlarla, kalıcı köprüler.</h2>
+      <p>Çalışmalarımızı tek başına değil; Türk-Alman ilişkilerinin köklü kurumlarıyla birlikte yürütüyoruz. Bu ortaklıklar, seminerlerimize, araştırmalarımıza ve iş dünyası çalışmalarımıza derinlik ve süreklilik kazandırıyor.</p>
+      <p>Üniversiteler, vakıflar ve ticaret kuruluşlarıyla kurduğumuz bağlar, faaliyetlerimizin tek seferlik etkinlikler değil, kurumsal bir sürekliliğe sahip olmasını sağlıyor.</p>
+      <div class="partners"><span>FES · Friedrich-Ebert-Stiftung</span><span>AHK · Alman-Türk Ticaret Odası</span><span>Üniversiteler</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTRIBUTE -->
+<section class="band band--tight band--onyx">
+  <div class="wrap">
+    <div class="sec-head reveal"><div class="eyebrow-num">Mütevelli katkısı</div><h2 class="h2">Bu çalışmaları mümkün kılan ne?</h2><p class="lead" style="color:#A39FA8">Faaliyetlerimizin arkasında, mütevellilerimizin gönüllü katkısı vardır. Her mütevelli, birikimini farklı bir biçimde bu köprüye taşır.</p></div>
+    <div class="contrib reveal">
+      <div class="contrib__c"><div class="cn">01</div><h3>Bilgi & Deneyim</h3><p>Almanya'da edinilen akademik ve mesleki birikimin Türkiye'nin gelişimi için paylaşılması.</p></div>
+      <div class="contrib__c"><div class="cn">02</div><h3>Almanya Bağlantıları</h3><p>İki ülke arasındaki kurumsal ve kişisel bağların yeni iş birliklerine kapı açması.</p></div>
+      <div class="contrib__c"><div class="cn">03</div><h3>Burs & Kaynak Desteği</h3><p>Öğrencilere verilen karşılıksız bursların ve faaliyetlerin sürdürülebilir biçimde desteklenmesi.</p></div>
+      <div class="contrib__c"><div class="cn">04</div><h3>Mentorluk & Yönlendirme</h3><p>Genç öğrenci ve akademisyenlere yol gösteren rehberlik ve yönlendirme.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="band band--tight wrap">
+  <div class="cta reveal">
+    <img class="cta__mark" src="assets/tadev-logo-white.png" alt="">
+    <div class="kicker" style="color:rgba(255,255,255,.8)">Etkinlikler</div>
+    <h2 style="margin-top:16px">Faaliyetlerimizi etkinliklerde yaşatıyoruz.</h2>
+    <p>Seminerler, törenler ve buluşmalardan oluşan etkinlik takvimimizi keşfedin; köprü kuran çalışmalara siz de katılın.</p>
+    <div class="cta__actions">
+      <a class="btn btn--white btn--lg" href="etkinlikler.html">Etkinlikleri görün →</a>
+      <a class="btn btn--dark btn--lg" href="iletisim.html#mutevelli">Mütevelli Olun</a>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__top">
+      <div><div class="foot__brand"><img src="assets/tadev-logo-white.png" alt="TADEV"><strong>TADEV</strong></div><p>Türk-Alman Dayanışma ve Eğitim Vakfı.<br>İki ülke, üç kuşak, ortak bir gelecek.</p></div>
+      <div class="foot__col"><h4>Vakıf</h4><a href="kurulus.html">Kuruluş</a><a href="amaclar.html">Amaçlarımız</a><a href="organlar.html">Organlarımız</a></div>
+      <div class="foot__col"><h4>Çalışmalar</h4><a href="faaliyetler.html">Faaliyetler</a><a href="etkinlikler.html">Etkinlikler</a><a href="duyurular.html">Duyurular</a><a href="iletisim.html#mutevelli">Mütevelli Olun</a></div>
+      <div class="foot__col"><h4>İletişim</h4><p>İstinye Caddesi Mertoğlu Apt.<br>No: 52/6, İstinye – Sarıyer<br>İstanbul 34460</p><p style="margin-top:10px"><a href="tel:+902122299201">+90 212 229 92 01</a><br><a href="mailto:tadev@tadev.org.tr">tadev@tadev.org.tr</a></p></div>
+    </div>
+    <div class="foot__bottom">
+      <p>© <span data-year></span> TADEV — Türk-Alman Dayanışma ve Eğitim Vakfı. Tüm hakları saklıdır.</p>
+      <div class="lang"><button data-lang="TR">TR</button><button data-lang="DE">DE</button><button data-lang="EN">EN</button></div>
+    </div>
+    <div class="foot__credit"><a href="https://svenkoksal.com" target="_blank" rel="noopener">Tasarım & geliştirme — Sven Ata Can Köksal</a></div>
+  </div>
+</footer>
+
+<script src="image-slot.js"></script>
+<script src="js/site.js"></script>
+</body>
+</html>

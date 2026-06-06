@@ -1,0 +1,182 @@
+/* ============================================================
+   TADEV — Brand System Stylesheet
+   Türk-Alman Dayanışma ve Eğitim Vakfı
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+
+:root{
+  /* ---- Signature ---- */
+  --ember:#FB3C21;
+  --ember-hot:#FF6A33;
+  --ember-deep:#D31810;
+  --ember-grad:linear-gradient(132deg,#FF6A33 0%,#FB3C21 46%,#D31810 100%);
+  --ember-grad-soft:linear-gradient(132deg,#FF7A45 0%,#FB3C21 60%,#E11C10 100%);
+
+  /* ---- Onyx / ink ---- */
+  --onyx:#18161A;
+  --ink:#1B191E;
+  --graphite:#2A2C32;
+
+  /* ---- German-relations accent ---- */
+  --rhine:#173A5E;     /* deep anthracite-blue */
+  --steel:#3E6E9E;     /* lighter steel accent */
+  --rhine-tint:#E7EDF3;
+
+  /* ---- Neutrals ---- */
+  --white:#FFFFFF;
+  --paper:#FBFBFC;
+  --mist:#F3F5F8;
+  --cloud:#E8ECF1;
+  --line:#DDE2E8;
+  --line-soft:#EAEDF1;
+  --slate:#6A7480;
+  --slate-deep:#414853;
+
+  /* ---- Type ---- */
+  --display:'Space Grotesk',sans-serif;
+  --sans:'Manrope',sans-serif;
+  --mono:'Manrope',sans-serif;
+
+  /* ---- Layout ---- */
+  --maxw:1240px;
+  --gut:clamp(20px,5vw,72px);
+  --rule:1px solid var(--line);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:var(--sans);
+  color:var(--ink);
+  background:var(--white);
+  line-height:1.6;
+  font-weight:400;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+
+/* ---------- Typography utilities ---------- */
+.kicker{
+  font-family:var(--mono);
+  font-size:12px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--ember);
+  font-weight:700;
+  display:flex;align-items:center;gap:12px;
+}
+.kicker::before{content:"";width:26px;height:2px;background:var(--ember);display:inline-block}
+.kicker--steel{color:var(--steel)}
+.kicker--steel::before{background:var(--steel)}
+.kicker--mute{color:var(--slate)}
+.kicker--mute::before{background:var(--slate)}
+
+h1,h2,h3,h4{font-family:var(--display);font-weight:600;line-height:1.04;letter-spacing:-.02em;color:var(--onyx)}
+.h-display{font-size:clamp(48px,9vw,128px);font-weight:700;letter-spacing:-.045em;line-height:.92}
+.h1{font-size:clamp(38px,5.6vw,76px);font-weight:700;letter-spacing:-.035em}
+.h2{font-size:clamp(28px,3.6vw,46px);letter-spacing:-.03em}
+.h3{font-size:clamp(20px,2.1vw,27px);letter-spacing:-.02em;font-weight:600}
+.lead{font-size:clamp(18px,1.6vw,22px);line-height:1.5;color:var(--slate-deep);font-weight:400;max-width:60ch}
+.body-lg{font-size:17px;color:var(--slate-deep)}
+.muted{color:var(--slate)}
+.mono{font-family:var(--mono)}
+.tag{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--slate)}
+
+/* ---------- Layout primitives ---------- */
+.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--gut)}
+section{position:relative}
+.band{padding-block:clamp(72px,11vw,150px)}
+.band--tight{padding-block:clamp(56px,8vw,104px)}
+.band--onyx{background:var(--onyx);color:#EDEAE6}
+.band--onyx h1,.band--onyx h2,.band--onyx h3{color:#fff}
+.band--mist{background:var(--mist)}
+.band--rhine{background:var(--rhine);color:#DCE6EF}
+.band--rhine h2,.band--rhine h3{color:#fff}
+
+.sec-head{display:flex;flex-direction:column;gap:18px;margin-bottom:clamp(40px,5vw,68px);max-width:72ch}
+.sec-num{font-family:var(--mono);font-size:13px;letter-spacing:.2em;color:var(--slate)}
+
+.grid{display:grid;gap:clamp(20px,2.4vw,34px)}
+.g-2{grid-template-columns:repeat(2,1fr)}
+.g-3{grid-template-columns:repeat(3,1fr)}
+.g-4{grid-template-columns:repeat(4,1fr)}
+@media(max-width:900px){.g-2,.g-3,.g-4{grid-template-columns:1fr}.g-3.keep,.g-4.keep{grid-template-columns:repeat(2,1fr)}}
+
+.divider{height:1px;background:var(--line);border:0}
+
+/* ---------- Top navigation ---------- */
+.nav{
+  position:sticky;top:0;z-index:50;
+  background:rgba(255,255,255,.86);
+  backdrop-filter:saturate(140%) blur(14px);
+  border-bottom:1px solid var(--line-soft);
+}
+.nav__in{max-width:var(--maxw);margin:0 auto;padding:13px var(--gut);display:flex;align-items:center;justify-content:space-between;gap:12px}
+.nav__brand{display:flex;align-items:center;gap:11px;font-family:var(--display);font-weight:700;letter-spacing:-.02em;font-size:18px}
+.nav__brand img{height:30px;width:auto}
+.nav__links{display:flex;gap:2px;flex-wrap:nowrap}
+.nav__links a{font-family:var(--sans);font-weight:600;font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--slate);padding:7px 6px;border-radius:6px;transition:.18s;white-space:nowrap}
+.nav__links a:hover{color:var(--onyx);background:var(--mist)}
+@media(max-width:1220px){.nav__links{display:none}}
+
+/* ---------- Cards ---------- */
+.card{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:30px}
+.card--soft{background:var(--mist);border-color:transparent}
+.swatch-card{border-radius:14px;overflow:hidden;border:1px solid var(--line);background:#fff}
+.swatch{height:160px;display:flex;align-items:flex-end;padding:16px}
+.swatch__chip{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:rgba(255,255,255,.85)}
+.swatch-meta{padding:18px 20px;display:flex;flex-direction:column;gap:9px}
+.swatch-meta .nm{font-family:var(--display);font-weight:600;font-size:18px}
+.spec-row{display:flex;justify-content:space-between;font-family:var(--mono);font-size:12px;color:var(--slate);border-top:1px solid var(--line-soft);padding-top:7px}
+.spec-row span:last-child{color:var(--ink)}
+
+/* ---------- Blueprint frame ---------- */
+.blueprint{
+  position:relative;border:1px solid var(--line);border-radius:16px;
+  background:
+    linear-gradient(var(--line-soft) 1px,transparent 1px) 0 0/100% 40px,
+    linear-gradient(90deg,var(--line-soft) 1px,transparent 1px) 0 0/40px 100%,
+    var(--paper);
+  overflow:hidden;
+}
+.blueprint--onyx{
+  background:
+    linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px) 0 0/100% 40px,
+    linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px) 0 0/40px 100%,
+    var(--onyx);
+  border-color:#2c2a30;
+}
+.bp-label{position:absolute;font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--ember);text-transform:uppercase}
+
+/* ---------- Pills / chips ---------- */
+.pill{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:7px 13px;border-radius:100px;border:1px solid var(--line);color:var(--slate-deep)}
+.pill--ember{border-color:transparent;background:var(--ember);color:#fff}
+.pill--onyx{border-color:transparent;background:var(--onyx);color:#fff}
+
+/* ---------- Do / Don't ---------- */
+.dd{border-radius:14px;overflow:hidden;border:1px solid var(--line)}
+.dd__stage{aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;padding:26px;position:relative}
+.dd__bar{display:flex;align-items:center;gap:10px;padding:13px 18px;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;border-top:1px solid var(--line)}
+.dd__ic{width:20px;height:20px;border-radius:50%;display:grid;place-items:center;color:#fff;font-size:12px;flex:none}
+.dd--do .dd__ic{background:#1F9D6B}
+.dd--no .dd__ic{background:var(--ember)}
+.dd--do .dd__bar{color:#147a51}
+.dd--no .dd__bar{color:var(--ember-deep)}
+
+/* ---------- Misc ---------- */
+.footer{background:var(--onyx);color:#B9B5B0;padding-block:clamp(56px,8vw,90px)}
+.footer a:hover{color:#fff}
+.value-row{display:grid;grid-template-columns:64px 1fr;gap:24px;padding:28px 0;border-top:1px solid var(--line)}
+.value-row .vn{font-family:var(--mono);font-size:13px;color:var(--ember)}
+.list-check{list-style:none;display:flex;flex-direction:column;gap:15px}
+.list-check li{position:relative;padding-left:26px;color:var(--slate-deep);line-height:1.5}
+.list-check li::before{content:"";position:absolute;left:0;top:8px;width:9px;height:9px;background:var(--ember);border-radius:2px}
+
+/* fade-in */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+@media print{.reveal{opacity:1!important;transform:none!important}.nav{position:static}}
