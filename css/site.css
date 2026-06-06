@@ -90,7 +90,7 @@
 /* ---------------- Manifesto ---------------- */
 .man{display:grid;grid-template-columns:auto 1fr;gap:clamp(28px,4vw,64px);align-items:start}
 .man__lbl{font-family:var(--mono);font-size:13px;letter-spacing:.2em;color:var(--ember);writing-mode:vertical-rl;text-orientation:mixed;padding-top:6px}
-.man h2{font-size:clamp(28px,3.6vw,50px);max-width:20ch;line-height:1.06}
+.man h2{font-size:clamp(28px,3.6vw,50px);line-height:1.06;text-wrap:balance}
 .man h2 em{font-style:normal;color:var(--ember)}
 .man__body{margin-top:28px;columns:2;column-gap:44px;font-size:17px;color:var(--slate-deep);line-height:1.62}
 .man__body p{margin-bottom:16px;break-inside:avoid}
@@ -156,7 +156,7 @@
 /* ---------------- CTA (ember) ---------------- */
 .cta{position:relative;overflow:hidden;border-radius:22px;background:var(--ember-grad);padding:clamp(44px,6vw,88px);color:#fff}
 .cta__mark{position:absolute;right:-60px;bottom:-80px;width:360px;opacity:.16;pointer-events:none}
-.cta h2{color:#fff;font-size:clamp(34px,4.4vw,62px);letter-spacing:-.03em;max-width:18ch;line-height:1}
+.cta h2{color:#fff;font-size:clamp(34px,4.4vw,62px);letter-spacing:-.03em;line-height:1;text-wrap:balance}
 .cta p{color:rgba(255,255,255,.92);font-size:18px;margin-top:20px;max-width:50ch}
 .cta__actions{margin-top:34px;display:flex;gap:14px;flex-wrap:wrap;position:relative;z-index:2}
 
