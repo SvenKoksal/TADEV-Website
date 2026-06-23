@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Karşılıksız Burs Programı — Proje — TADEV</title>
+<meta name="description" content="TADEV Karşılıksız Burs Programı: 1995'ten bu yana başarılı öğrencilere her dönem verilen düzenli ve karşılıksız burs desteği.">
+<link rel="icon" href="assets/tadev-logo-ember.png">
+<link rel="stylesheet" href="css/brand.css">
+<link rel="stylesheet" href="css/site.css">
+<!--
+  ============================================================
+  TEKİL PROJE ŞABLONU · SINGLE PROJECT TEMPLATE
+  Diğer projeler için de şablon olarak kullanılır.
+  Değiştirin: başlık, meta, hero görseli, gövde ve sidebar.
+  ============================================================
+-->
+<style>
+/* ---- project hero ---- */
+.phero{background:var(--onyx);color:#EDEAE6;position:relative;overflow:hidden;padding-top:clamp(34px,4.5vw,58px);padding-bottom:clamp(40px,5vw,68px)}
+.phero::before{content:"";position:absolute;inset:0;background:
+  linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px) 0 0/100% 44px,
+  linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px) 0 0/44px 100%;
+  -webkit-mask:linear-gradient(180deg,#000,transparent 92%);mask:linear-gradient(180deg,#000,transparent 92%)}
+.phero__in{position:relative;z-index:2;max-width:none}
+.phero .crumb{margin-bottom:22px}
+.phero__flags{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:20px}
+.pflag{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;padding:7px 13px;border-radius:100px;white-space:nowrap}
+.pflag--cat{background:var(--ember);color:#fff}
+.pflag--state{border:1px solid rgba(255,255,255,.26);color:#EDEAE6;display:flex;align-items:center;gap:8px}
+.pflag--state::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--ember-hot)}
+.phero h1{color:#fff;font-size:clamp(32px,4.6vw,62px);letter-spacing:-.035em;line-height:1.02;font-weight:700;font-family:var(--display);max-width:18ch}
+.phero__sum{color:#C9C4CC;font-size:clamp(16px,1.7vw,19px);line-height:1.55;margin-top:22px;max-width:62ch}
+.phero__meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+.pmeta-chip{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:11px;padding:11px 16px;font-size:14px;color:#EDEAE6}
+.pmeta-chip svg{width:16px;height:16px;color:var(--ember-hot);flex-shrink:0}
+.pmeta-chip b{font-weight:600;color:#fff}
+
+/* ---- hero image ---- */
+.pshot{margin-top:clamp(-30px,-2.4vw,-20px)}
+.pshot image-slot{display:block;width:100%;height:clamp(260px,38vw,520px);border-radius:18px;overflow:hidden;border:1px solid var(--line)}
+
+/* ---- body grid ---- */
+.pbody{display:grid;grid-template-columns:1fr 340px;gap:clamp(34px,4vw,68px);align-items:start}
+.particle h2{font-size:clamp(24px,2.6vw,32px);margin:0 0 16px}
+.particle h2:not(:first-child){margin-top:44px}
+.particle p{font-size:17px;color:var(--slate-deep);line-height:1.66;margin-bottom:18px;max-width:64ch}
+.particle p.lede{font-size:20px;color:var(--ink)}
+.particle ul.notes{list-style:none;display:flex;flex-direction:column;gap:12px;margin:6px 0 8px}
+.particle ul.notes li{position:relative;padding-left:26px;color:var(--slate-deep);font-size:16px;line-height:1.55}
+.particle ul.notes li::before{content:"";position:absolute;left:0;top:8px;width:9px;height:9px;background:var(--ember);border-radius:2px}
+.particle ul.notes li strong{color:var(--ink)}
+
+/* milestones / timeline */
+.miles{display:flex;flex-direction:column;margin-top:6px}
+.miles__row{display:grid;grid-template-columns:104px 1fr;gap:22px;padding:18px 0;border-top:1px solid var(--line)}
+.miles__row:last-child{border-bottom:1px solid var(--line)}
+.miles__t{font-family:var(--mono);font-size:13px;letter-spacing:.04em;color:var(--ember);font-weight:700;padding-top:2px}
+.miles__c h4{font-size:17px;margin-bottom:4px}
+.miles__c p{font-size:14.5px;margin:0;color:var(--slate-deep)}
+
+/* inline gallery */
+.pgal{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:8px}
+.pgal image-slot{display:block;width:100%;height:220px;border-radius:14px;overflow:hidden;border:1px solid var(--line)}
+
+/* pull quote */
+.pquote{border-left:3px solid var(--ember);padding:6px 0 6px 24px;margin:32px 0}
+.pquote p{font-family:var(--display);font-weight:600;font-size:clamp(20px,2.2vw,26px);color:var(--ink);line-height:1.35;max-width:60ch}
+.pquote cite{display:block;margin-top:14px;font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--slate);font-style:normal}
+
+/* sidebar */
+.pside{position:sticky;top:88px;display:flex;flex-direction:column;gap:18px}
+.pcard-detail{border:1px solid var(--line);border-radius:18px;background:#fff;overflow:hidden}
+.pcard-detail__hd{background:var(--mist);padding:20px 24px;border-bottom:1px solid var(--line)}
+.pcard-detail__hd .lbl{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--slate);font-weight:700}
+.pcard-detail__hd .big{font-family:var(--display);font-weight:700;font-size:26px;color:var(--onyx);letter-spacing:-.02em;margin-top:6px}
+.pcard-detail__body{padding:8px 24px 24px}
+.pdrow{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid var(--line-soft)}
+.pdrow:last-child{border-bottom:0}
+.pdrow .k{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--slate);padding-top:2px}
+.pdrow .v{font-size:14.5px;color:var(--ink);text-align:right;font-weight:600;max-width:60%}
+.pcard-detail__cta{padding:0 24px 24px}
+.pcard-detail__cta .btn{width:100%;justify-content:center}
+.share{display:flex;align-items:center;gap:10px;padding:18px 24px;border-top:1px solid var(--line)}
+.share span{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--slate);margin-right:auto}
+.share a{width:36px;height:36px;border:1px solid var(--line);border-radius:9px;display:flex;align-items:center;justify-content:center;color:var(--slate-deep);transition:.18s}
+.share a:hover{border-color:var(--onyx);color:var(--onyx)}
+.share a svg{width:16px;height:16px}
+
+/* related projects */
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,2vw,24px)}
+.pcard{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff;display:flex;flex-direction:column;transition:.2s}
+.pcard:hover{border-color:var(--onyx);transform:translateY(-3px)}
+.pcard__media{position:relative}
+.pcard__media image-slot{display:block;width:100%;height:180px}
+.pcard__status{position:absolute;top:14px;left:14px;font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;padding:6px 11px;border-radius:100px;display:flex;align-items:center;gap:7px;background:rgba(255,255,255,.94)}
+.pcard__status::before{content:"";width:7px;height:7px;border-radius:50%}
+.pcard__status.is-active{color:var(--ember-deep)}.pcard__status.is-active::before{background:var(--ember)}
+.pcard__status.is-done{color:#1F7A4D}.pcard__status.is-done::before{background:#27A364}
+.pcard__b{padding:22px;display:flex;flex-direction:column;gap:10px;flex:1}
+.pcard .cat{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ember);font-weight:700}
+.pcard h3{font-size:19px;line-height:1.2}
+.pcard p{color:var(--slate-deep);font-size:14px;line-height:1.55}
+
+@media(max-width:920px){.pbody{grid-template-columns:1fr}.pside{position:static}.pgrid{grid-template-columns:1fr}}
+@media(max-width:680px){.miles__row{grid-template-columns:1fr;gap:4px}.pgal{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav__in">
+    <a class="nav__brand" href="index.html"><img src="assets/tadev-logo.png" alt="TADEV"><span>TADEV</span></a>
+    <div class="nav__links">
+      <a href="index.html">Anasayfa</a><a href="kurulus.html">Kuruluş</a><a href="amaclar.html">Amaçlarımız</a><a href="organlar.html">Organlarımız</a><a href="faaliyetler.html">Faaliyetler</a><a href="projeler.html" class="active">Projeler</a><a href="etkinlikler.html">Etkinlikler</a><a href="duyurular.html">Duyurular</a></div>
+    <div class="nav__right">
+      <div class="lang"><button data-lang="TR">TR</button><button data-lang="DE">DE</button><button data-lang="EN">EN</button></div>
+      <a class="nav__cta nav__cta--sub" href="iletisim.html">İletişim</a>
+      <a class="nav__cta" href="mutevelli-basvuru.html">Mütevelli Olun</a>
+      <button class="nav__burger" id="burger" aria-label="Menü"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="mnav" id="mnav">
+  <div class="mnav__top"><a class="nav__brand" href="index.html" style="color:#fff"><img src="assets/tadev-logo-white.png" alt="TADEV" style="height:28px"><span>TADEV</span></a><button class="mnav__close" id="mclose" aria-label="Kapat">✕</button></div>
+  <a href="index.html">Anasayfa</a><a href="kurulus.html">Kuruluş</a><a href="amaclar.html">Amaçlarımız</a><a href="organlar.html">Organlarımız</a><a href="faaliyetler.html">Faaliyetler</a><a href="projeler.html">Projeler</a><a href="burslar.html">Burslar</a><a href="etkinlikler.html">Etkinlikler</a><a href="duyurular.html">Duyurular</a><a href="iletisim.html">İletişim</a>
+  <div class="mnav__foot"><div class="lang"><button data-lang="TR">TR</button><button data-lang="DE">DE</button><button data-lang="EN">EN</button></div><a class="nav__cta nav__cta--sub" href="iletisim.html">İletişim</a>
+      <a class="nav__cta" href="mutevelli-basvuru.html">Mütevelli Olun</a></div>
+</div>
+
+<!-- PROJECT HERO -->
+<header class="phero">
+  <div class="wrap phero__in">
+    <div class="crumb"><a href="index.html">Anasayfa</a> / <a href="projeler.html">Projeler</a> / <span>Karşılıksız Burs Programı</span></div>
+    <div class="phero__flags">
+      <span class="pflag pflag--cat">Eğitim · Burs</span>
+      <span class="pflag pflag--state">Devam ediyor</span>
+    </div>
+    <h1>Karşılıksız Burs Programı</h1>
+    <p class="phero__sum">Vakfın en köklü projesi: 1995'ten bu yana başarılı öğrencilere her dönem verilen düzenli ve karşılıksız burs. Tek beklenti başarı ve gayret; geri ödeme yok.</p>
+    <div class="phero__meta">
+      <div class="pmeta-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> <span>Başlangıç: <b>1995</b></span></div>
+      <div class="pmeta-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4 12 14.01l-3-3"/></svg> <span>Durum: <b>Süregelen</b></span></div>
+      <div class="pmeta-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg> <span>Alan: <b>Eğitim</b></span></div>
+      <div class="pmeta-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg> <span>Yürüten: <b>TADEV</b></span></div>
+    </div>
+  </div>
+</header>
+
+<!-- HERO IMAGE -->
+<section class="wrap pshot">
+  <image-slot id="prj-hero" placeholder="Proje ana görseli — burs töreni / öğrenciler (geniş, yatay 16:9)"></image-slot>
+</section>
+
+<!-- BODY -->
+<section class="band band--tight wrap">
+  <div class="pbody">
+    <article class="particle reveal">
+      <h2>Proje hakkında</h2>
+      <p class="lede">Eğitim, TADEV'in önceliğidir. Karşılıksız Burs Programı, bu önceliğin en somut ve en köklü karşılığıdır.</p>
+      <p>1995 yılından bu yana, Burs Yönetmeliği çerçevesinde başarılı öğrencilere her dönem düzenli destek sağlıyoruz. Bursumuzun tek beklentisi başarı ve gayrettir; geri ödeme yoktur. Bu ilke, vakfın kuruluşundan bu yana hiç değişmedi.</p>
+      <p>Program, yalnızca bir maddi destek değil; öğrencilerle kurulan uzun soluklu bir bağdır. Bugünün bursiyerleri, yarının köprü kuran mütevellileri olarak vakfın misyonunu sürdürür — iki ülke, üç kuşak, ortak bir gelecek.</p>
+
+      <h2>Proje ilkeleri</h2>
+      <ul class="notes">
+        <li><strong>Karşılıksızlık:</strong> Burs için geri ödeme beklenmez; tek karşılık başarı ve gayrettir.</li>
+        <li><strong>Süreklilik:</strong> 1995'ten bu yana kesintisiz, her dönem düzenli destek.</li>
+        <li><strong>Şeffaflık:</strong> Başvurular Burs Yönetmeliği'ndeki ölçütlere göre değerlendirilir.</li>
+        <li><strong>Bağ:</strong> Bursiyerlerle eğitim yolculuğu boyunca sürdürülen ilişki.</li>
+      </ul>
+
+      <div class="pgal">
+        <image-slot id="prj-g1" placeholder="Proje görseli 1"></image-slot>
+        <image-slot id="prj-g2" placeholder="Proje görseli 2"></image-slot>
+      </div>
+
+      <h2>Kilometre taşları</h2>
+      <div class="miles">
+        <div class="miles__row"><div class="miles__t">1993</div><div class="miles__c"><h4>Vakfın kuruluşu</h4><p>TADEV, eğitim önceliğiyle ve köprü kurma misyonuyla kuruldu.</p></div></div>
+        <div class="miles__row"><div class="miles__t">1995</div><div class="miles__c"><h4>İlk karşılıksız burslar</h4><p>Program başladı; başarılı öğrencilere ilk düzenli destekler verildi.</p></div></div>
+        <div class="miles__row"><div class="miles__t">Bugüne</div><div class="miles__c"><h4>Kesintisiz süreklilik</h4><p>Her dönem yenilenen başvuru ve tahsis döngüsüyle program sürüyor.</p></div></div>
+        <div class="miles__row"><div class="miles__t">Yarın</div><div class="miles__c"><h4>Köprü kuran mezunlar</h4><p>Bursiyerler, mütevelli olarak vakfın misyonunu sürdürmeye aday.</p></div></div>
+      </div>
+
+      <div class="pquote">
+        <p>Bursumuzun tek beklentisi başarı ve gayrettir; bugünün öğrencileri, yarının köprü kuran mütevellileridir.</p>
+        <cite>TADEV — Eğitim önceliği</cite>
+      </div>
+
+      <h2>Nasıl katkı sağlanır?</h2>
+      <p>Bu projenin sürdürülebilirliği, mütevellilerimizin gönüllü katkısına dayanır. Burs ve kaynak desteği, mentorluk ve yönlendirme ile her mütevelli birikimini bu köprüye taşıyabilir. Burs başvuru koşulları ise Burs Yönetmeliği'nde tanımlıdır.</p>
+    </article>
+
+    <!-- SIDEBAR -->
+    <aside class="pside reveal">
+      <div class="pcard-detail">
+        <div class="pcard-detail__hd">
+          <div class="lbl">Proje durumu</div>
+          <div class="big">Devam ediyor</div>
+        </div>
+        <div class="pcard-detail__body">
+          <div class="pdrow"><span class="k">Alan</span><span class="v">Eğitim · Burs</span></div>
+          <div class="pdrow"><span class="k">Başlangıç</span><span class="v">1995</span></div>
+          <div class="pdrow"><span class="k">Süre</span><span class="v">Süregelen</span></div>
+          <div class="pdrow"><span class="k">Yürüten</span><span class="v">TADEV</span></div>
+          <div class="pdrow"><span class="k">Kapsam</span><span class="v">Karşılıksız burs</span></div>
+          <div class="pdrow"><span class="k">İlke</span><span class="v">Geri ödemesiz</span></div>
+        </div>
+        <div class="pcard-detail__cta">
+          <a class="btn btn--primary btn--md" href="mutevelli-basvuru.html">Projeye katkı sağlayın →</a>
+        </div>
+        <div class="share">
+          <span>Paylaş</span>
+          <a href="#" aria-label="Bağlantıyı kopyala"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.5 1.5"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7L12 19"/></svg></a>
+          <a href="#" aria-label="E-posta ile paylaş"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></a>
+          <a href="#" aria-label="LinkedIn'de paylaş"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6Z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+        </div>
+      </div>
+      <a class="btn btn--line btn--md" href="projeler.html" style="width:100%;justify-content:center">← Tüm projeler</a>
+    </aside>
+  </div>
+</section>
+
+<!-- RELATED -->
+<section class="band--mist">
+  <div class="band band--tight wrap">
+    <div class="sec-head sec-head--row reveal"><div><div class="eyebrow-num">İlgili projeler</div><h2 class="h2" style="margin-top:14px">Bunlar da ilginizi çekebilir</h2></div><a class="btn btn--line btn--md" href="projeler.html" style="background:#fff">Tüm projeler →</a></div>
+    <div class="pgrid reveal">
+      <a class="pcard" href="proje-detay.html">
+        <div class="pcard__media"><span class="pcard__status is-active">Devam ediyor</span><image-slot id="rel-1" placeholder="Üniversite görseli"></image-slot></div>
+        <div class="pcard__b"><span class="cat">Eğitim İş Birliği</span><h3>Türk-Alman Üniversitesi Desteği</h3><p>Türkiye'de Almanca eğitim veren bir üniversitenin gelişimine kurumsal destek.</p></div>
+      </a>
+      <a class="pcard" href="proje-detay.html">
+        <div class="pcard__media"><span class="pcard__status is-done">Tamamlandı</span><image-slot id="rel-2" placeholder="Seminer görseli"></image-slot></div>
+        <div class="pcard__b"><span class="cat">Ekonomi · Bilim</span><h3>Enerji Dönüşümü Semineri</h3><p>FES ve AHK iş birliğiyle düzenlenen, enerji dönüşümünü ele alan seminer.</p></div>
+      </a>
+      <a class="pcard" href="proje-detay.html">
+        <div class="pcard__media"><span class="pcard__status is-active">Devam ediyor</span><image-slot id="rel-3" placeholder="İş dünyası görseli"></image-slot></div>
+        <div class="pcard__b"><span class="cat">Ekonomi</span><h3>İkili Ticari İlişkiler Köprüsü</h3><p>Türkiye ve Almanya iş dünyasını buluşturan süregelen çalışma.</p></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="band band--tight wrap">
+  <div class="cta reveal">
+    <img class="cta__mark" src="assets/tadev-logo-white.png" alt="">
+    <div class="kicker" style="color:rgba(255,255,255,.8)">Katkı sağlayın</div>
+    <h2 style="margin-top:16px">Bu projeyi birlikte sürdürelim.</h2>
+    <p>Karşılıksız bursların sürekliliği mütevellilerimizin gönüllü katkısıyla mümkün oluyor. Siz de bu köprüye katılın.</p>
+    <div class="cta__actions">
+      <a class="btn btn--white btn--lg" href="mutevelli-basvuru.html">Mütevelli Olun →</a>
+      <a class="btn btn--dark btn--lg" href="projeler.html">Diğer projeler</a>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__top">
+      <div><div class="foot__brand"><img src="assets/tadev-logo-white.png" alt="TADEV"><strong>TADEV</strong></div><p>Türk-Alman Dayanışma ve Eğitim Vakfı.<br>İki ülke, üç kuşak, ortak bir gelecek.</p></div>
+      <div class="foot__col"><h4>Vakıf</h4><a href="kurulus.html">Kuruluş</a><a href="amaclar.html">Amaçlarımız</a><a href="organlar.html">Organlarımız</a></div>
+      <div class="foot__col"><h4>Çalışmalar</h4><a href="faaliyetler.html">Faaliyetler</a><a href="projeler.html">Projeler</a><a href="etkinlikler.html">Etkinlikler</a><a href="duyurular.html">Duyurular</a><a href="mutevelli-basvuru.html">Mütevelli Olun</a></div>
+      <div class="foot__col"><h4>İletişim</h4><p>İstinye Caddesi Mertoğlu Apt.<br>No: 52/6, İstinye – Sarıyer<br>İstanbul 34460</p><p style="margin-top:10px"><a href="tel:+902122299201">+90 212 229 92 01</a><br><a href="mailto:tadev@tadev.org.tr">tadev@tadev.org.tr</a></p></div>
+    </div>
+    <div class="foot__bottom">
+      <p>© <span data-year></span> TADEV — Türk-Alman Dayanışma ve Eğitim Vakfı. Tüm hakları saklıdır.</p>
+      <div class="lang"><button data-lang="TR">TR</button><button data-lang="DE">DE</button><button data-lang="EN">EN</button></div>
+    </div>
+    <div class="foot__credit"><a href="https://svenkoksal.com" target="_blank" rel="noopener">Tasarım & geliştirme — Sven Ata Can Köksal</a></div>
+  </div>
+</footer>
+
+<script src="image-slot.js"></script>
+<script src="js/site.js"></script>
+</body>
+</html>

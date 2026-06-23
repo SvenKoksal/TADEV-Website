@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mütevelli Başvurusu — TADEV</title>
+<meta name="description" content="TADEV mütevelli başvuru formu. Almanya'da yüksek öğrenimini tamamlamış veya akademik çalışma yapmış kişiler vakfımıza mütevelli olarak katılabilir.">
+<link rel="icon" href="assets/tadev-logo-ember.png">
+<link rel="stylesheet" href="css/brand.css">
+<link rel="stylesheet" href="css/site.css">
+<style>
+/* ---- intro / eligibility ---- */
+.elig{display:grid;grid-template-columns:1.15fr 1fr;gap:clamp(28px,4vw,64px);align-items:center}
+.elig__panel .kicker{margin-bottom:18px}
+.elig__panel h2{font-size:clamp(28px,3.4vw,46px);margin-bottom:18px;text-wrap:balance}
+.elig__panel p{color:var(--slate-deep);font-size:16.5px;line-height:1.62;max-width:54ch}
+.elig__panel p+p{margin-top:14px}
+.elig__panel .src{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--slate);margin-top:22px;padding-top:16px;border-top:1px solid var(--line)}
+.elig__card{background:var(--onyx);border-radius:20px;padding:clamp(30px,3.4vw,46px);color:#EDEAE6;position:relative;overflow:hidden}
+.elig__card img{position:absolute;right:-46px;top:-40px;width:240px;opacity:.1;pointer-events:none}
+.elig__card .lbl{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ember-hot);font-weight:700}
+.elig__card h3{color:#fff;font-size:clamp(22px,2.4vw,30px);margin:14px 0 18px;letter-spacing:-.02em}
+.elig__crit{list-style:none;display:flex;flex-direction:column;gap:0}
+.elig__crit li{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start;padding:16px 0;border-top:1px solid rgba(255,255,255,.12);color:#C9C4CC;font-size:15px;line-height:1.5}
+.elig__crit li:first-child{border-top:0;padding-top:4px}
+.elig__crit .mk{width:9px;height:9px;background:var(--ember);border-radius:2px;margin-top:7px;flex:none}
+
+/* ---- conditions cards ---- */
+.cond{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.cond__c{background:#fff;padding:clamp(28px,2.8vw,38px);display:flex;flex-direction:column;gap:12px;min-height:240px}
+.cond__c .n{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ember);font-weight:700}
+.cond__c .amt{font-family:var(--display);font-weight:700;font-size:clamp(34px,3.6vw,50px);color:var(--onyx);letter-spacing:-.03em;line-height:1;margin-top:4px}
+.cond__c .amt small{font-size:18px;font-weight:600;color:var(--slate);letter-spacing:0}
+.cond__c h3{font-size:19px;letter-spacing:-.01em}
+.cond__c p{color:var(--slate-deep);font-size:14.5px;line-height:1.55;margin-top:auto}
+.cond__note{display:flex;gap:14px;align-items:flex-start;margin-top:22px;padding:18px 22px;background:var(--rhine-tint);border-radius:14px}
+.cond__note .ic{font-family:var(--display);font-weight:700;color:var(--rhine);font-size:20px;line-height:1.2;flex:none}
+.cond__note p{color:var(--rhine);font-size:14.5px;line-height:1.55;margin:0;max-width:none}
+@media(max-width:820px){.cond{grid-template-columns:1fr}}
+
+/* ---- process steps ---- */
+.proc{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,2.4vw,32px)}
+.proc__s{padding-top:22px;border-top:2px solid var(--onyx)}
+.proc__s .n{font-family:var(--display);font-weight:700;font-size:20px;color:var(--ember)}
+.proc__s h4{font-size:19px;margin:10px 0 8px}
+.proc__s p{color:var(--slate-deep);font-size:14.5px;line-height:1.55}
+@media(max-width:820px){.proc{grid-template-columns:1fr}}
+
+/* ---- form ---- */
+.applywrap{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(28px,3.4vw,56px);align-items:start}
+.applyside{position:sticky;top:96px}
+.applyside h2{font-size:clamp(24px,2.8vw,34px);margin-bottom:14px}
+.applyside p{color:var(--slate-deep);font-size:15.5px;line-height:1.6;margin-bottom:24px;max-width:42ch}
+.bank{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff}
+.bank__h{background:var(--onyx);color:#fff;padding:16px 22px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+.bank__b{padding:22px}
+.bank__row{padding:13px 0;border-top:1px solid var(--line-soft)}
+.bank__row:first-child{border-top:0;padding-top:0}
+.bank__row .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--slate);display:block;margin-bottom:5px}
+.bank__row .v{font-size:15px;color:var(--ink);font-weight:600}
+.bank__row .iban{font-family:var(--mono);font-size:14.5px;letter-spacing:.02em;color:var(--ink);font-weight:600}
+
+.form{background:#fff;border:1px solid var(--line);border-radius:18px;padding:clamp(26px,3vw,42px)}
+.form__leg{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ember);font-weight:700;margin:8px 0 16px;display:flex;align-items:center;gap:12px}
+.form__leg::before{content:"";width:22px;height:2px;background:var(--ember)}
+.form__leg.mt{margin-top:30px;padding-top:30px;border-top:1px solid var(--line)}
+.form__row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.form__row--3{grid-template-columns:repeat(3,1fr)}
+.field{display:flex;flex-direction:column;gap:7px;margin-bottom:16px}
+.field label{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--slate-deep);font-weight:700}
+.field label .req{color:var(--ember)}
+.field input,.field textarea{font-family:var(--sans);font-size:15px;padding:13px 15px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);width:100%;transition:.15s}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--ember);background:#fff;box-shadow:0 0 0 3px rgba(251,60,33,.1)}
+.field textarea{resize:vertical;min-height:88px}
+.field .hint{font-family:var(--mono);font-size:11px;color:var(--slate);letter-spacing:.02em}
+
+/* photo upload */
+.photo{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:center;border:1px dashed var(--cloud);border-radius:14px;padding:16px;background:var(--paper)}
+.photo__prev{width:84px;height:104px;border-radius:8px;background:var(--mist);border:1px solid var(--line);display:grid;place-items:center;overflow:hidden;flex:none}
+.photo__prev img{width:100%;height:100%;object-fit:cover}
+.photo__prev span{font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:var(--slate);text-align:center;padding:6px}
+.photo__txt h4{font-size:15px;margin-bottom:5px}
+.photo__txt p{font-size:13px;color:var(--slate-deep);line-height:1.5;margin-bottom:10px;max-width:42ch}
+.photo input[type=file]{display:none}
+.photo__btn{font-family:var(--sans);font-weight:700;font-size:12.5px;color:var(--onyx);border:1px solid var(--line);background:#fff;padding:9px 16px;border-radius:9px;cursor:pointer;display:inline-block;transition:.15s}
+.photo__btn:hover{border-color:var(--onyx)}
+
+/* consent */
+.consent{display:grid;grid-template-columns:auto 1fr;gap:13px;align-items:start;margin:8px 0 4px}
+.consent input{width:19px;height:19px;margin-top:2px;accent-color:var(--ember);flex:none;cursor:pointer}
+.consent label{font-size:13.5px;color:var(--slate-deep);line-height:1.5;font-family:var(--sans);letter-spacing:0;text-transform:none;font-weight:400}
+.consent label a{color:var(--ember);font-weight:600}
+.form__submit{margin-top:22px}
+.form__note{font-family:var(--mono);font-size:11px;color:var(--slate);text-align:center;margin-top:14px;letter-spacing:.02em}
+
+/* success state */
+.formok{display:none;text-align:center;padding:clamp(30px,5vw,60px) 20px}
+.formok.show{display:block}
+.formok .tick{display:inline-grid;place-items:center;width:64px;height:64px;border-radius:50%;background:#1F9D6B;color:#fff;font-size:30px;background-image:none;margin-bottom:22px}
+.formok h3{font-size:clamp(24px,3vw,34px);margin-bottom:12px}
+.formok p{color:var(--slate-deep);font-size:16px;line-height:1.6;max-width:46ch;margin:0 auto}
+.form.sent .form__inner{display:none}
+
+@media(max-width:900px){.applywrap{grid-template-columns:1fr}.applyside{position:static}}
+@media(max-width:560px){.form__row,.form__row--3{grid-template-columns:1fr}.photo{grid-template-columns:1fr;text-align:center}.photo__prev{justify-self:center}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav__in">
+    <a class="nav__brand" href="index.html"><img src="assets/tadev-logo.png" alt="TADEV"><span>TADEV</span></a>
+    <div class="nav__links">
+      <a href="index.html">Anasayfa</a><a href="kurulus.html">Kuruluş</a><a href="amaclar.html">Amaçlarımız</a><a href="organlar.html">Organlarımız</a><a href="faaliyetler.html">Faaliyetler</a><a href="burslar.html">Burslar</a><a href="etkinlikler.html">Etkinlikler</a><a href="duyurular.html">Duyurular</a></div>
+    <div class="nav__right">
+      <div class="lang"><button data-lang="TR">TR</button><button data-lang="DE">DE</button><button data-lang="EN">EN</button></div>
+      <a class="nav__cta nav__cta--sub" href="iletisim.html">İletişim</a>
+      <a class="nav__cta" href="mutevelli-basvuru.html">Mütevelli Olun</a>
+      <button class="nav__burger" id="burger" aria-label="Menü"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="mnav" id="mnav">
+  <div class="mnav__top"><a class="nav__brand" href="index.html" style="color:#fff"><img src="assets/tadev-logo-white.png" alt="TADEV" style="height:28px"><span>TADEV</span></a><button class="mnav__close" id="mclose" aria-label="Kapat">✕</button></div>
+  <a href="index.html">Anasayfa</a><a href="kurulus.html">Kuruluş</a><a href="amaclar.html">Amaçlarımız</a><a href="organlar.html">Organlarımız</a><a href="faaliyetler.html">Faaliyetler</a><a href="burslar.html">Burslar</a><a href="etkinlikler.html">Etkinlikler</a><a href="duyurular.html">Duyurular</a><a href="iletisim.html">İletişim</a>
+  <div class="mnav__foot"><div class="lang"><button data-lang="TR">TR</button><button data-lang="DE">DE</button><button data-lang="EN">EN</button></div><a class="nav__cta nav__cta--sub" href="iletisim.html">İletişim</a>
+      <a class="nav__cta" href="mutevelli-basvuru.html">Mütevelli Olun</a></div>
+</div>
+
+<!-- HERO -->
+<header class="phead">
+  <img class="phead__mark" src="assets/tadev-logo-ember.png" alt="">
+  <div class="wrap phead__in">
+    <div class="crumb"><a href="index.html">Anasayfa</a> / <span>Mütevelli Başvurusu</span></div>
+    <h1>Mütevelli olun.</h1>
+    <p class="lead">Almanya ile bağlantılı yüksek öğrenim ve akademik birikimini, Türkiye'nin gelişimi ve Türk-Alman dostluğu için paylaşmaya davetlisiniz. Başvuru formunu çevrimiçi doldurarak vakfımıza katılma sürecini başlatın.</p>
+  </div>
+</header>
+
+<!-- ELIGIBILITY -->
+<section class="band band--tight wrap">
+  <div class="elig reveal">
+    <div class="elig__panel">
+      <div class="kicker">Kimler Başvurabilir</div>
+      <h2>Almanya'da şekillenen bir birikim.</h2>
+      <p>Vakıf Senedimiz gereği, yüksek öğrenimini Almanya'da tamamlamış olanlar veya Almanya'da akademik çalışma yapmış olanlar vakfımıza mütevelli olarak katılabilir.</p>
+      <p>Akademisyenler, meslek sahipleri ve iş insanları; bu deneyimlerini iki ülke arasındaki köprüye taşımak üzere aramıza katılabilir.</p>
+      <div class="src">Kaynak — TADEV Vakıf Senedi · Mütevellilik esasları</div>
+    </div>
+    <div class="elig__card">
+      <img src="assets/tadev-logo-white.png" alt="">
+      <div class="lbl">Uygunluk Ölçütleri</div>
+      <h3>Başvuru için yeterli</h3>
+      <ul class="elig__crit">
+        <li><span class="mk"></span><span>Yüksek öğrenimini <strong style="color:#fff">Almanya'da tamamlamış</strong> olmak, veya</span></li>
+        <li><span class="mk"></span><span>Almanya'da <strong style="color:#fff">akademik çalışma</strong> yapmış olmak.</span></li>
+        <li><span class="mk"></span><span>Başvuruya <strong style="color:#fff">bir adet fotoğraf</strong> eklenmesi rica olunur.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CONDITIONS -->
+<section class="band--mist">
+  <div class="band band--tight wrap">
+    <div class="sec-head reveal"><div class="eyebrow-num">Katılım Koşulları</div><h2 class="h2">Bağış esasları.</h2>
+      <p class="lead" style="font-size:17px">21.02.2026 günü yapılan Yıllık Olağan Mütevelliler Heyeti Toplantısında alınan karar gereği belirlenen tutarlar.</p>
+    </div>
+    <div class="cond reveal">
+      <div class="cond__c">
+        <div class="n">Tek Seferlik</div>
+        <div class="amt">300 <small>€</small></div>
+        <h3>Giriş Bağışı</h3>
+        <p>En az 300 (Üçyüz) Euro karşılığı TL. Mütevelliliğe ilk kabulde, bir defaya mahsus yapılır.</p>
+      </div>
+      <div class="cond__c">
+        <div class="n">Yıllık · 2026</div>
+        <div class="amt">3.000 <small>TL</small></div>
+        <h3>2026 Yılı Bağışı</h3>
+        <p>En az 3.000 (Üçbin) TL. İçinde bulunulan yıl için yapılan mütevelli yıllık bağışıdır.</p>
+      </div>
+      <div class="cond__c">
+        <div class="n">İsteğe Bağlı</div>
+        <div class="amt">+ Fazlası</div>
+        <h3>Burs Havuzu</h3>
+        <p>Belirlenmiş tutarlardan fazla yapılan ödemeler, öğrencilerimiz için burs havuzumuzda değerlendirilir.</p>
+      </div>
+    </div>
+    <div class="cond__note reveal">
+      <span class="ic">i</span>
+      <p>Tutarlar Olağan Mütevelliler Heyeti kararıyla her yıl güncellenebilir. Bağışlar, sayfanın altında belirtilen vakıf banka hesabına yatırılır.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="band band--tight wrap">
+  <div class="sec-head reveal"><div class="eyebrow-num">Başvuru Süreci</div><h2 class="h2">Başvurudan kabule.</h2></div>
+  <div class="proc reveal">
+    <div class="proc__s">
+      <div class="n">01</div>
+      <h4>Yıl boyunca başvuru</h4>
+      <p>Yeni mütevelli başvuruları tüm yıl içinde yapılabilir. Aşağıdaki formu çevrimiçi doldurarak başvurunuzu iletin.</p>
+    </div>
+    <div class="proc__s">
+      <div class="n">02</div>
+      <h4>Şubat'ta onay</h4>
+      <p>Başvurular, her yıl Şubat ayı içinde yapılan Olağan Mütevelliler Heyeti Toplantısında onaya sunulur.</p>
+    </div>
+    <div class="proc__s">
+      <div class="n">03</div>
+      <h4>Aramıza katılın</h4>
+      <p>Başvurusu kabul edilenler, mütevelli olarak vakfımıza katılır ve çalışmalarımızda yer alır.</p>
+    </div>
+  </div>
+</section>
+
+<!-- APPLICATION FORM -->
+<section class="band--mist">
+  <div class="band band--tight wrap">
+    <div class="sec-head reveal"><div class="eyebrow-num">Başvuru Formu</div><h2 class="h2">Mütevelli Başvuru Formu.</h2></div>
+    <div class="applywrap reveal">
+
+      <aside class="applyside">
+        <h2>Çevrimiçi başvuru.</h2>
+        <p>Formu eksiksiz doldurun. Bağışlar, başvurunuzun değerlendirilmesi sürecinde aşağıdaki vakıf hesabına yatırılır.</p>
+        <div class="bank">
+          <div class="bank__h">Bağış Banka Hesabı</div>
+          <div class="bank__b">
+            <div class="bank__row"><span class="k">Banka / Şube</span><span class="v">T. İş Bankası — Mecidiyeköy Şubesi</span></div>
+            <div class="bank__row"><span class="k">IBAN — Hesap No</span><span class="iban">TR43 0006 4000 0011 0890 8818 64</span></div>
+            <div class="bank__row"><span class="k">Hesap Sahibi</span><span class="v">Türk-Alman Dayanışma ve Eğitim Vakfı</span></div>
+            <div class="bank__row"><span class="k">İletişim</span><span class="v"><a href="mailto:tadev@tadev.org.tr" style="color:var(--ember)">tadev@tadev.org.tr</a></span></div>
+          </div>
+        </div>
+      </aside>
+
+      <form class="form" id="applyForm">
+        <div class="form__inner">
+
+          <div class="form__leg">Kişisel Bilgiler</div>
+          <div class="field"><label for="adsoyad">Adı / Soyadı <span class="req">*</span></label><input id="adsoyad" name="adsoyad" type="text" placeholder="Adınız Soyadınız" required></div>
+          <div class="form__row">
+            <div class="field"><label for="dogumyeri">Doğum Yeri <span class="req">*</span></label><input id="dogumyeri" name="dogumyeri" type="text" placeholder="Şehir / Ülke" required></div>
+            <div class="field"><label for="dogumtarihi">Doğum Tarihi <span class="req">*</span></label><input id="dogumtarihi" name="dogumtarihi" type="date" required></div>
+          </div>
+          <div class="field"><label for="meslek">Mesleği <span class="req">*</span></label><input id="meslek" name="meslek" type="text" placeholder="Mesleğiniz" required></div>
+          <div class="form__row">
+            <div class="field"><label for="kurulus">Çalıştığı Kuruluş</label><input id="kurulus" name="kurulus" type="text" placeholder="Kurum / Şirket"></div>
+            <div class="field"><label for="gorev">Görevi</label><input id="gorev" name="gorev" type="text" placeholder="Unvan / Pozisyon"></div>
+          </div>
+
+          <div class="form__leg mt">İletişim</div>
+          <div class="field"><label for="adres">Yazışma Adresi <span class="req">*</span></label><textarea id="adres" name="adres" placeholder="Açık posta adresiniz" required></textarea></div>
+          <div class="form__row form__row--3">
+            <div class="field"><label for="telev">Telefon — Ev</label><input id="telev" name="telev" type="tel" placeholder="+90"></div>
+            <div class="field"><label for="telis">Telefon — İş</label><input id="telis" name="telis" type="tel" placeholder="+90"></div>
+            <div class="field"><label for="telcep">Telefon — Cep <span class="req">*</span></label><input id="telcep" name="telcep" type="tel" placeholder="+90" required></div>
+          </div>
+          <div class="field"><label for="eposta">E-posta <span class="req">*</span></label><input id="eposta" name="eposta" type="email" placeholder="ornek@eposta.com" required></div>
+
+          <div class="form__leg mt">Almanya Bağlantısı</div>
+          <div class="field"><label for="donem">Yükseköğrenim veya ihtisas amacıyla Almanya'da bulunduğu dönem <span class="req">*</span></label><input id="donem" name="donem" type="text" placeholder="Örn. 1998 – 2004" required></div>
+          <div class="field"><label for="universite">Öğrenim veya ihtisasını yaptığı Alman üniversitesi <span class="req">*</span></label><input id="universite" name="universite" type="text" placeholder="Üniversite adı" required></div>
+          <div class="field"><label for="tanidik">Tanıdığı TADEV mütevellileri</label><input id="tanidik" name="tanidik" type="text" placeholder="Varsa, isimleri"><span class="hint">İsteğe bağlı</span></div>
+          <div class="field"><label for="tavsiye">Tavsiye eden mütevellinin adı soyadı</label><input id="tavsiye" name="tavsiye" type="text" placeholder="Varsa, tavsiye eden mütevelli"><span class="hint">İsteğe bağlı</span></div>
+
+          <div class="form__leg mt">Fotoğraf</div>
+          <div class="photo">
+            <div class="photo__prev" id="photoPrev"><span>Vesikalık<br>fotoğraf</span></div>
+            <div class="photo__txt">
+              <h4>Bir adet fotoğraf ekleyin</h4>
+              <p>Başvurunuza vesikalık bir fotoğraf eklemeniz rica olunur. JPG veya PNG, en fazla 5 MB.</p>
+              <label class="photo__btn" for="foto">Fotoğraf seçin</label>
+              <input id="foto" name="foto" type="file" accept="image/png,image/jpeg">
+            </div>
+          </div>
+
+          <div class="form__leg mt">Onay</div>
+          <div class="consent">
+            <input id="c1" type="checkbox" required>
+            <label for="c1">Vakıf Senedi gereği Almanya'da yüksek öğrenimimi tamamladığımı veya Almanya'da akademik çalışma yaptığımı; giriş bağışı ve yıllık bağış koşullarını bildiğimi beyan ederim.</label>
+          </div>
+          <div class="consent">
+            <input id="c2" type="checkbox" required>
+            <label for="c2">Kişisel verilerimin başvurumun değerlendirilmesi amacıyla işlenmesini kabul ediyor, <a href="gizlilik-politikasi.html">KVKK Aydınlatma Metni</a>'ni okuduğumu onaylıyorum.</label>
+          </div>
+
+          <button class="btn btn--primary btn--lg form__submit" type="submit" style="width:100%;justify-content:center">Başvuruyu gönder →</button>
+          <p class="form__note">Başvurular her yıl Şubat ayındaki Olağan Mütevelliler Heyeti Toplantısında onaya sunulur.</p>
+        </div>
+
+        <div class="formok" id="formOk">
+          <div class="tick">✓</div>
+          <h3>Başvurunuz alındı.</h3>
+          <p>İlginiz için teşekkür ederiz. Başvurunuz, bir sonraki Şubat ayı Olağan Mütevelliler Heyeti Toplantısında değerlendirilecek ve sonucu tarafınıza iletilecektir.</p>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__top">
+      <div><div class="foot__brand"><img src="assets/tadev-logo-white.png" alt="TADEV"><strong>TADEV</strong></div><p>Türk-Alman Dayanışma ve Eğitim Vakfı.<br>İki ülke, üç kuşak, ortak bir gelecek.</p></div>
+      <div class="foot__col"><h4>Vakıf</h4><a href="kurulus.html">Kuruluş</a><a href="amaclar.html">Amaçlarımız</a><a href="organlar.html">Organlarımız</a></div>
+      <div class="foot__col"><h4>Çalışmalar</h4><a href="faaliyetler.html">Faaliyetler</a><a href="burslar.html">Burslar</a><a href="etkinlikler.html">Etkinlikler</a><a href="duyurular.html">Duyurular</a><a href="mutevelli-basvuru.html">Mütevelli Olun</a></div>
+      <div class="foot__col"><h4>İletişim</h4><p>İstinye Caddesi Mertoğlu Apt.<br>No: 52/6, İstinye – Sarıyer<br>İstanbul 34460</p><p style="margin-top:10px"><a href="tel:+902122299201">+90 212 229 92 01</a><br><a href="mailto:tadev@tadev.org.tr">tadev@tadev.org.tr</a></p></div>
+    </div>
+    <div class="foot__bottom">
+      <p>© <span data-year></span> TADEV — Türk-Alman Dayanışma ve Eğitim Vakfı. Tüm hakları saklıdır.</p>
+      <div class="lang"><button data-lang="TR">TR</button><button data-lang="DE">DE</button><button data-lang="EN">EN</button></div>
+    </div>
+    <div class="foot__credit"><a href="https://svenkoksal.com" target="_blank" rel="noopener">Tasarım & geliştirme — Sven Ata Can Köksal</a></div>
+  </div>
+</footer>
+
+<script src="js/site.js"></script>
+<script>
+(function(){
+  // photo preview
+  var foto = document.getElementById('foto');
+  var prev = document.getElementById('photoPrev');
+  if(foto){
+    foto.addEventListener('change', function(){
+      var f = foto.files && foto.files[0];
+      if(!f) return;
+      var url = URL.createObjectURL(f);
+      prev.innerHTML = '<img alt="Seçilen fotoğraf">';
+      prev.querySelector('img').src = url;
+    });
+  }
+  // submit -> success state
+  var form = document.getElementById('applyForm');
+  if(form){
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      if(!form.checkValidity()){ form.reportValidity(); return; }
+      form.classList.add('sent');
+      document.getElementById('formOk').classList.add('show');
+      window.scrollTo({top: form.getBoundingClientRect().top + window.pageYOffset - 120, behavior:'smooth'});
+    });
+  }
+})();
+</script>
+</body>
+</html>

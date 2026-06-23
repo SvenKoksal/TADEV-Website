@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Belgeler — TADEV</title>
+<meta name="description" content="TADEV belgeleri: KVKK ve gizlilik metinleri, yönetişim belgeleri, vakıf senedi, faaliyet ve mali raporlar, üyelik esasları ve daha fazlası.">
+<link rel="icon" href="assets/tadev-logo-ember.png">
+<link rel="stylesheet" href="css/brand.css">
+<link rel="stylesheet" href="css/site.css">
+<style>
+/* ---- category filter ---- */
+.docfilter{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:clamp(28px,3vw,40px)}
+.docfilter button{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--slate-deep);background:#fff;border:1px solid var(--line);border-radius:100px;padding:10px 18px;cursor:pointer;transition:.18s;display:flex;align-items:center;gap:8px}
+.docfilter button:hover{border-color:var(--onyx);color:var(--onyx)}
+.docfilter button.active{background:var(--onyx);border-color:var(--onyx);color:#fff}
+.docfilter button .ct{font-size:10px;opacity:.6}
+.docrow[hidden]{display:none}
+.doclist__empty{display:none;padding:48px 8px;color:var(--slate);font-size:15px}
+
+/* ---- archive intro ---- */
+.legalintro{display:grid;grid-template-columns:1fr auto;gap:clamp(24px,4vw,56px);align-items:end;padding-bottom:clamp(28px,3vw,40px);border-bottom:1px solid var(--line)}
+.legalintro p{color:var(--slate-deep);font-size:16.5px;line-height:1.62;max-width:56ch}
+.legalintro__meta{display:flex;flex-direction:column;gap:6px;text-align:right;white-space:nowrap}
+.legalintro__meta .k{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--slate)}
+.legalintro__meta .v{font-family:var(--display);font-weight:600;font-size:18px;color:var(--ink)}
+
+/* ---- document list ---- */
+.doclist{display:flex;flex-direction:column}
+.docrow{display:grid;grid-template-columns:auto 1fr auto auto;gap:clamp(18px,3vw,40px);align-items:center;padding:clamp(24px,3vw,34px) clamp(8px,1.4vw,18px);border-bottom:1px solid var(--line);transition:.2s ease;color:inherit}
+.docrow:hover{background:var(--mist);transform:translateX(4px)}
+.docrow__mark{position:relative;width:62px;height:62px;flex:none;color:var(--cloud);transition:.2s}
+.docrow:hover .docrow__mark{color:var(--ember)}
+.docrow__mark svg{width:100%;height:100%;display:block}
+.docrow__mark span{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--mono);font-size:13px;font-weight:700;letter-spacing:.04em;color:var(--slate-deep)}
+.docrow:hover .docrow__mark span{color:var(--ember)}
+.docrow__body{min-width:0}
+.docrow__cat{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ember);font-weight:700}
+.docrow__body h3{font-size:clamp(20px,2.3vw,27px);letter-spacing:-.02em;margin:7px 0 8px;line-height:1.12}
+.docrow__body p{color:var(--slate-deep);font-size:14.5px;line-height:1.55;max-width:60ch}
+.docrow__meta{display:flex;flex-direction:column;gap:4px;text-align:right;white-space:nowrap}
+.docrow__meta .d{font-family:var(--mono);font-size:12px;letter-spacing:.04em;color:var(--slate-deep)}
+.docrow__meta .ver{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--slate);background:var(--mist);border:1px solid var(--line);border-radius:100px;padding:3px 10px;align-self:flex-end}
+.docrow:hover .docrow__meta .ver{background:#fff}
+.docrow__go{width:42px;height:42px;border:1px solid var(--line);border-radius:11px;display:grid;place-items:center;color:var(--slate-deep);font-size:17px;flex:none;transition:.2s}
+.docrow:hover .docrow__go{background:var(--onyx);border-color:var(--onyx);color:#fff}
+
+/* ---- help / contact strip ---- */
+.legalhelp{display:grid;grid-template-columns:1fr auto;gap:28px;align-items:center;border:1px solid var(--line);border-radius:18px;padding:clamp(28px,3.4vw,44px);background:var(--paper)}
+.legalhelp h2{font-size:clamp(22px,2.6vw,32px);margin-bottom:10px}
+.legalhelp p{color:var(--slate-deep);font-size:15.5px;line-height:1.6;max-width:54ch}
+.legalhelp__act{display:flex;gap:12px;flex-wrap:wrap}
+
+@media(max-width:780px){
+  .legalintro{grid-template-columns:1fr;align-items:start}
+  .legalintro__meta{text-align:left}
+  .docrow{grid-template-columns:auto 1fr auto;gap:18px}
+  .docrow__meta{display:none}
+  .legalhelp{grid-template-columns:1fr}
+}
+@media(max-width:480px){
+  .docrow{grid-template-columns:1fr;gap:14px}
+  .docrow__mark{width:48px;height:48px}
+  .docrow__go{display:none}
+}
+/* ---- footer legal row ---- */
+.foot__legal{display:flex;flex-wrap:wrap;gap:8px 22px;padding-top:22px;margin-top:6px;border-top:1px solid rgba(255,255,255,.1)}
+.foot__legal a{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:#8d888f}
+.foot__legal a:hover{color:#fff}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav__in">
+    <a class="nav__brand" href="index.html"><img src="assets/tadev-logo.png" alt="TADEV"><span>TADEV</span></a>
+    <div class="nav__links">
+      <a href="index.html">Anasayfa</a><a href="kurulus.html">Kuruluş</a><a href="amaclar.html">Amaçlarımız</a><a href="organlar.html">Organlarımız</a><a href="faaliyetler.html">Faaliyetler</a><a href="burslar.html">Burslar</a><a href="etkinlikler.html">Etkinlikler</a><a href="duyurular.html">Duyurular</a></div>
+    <div class="nav__right">
+      <div class="lang"><button data-lang="TR">TR</button><button data-lang="DE">DE</button><button data-lang="EN">EN</button></div>
+      <a class="nav__cta nav__cta--sub" href="iletisim.html">İletişim</a>
+      <a class="nav__cta" href="mutevelli-basvuru.html">Mütevelli Olun</a>
+      <button class="nav__burger" id="burger" aria-label="Menü"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="mnav" id="mnav">
+  <div class="mnav__top"><a class="nav__brand" href="index.html" style="color:#fff"><img src="assets/tadev-logo-white.png" alt="TADEV" style="height:28px"><span>TADEV</span></a><button class="mnav__close" id="mclose" aria-label="Kapat">✕</button></div>
+  <a href="index.html">Anasayfa</a><a href="kurulus.html">Kuruluş</a><a href="amaclar.html">Amaçlarımız</a><a href="organlar.html">Organlarımız</a><a href="faaliyetler.html">Faaliyetler</a><a href="burslar.html">Burslar</a><a href="etkinlikler.html">Etkinlikler</a><a href="duyurular.html">Duyurular</a><a href="iletisim.html">İletişim</a>
+  <div class="mnav__foot"><div class="lang"><button data-lang="TR">TR</button><button data-lang="DE">DE</button><button data-lang="EN">EN</button></div><a class="nav__cta nav__cta--sub" href="iletisim.html">İletişim</a>
+      <a class="nav__cta" href="mutevelli-basvuru.html">Mütevelli Olun</a></div>
+</div>
+
+<!-- HERO -->
+<header class="phead">
+  <img class="phead__mark" src="assets/tadev-logo-ember.png" alt="">
+  <div class="wrap phead__in">
+    <div class="crumb"><a href="index.html">Anasayfa</a> / <span>Belgeler</span></div>
+    <h1>Belgeler.</h1>
+    <p class="lead">Vakfımızın KVKK ve gizlilik metinlerinden yönetişim ve mali raporlara, üyelik esaslarından kullanım koşullarına kadar tüm güncel belgelerini burada bir arada bulabilirsiniz. Belgeler düzenli olarak gözden geçirilir ve güncellenir.</p>
+  </div>
+</header>
+
+<!-- ARCHIVE -->
+<section class="band band--tight wrap">
+  <div class="legalintro reveal">
+    <p>Aşağıdaki belgeler; KVKK ve ilgili mevzuat, vakıf yönetişimi ve mali şeffaflık ilkeleri çerçevesinde hazırlanmıştır. Kategoriye göre süzebilir; her belgenin yürürlük tarihi ve sürüm bilgisini satır sonunda görebilirsiniz.</p>
+    <div class="legalintro__meta">
+      <span class="k">Son toplu gözden geçirme</span>
+      <span class="v">Haziran 2026</span>
+    </div>
+  </div>
+
+  <div class="docfilter reveal" role="tablist" aria-label="Belge kategorileri">
+    <button class="active" data-filter="all">Tümü <span class="ct">10</span></button>
+    <button data-filter="kvkk">KVKK <span class="ct">2</span></button>
+    <button data-filter="yonetisim">Yönetişim <span class="ct">3</span></button>
+    <button data-filter="mali">Mali <span class="ct">2</span></button>
+    <button data-filter="uyelik">Üyelik <span class="ct">2</span></button>
+    <button data-filter="diger">Diğer <span class="ct">1</span></button>
+  </div>
+
+  <div class="doclist reveal">
+
+    <a class="docrow" data-cat="kvkk" href="gizlilik-politikasi.html">
+      <span class="docrow__mark"><svg viewBox="0 0 120 120"><polygon points="100,60 80,94.6 40,94.6 20,60 40,25.4 80,25.4" fill="none" stroke="currentColor" stroke-width="4"/></svg><span>01</span></span>
+      <div class="docrow__body">
+        <span class="docrow__cat">KVKK · Gizlilik</span>
+        <h3>Gizlilik Politikası ve KVKK Aydınlatma Metni</h3>
+        <p>Kişisel verilerinizin hangi amaçlarla işlendiği, kimlerle paylaşıldığı, saklama süreleri ve Kanun kapsamındaki haklarınıza ilişkin açıklamalar.</p>
+      </div>
+      <div class="docrow__meta"><span class="d">12 Haziran 2026</span><span class="ver">v1.0</span></div>
+      <span class="docrow__go">→</span>
+    </a>
+
+    <a class="docrow" data-cat="kvkk" href="gizlilik-politikasi.html">
+      <span class="docrow__mark"><svg viewBox="0 0 120 120"><polygon points="100,60 80,94.6 40,94.6 20,60 40,25.4 80,25.4" fill="none" stroke="currentColor" stroke-width="4"/></svg><span>02</span></span>
+      <div class="docrow__body">
+        <span class="docrow__cat">KVKK · Çerezler</span>
+        <h3>Çerez (Cookie) Politikası</h3>
+        <p>İnternet sitemizde kullanılan çerez türleri, kullanım amaçları ve çerez tercihlerinizi nasıl yönetebileceğinize dair bilgilendirme.</p>
+      </div>
+      <div class="docrow__meta"><span class="d">12 Haziran 2026</span><span class="ver">v1.0</span></div>
+      <span class="docrow__go">→</span>
+    </a>
+
+    <a class="docrow" data-cat="yonetisim" href="gizlilik-politikasi.html">
+      <span class="docrow__mark"><svg viewBox="0 0 120 120"><polygon points="100,60 80,94.6 40,94.6 20,60 40,25.4 80,25.4" fill="none" stroke="currentColor" stroke-width="4"/></svg><span>03</span></span>
+      <div class="docrow__body">
+        <span class="docrow__cat">Yönetişim</span>
+        <h3>Vakıf Senedi</h3>
+        <p>Vakfın kuruluş amacı, organlarının oluşumu ve görevleri ile çalışma esaslarını düzenleyen temel kurucu belge.</p>
+      </div>
+      <div class="docrow__meta"><span class="d">12 Haziran 2026</span><span class="ver">v1.0</span></div>
+      <span class="docrow__go">→</span>
+    </a>
+
+    <a class="docrow" data-cat="yonetisim" href="gizlilik-politikasi.html">
+      <span class="docrow__mark"><svg viewBox="0 0 120 120"><polygon points="100,60 80,94.6 40,94.6 20,60 40,25.4 80,25.4" fill="none" stroke="currentColor" stroke-width="4"/></svg><span>04</span></span>
+      <div class="docrow__body">
+        <span class="docrow__cat">Yönetişim</span>
+        <h3>Faaliyet Raporları</h3>
+        <p>Vakfın dönemsel olarak yürüttüğü burs, etkinlik ve iş birliği çalışmalarının özetlendiği yıllık faaliyet raporları.</p>
+      </div>
+      <div class="docrow__meta"><span class="d">12 Haziran 2026</span><span class="ver">2025</span></div>
+      <span class="docrow__go">→</span>
+    </a>
+
+    <a class="docrow" data-cat="yonetisim" href="gizlilik-politikasi.html">
+      <span class="docrow__mark"><svg viewBox="0 0 120 120"><polygon points="100,60 80,94.6 40,94.6 20,60 40,25.4 80,25.4" fill="none" stroke="currentColor" stroke-width="4"/></svg><span>05</span></span>
+      <div class="docrow__body">
+        <span class="docrow__cat">Yönetişim</span>
+        <h3>Etik İlkeler ve Davranış Kuralları</h3>
+        <p>Mütevelliler, gönüllüler ve çalışanlar için bağlayıcı olan dürüstlük, şeffaflık ve çıkar çatışmasından kaçınma ilkeleri.</p>
+      </div>
+      <div class="docrow__meta"><span class="d">12 Haziran 2026</span><span class="ver">v1.0</span></div>
+      <span class="docrow__go">→</span>
+    </a>
+
+    <a class="docrow" data-cat="mali" href="gizlilik-politikasi.html">
+      <span class="docrow__mark"><svg viewBox="0 0 120 120"><polygon points="100,60 80,94.6 40,94.6 20,60 40,25.4 80,25.4" fill="none" stroke="currentColor" stroke-width="4"/></svg><span>06</span></span>
+      <div class="docrow__body">
+        <span class="docrow__cat">Mali</span>
+        <h3>Mali Tablolar ve Denetim Raporu</h3>
+        <p>Vakfın gelir-gider tabloları, bağış ve aidat kullanımına ilişkin mali şeffaflık belgeleri ve bağımsız denetim sonuçları.</p>
+      </div>
+      <div class="docrow__meta"><span class="d">12 Haziran 2026</span><span class="ver">2025</span></div>
+      <span class="docrow__go">→</span>
+    </a>
+
+    <a class="docrow" data-cat="mali" href="gizlilik-politikasi.html">
+      <span class="docrow__mark"><svg viewBox="0 0 120 120"><polygon points="100,60 80,94.6 40,94.6 20,60 40,25.4 80,25.4" fill="none" stroke="currentColor" stroke-width="4"/></svg><span>07</span></span>
+      <div class="docrow__body">
+        <span class="docrow__cat">Mali · Bağış</span>
+        <h3>Bağış ve Ödeme Koşulları</h3>
+        <p>Bağış ve mütevelli aidatlarının tahsilinde uygulanan ödeme, iade ve veri güvenliği esasları ile finansal şeffaflık ilkeleri.</p>
+      </div>
+      <div class="docrow__meta"><span class="d">12 Haziran 2026</span><span class="ver">v1.0</span></div>
+      <span class="docrow__go">→</span>
+    </a>
+
+    <a class="docrow" data-cat="uyelik" href="gizlilik-politikasi.html">
+      <span class="docrow__mark"><svg viewBox="0 0 120 120"><polygon points="100,60 80,94.6 40,94.6 20,60 40,25.4 80,25.4" fill="none" stroke="currentColor" stroke-width="4"/></svg><span>08</span></span>
+      <div class="docrow__body">
+        <span class="docrow__cat">Üyelik</span>
+        <h3>Mütevellilik Şartları ve Üyelik Esasları</h3>
+        <p>Vakfa mütevelli olarak katılım koşulları, başvuru süreci, mütevellilerin hak ve yükümlülükleri ile üyeliğin sona ermesine ilişkin kurallar.</p>
+      </div>
+      <div class="docrow__meta"><span class="d">12 Haziran 2026</span><span class="ver">v1.0</span></div>
+      <span class="docrow__go">→</span>
+    </a>
+
+    <a class="docrow" data-cat="uyelik" href="gizlilik-politikasi.html">
+      <span class="docrow__mark"><svg viewBox="0 0 120 120"><polygon points="100,60 80,94.6 40,94.6 20,60 40,25.4 80,25.4" fill="none" stroke="currentColor" stroke-width="4"/></svg><span>09</span></span>
+      <div class="docrow__body">
+        <span class="docrow__cat">Üyelik · Burs</span>
+        <h3>Burs Yönetmeliği Esasları</h3>
+        <p>Karşılıksız burs başvurularında işlenen veriler, başvuru değerlendirme ilkeleri ve burs ilişkisi süresince geçerli olan kurallar.</p>
+      </div>
+      <div class="docrow__meta"><span class="d">12 Haziran 2026</span><span class="ver">v1.0</span></div>
+      <span class="docrow__go">→</span>
+    </a>
+
+    <a class="docrow" data-cat="diger" href="gizlilik-politikasi.html">
+      <span class="docrow__mark"><svg viewBox="0 0 120 120"><polygon points="100,60 80,94.6 40,94.6 20,60 40,25.4 80,25.4" fill="none" stroke="currentColor" stroke-width="4"/></svg><span>10</span></span>
+      <div class="docrow__body">
+        <span class="docrow__cat">Diğer</span>
+        <h3>Kullanım Koşulları</h3>
+        <p>tadev.org.tr internet sitesinin kullanımına, içeriklerin telif haklarına ve sorumluluğun sınırlarına ilişkin genel şartlar.</p>
+      </div>
+      <div class="docrow__meta"><span class="d">12 Haziran 2026</span><span class="ver">v1.0</span></div>
+      <span class="docrow__go">→</span>
+    </a>
+
+  </div>
+  <div class="doclist__empty">Bu kategoride henüz belge bulunmuyor.</div>
+</section>
+
+<!-- HELP -->
+<section class="band band--tight wrap" style="padding-top:0">
+  <div class="legalhelp reveal">
+    <div>
+      <div class="kicker" style="color:var(--ember)">Sorularınız mı var?</div>
+      <h2 style="margin-top:12px">Belgelerle ilgili başvurularınız için bize yazın.</h2>
+      <p>Kişisel verilerinize ilişkin taleplerinizi ve yasal metinlere dair sorularınızı veri sorumlusu olan Vakfımıza iletebilirsiniz.</p>
+    </div>
+    <div class="legalhelp__act">
+      <a class="btn btn--primary btn--md" href="mailto:tadev@tadev.org.tr">E-posta gönderin →</a>
+      <a class="btn btn--line btn--md" href="iletisim.html">İletişim</a>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__top">
+      <div><div class="foot__brand"><img src="assets/tadev-logo-white.png" alt="TADEV"><strong>TADEV</strong></div><p>Türk-Alman Dayanışma ve Eğitim Vakfı.<br>İki ülke, üç kuşak, ortak bir gelecek.</p></div>
+      <div class="foot__col"><h4>Vakıf</h4><a href="kurulus.html">Kuruluş</a><a href="amaclar.html">Amaçlarımız</a><a href="organlar.html">Organlarımız</a></div>
+      <div class="foot__col"><h4>Çalışmalar</h4><a href="faaliyetler.html">Faaliyetler</a><a href="burslar.html">Burslar</a><a href="etkinlikler.html">Etkinlikler</a><a href="duyurular.html">Duyurular</a><a href="mutevelli-basvuru.html">Mütevelli Olun</a></div>
+      <div class="foot__col"><h4>İletişim</h4><p>İstinye Caddesi Mertoğlu Apt.<br>No: 52/6, İstinye – Sarıyer<br>İstanbul 34460</p><p style="margin-top:10px"><a href="tel:+902122299201">+90 212 229 92 01</a><br><a href="mailto:tadev@tadev.org.tr">tadev@tadev.org.tr</a></p></div>
+    </div>
+    <div class="foot__legal">
+      <a href="gizlilik-politikasi.html">Gizlilik Politikası</a>
+      <a href="gizlilik-politikasi.html">KVKK Aydınlatma Metni</a>
+      <a href="gizlilik-politikasi.html">Çerez Politikası</a>
+      <a href="gizlilik-politikasi.html">Kullanım Koşulları</a>
+      <a href="yasal-belgeler.html">Tüm Belgeler</a>
+    </div>
+    <div class="foot__bottom">
+      <p>© <span data-year></span> TADEV — Türk-Alman Dayanışma ve Eğitim Vakfı. Tüm hakları saklıdır.</p>
+      <div class="lang"><button data-lang="TR">TR</button><button data-lang="DE">DE</button><button data-lang="EN">EN</button></div>
+    </div>
+    <div class="foot__credit"><a href="https://svenkoksal.com" target="_blank" rel="noopener">Tasarım & geliştirme — Sven Ata Can Köksal</a></div>
+  </div>
+</footer>
+
+<script src="js/site.js"></script>
+<script>
+// category filter (visual only — WP will wire real taxonomy)
+(function(){
+  var btns = document.querySelectorAll('.docfilter button');
+  var rows = document.querySelectorAll('.docrow');
+  var empty = document.querySelector('.doclist__empty');
+  btns.forEach(function(b){
+    b.addEventListener('click', function(){
+      btns.forEach(function(x){ x.classList.remove('active'); });
+      b.classList.add('active');
+      var f = b.getAttribute('data-filter');
+      var shown = 0;
+      rows.forEach(function(r){
+        var match = (f === 'all' || r.getAttribute('data-cat') === f);
+        r.hidden = !match;
+        if(match) shown++;
+      });
+      if(empty) empty.style.display = shown ? 'none' : 'block';
+    });
+  });
+})();
+</script>
+</body>
+</html>

@@ -25,6 +25,73 @@
 .quote{border-left:3px solid var(--ember);padding:6px 0 6px 30px;margin:8px 0}
 .quote p{font-family:var(--display);font-weight:500;font-size:clamp(22px,2.6vw,32px);line-height:1.3;letter-spacing:-.02em;color:var(--onyx)}
 @media(max-width:820px){.story{grid-template-columns:1fr}.tl__row{grid-template-columns:1fr;gap:8px}.vals{grid-template-columns:1fr}}
+
+/* archive */
+.arch{display:grid;grid-template-columns:1.32fr 1fr;gap:24px;align-items:stretch}
+.arch figure{margin:0;display:flex;flex-direction:column}
+.arch image-slot{display:block;width:100%;border-radius:14px;overflow:hidden;border:1px solid var(--line)}
+.arch__doc image-slot{height:clamp(360px,44vw,540px)}
+.arch__side{display:grid;grid-template-rows:1fr 1fr;gap:24px}
+.arch__side figure{height:100%}
+.arch__side image-slot{height:100%;min-height:168px}
+.arch figcaption{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;color:var(--slate);margin-top:13px;text-transform:uppercase;display:flex;justify-content:space-between;gap:14px}
+.arch figcaption span:last-child{color:var(--ember)}
+@media(max-width:820px){.arch{grid-template-columns:1fr}.arch__side{grid-template-columns:1fr 1fr;grid-template-rows:none}}
+@media(max-width:480px){.arch__side{grid-template-columns:1fr}}
+
+/* founding trustees roster */
+.roster-wrap{margin-top:8px}
+.roster{columns:4;column-gap:34px;list-style:none}
+.roster li{break-inside:avoid;display:flex;gap:11px;padding:8px 0;font-size:14.5px;align-items:baseline;border-top:1px solid var(--line-soft)}
+.roster li:first-child{border-top:0}
+.roster .rn{font-family:var(--mono);font-size:11px;color:var(--ember);min-width:20px;flex:none}
+.roster .nm2{color:var(--ink);font-weight:500;letter-spacing:-.01em}
+@media(max-width:1100px){.roster{columns:3}}
+@media(max-width:760px){.roster{columns:2}}
+@media(max-width:440px){.roster{columns:1}}
+.roster-meta{display:flex;gap:clamp(28px,5vw,64px);flex-wrap:wrap;margin-top:34px;padding-top:28px;border-top:1px solid var(--line)}
+.roster-meta div{display:flex;flex-direction:column;gap:6px}
+.roster-meta .n{font-family:var(--display);font-weight:700;font-size:clamp(30px,4vw,44px);color:var(--ember);letter-spacing:-.03em;line-height:1}
+.roster-meta .l{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--slate);max-width:22ch}
+
+/* leadership / president history */
+.lead-grid{display:grid;grid-template-columns:.82fr 1.18fr;gap:clamp(36px,5vw,72px);align-items:start}
+.lead-grid .prose p:last-child{margin-bottom:0}
+.board{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.board__c{background:#fff;padding:24px 26px;display:flex;flex-direction:column;gap:6px;min-height:104px;justify-content:center}
+.board__c .role{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ember)}
+.board__c .nm{font-family:var(--display);font-weight:600;font-size:19px;color:var(--onyx);letter-spacing:-.01em}
+.board__c--lead{grid-column:1/-1;background:var(--onyx);min-height:130px}
+.board__c--lead .nm{color:#fff;font-size:26px}
+.board__c--lead .role{color:var(--ember-hot)}
+.board__note{font-family:var(--mono);font-size:12px;letter-spacing:.04em;color:var(--slate);margin-top:18px;display:flex;align-items:center;gap:9px}
+.board__note a{color:var(--ember);font-weight:700}
+@media(max-width:560px){.board{grid-template-columns:1fr}.lead-grid{grid-template-columns:1fr}.board__c--lead .nm{font-size:22px}}
+
+/* 30th anniversary */
+.anniv{position:relative;overflow:hidden;border-radius:22px;background:var(--onyx);color:#EDEAE6;padding:clamp(40px,5vw,76px);display:grid;grid-template-columns:auto 1fr;gap:clamp(36px,5vw,76px);align-items:center}
+.anniv::before{content:"";position:absolute;inset:0;background:
+  linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px) 0 0/100% 44px,
+  linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px) 0 0/44px 100%;
+  -webkit-mask:linear-gradient(120deg,#000,transparent 80%);mask:linear-gradient(120deg,#000,transparent 80%)}
+.anniv__num{position:relative;z-index:2;text-align:center}
+.anniv__num b{font-family:var(--display);font-weight:700;font-size:clamp(120px,17vw,232px);line-height:.78;letter-spacing:-.05em;color:var(--ember);display:block}
+.anniv__num span{display:block;font-size:13px;letter-spacing:.18em;color:#8d888f;font-family:var(--mono);margin-top:20px}
+.anniv__body{position:relative;z-index:2}
+.anniv h2{color:#fff;font-size:clamp(28px,3.4vw,44px)}
+.anniv p{color:#C9C4CC;margin-top:16px;max-width:56ch}
+.anniv__tags{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}
+.anniv__tags .pill{border-color:rgba(255,255,255,.2);color:#C9C4CC}
+@media(max-width:780px){.anniv{grid-template-columns:1fr;gap:30px}.anniv__num{text-align:left}}
+
+/* tadev bugün */
+.today{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.today__c{background:#fff;padding:34px 30px;display:flex;flex-direction:column;gap:13px;min-height:230px}
+.today__c .ic{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--ember)}
+.today__c h3{font-size:21px}
+.today__c p{font-size:14.5px;color:var(--slate-deep);line-height:1.55}
+.today__c .more{margin-top:auto;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ember);font-weight:700}
+@media(max-width:820px){.today{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -44,16 +111,16 @@
     <div class="nav__right">
       <div class="lang"><button data-lang="TR">TR</button><button data-lang="DE">DE</button><button data-lang="EN">EN</button></div>
       <a class="nav__cta nav__cta--sub" href="iletisim.html">İletişim</a>
-      <a class="nav__cta" href="iletisim.html#mutevelli">Mütevelli Olun</a>
+      <a class="nav__cta" href="mutevelli-basvuru.html">Mütevelli Olun</a>
       <button class="nav__burger" id="burger" aria-label="Menü"><span></span><span></span><span></span></button>
     </div>
   </div>
 </nav>
 <div class="mnav" id="mnav">
   <div class="mnav__top"><a class="nav__brand" href="index.html" style="color:#fff"><img src="assets/tadev-logo-white.png" alt="TADEV" style="height:28px"><span>TADEV</span></a><button class="mnav__close" id="mclose" aria-label="Kapat">✕</button></div>
-  <a href="index.html">Anasayfa</a><a href="kurulus.html">Kuruluş</a><a href="amaclar.html">Amaçlarımız</a><a href="organlar.html">Organlarımız</a><a href="faaliyetler.html">Faaliyetler</a><a href="etkinlikler.html">Etkinlikler</a><a href="duyurular.html">Duyurular</a><a href="iletisim.html">İletişim</a>
+  <a href="index.html">Anasayfa</a><a href="kurulus.html">Kuruluş</a><a href="amaclar.html">Amaçlarımız</a><a href="organlar.html">Organlarımız</a><a href="faaliyetler.html">Faaliyetler</a><a href="burslar.html">Burslar</a><a href="etkinlikler.html">Etkinlikler</a><a href="duyurular.html">Duyurular</a><a href="iletisim.html">İletişim</a>
   <div class="mnav__foot"><div class="lang"><button data-lang="TR">TR</button><button data-lang="DE">DE</button><button data-lang="EN">EN</button></div><a class="nav__cta nav__cta--sub" href="iletisim.html">İletişim</a>
-      <a class="nav__cta" href="iletisim.html#mutevelli">Mütevelli Olun</a></div>
+      <a class="nav__cta" href="mutevelli-basvuru.html">Mütevelli Olun</a></div>
 </div>
 
 <!-- PAGE HEADER -->
@@ -92,6 +159,27 @@
   </div>
 </section>
 
+<!-- ARCHIVE / FOUNDING DOCUMENT -->
+<section class="band band--tight wrap">
+  <div class="sec-head reveal"><div class="eyebrow-num">Arşivden</div><h2 class="h2">Kuruluş belgesi ve ilk yıllar.</h2><p class="lead">15 Mart 1993 tarihli Vakıf Senedi, kuruluş genel kurulu ve ilk mütevelli buluşmalarından kareler.</p></div>
+  <div class="arch reveal">
+    <figure class="arch__doc">
+      <image-slot id="kr-senet" shape="rect" placeholder="Vakıf Senedi — kuruluş belgesi (1993)"></image-slot>
+      <figcaption><span>Vakıf Senedi · Resmi tescil</span><span>15.03.1993</span></figcaption>
+    </figure>
+    <div class="arch__side">
+      <figure>
+        <image-slot id="kr-genelkurul" shape="rect" placeholder="Kuruluş genel kurulu fotoğrafı"></image-slot>
+        <figcaption><span>Kurucu mütevelliler</span><span>Arşiv</span></figcaption>
+      </figure>
+      <figure>
+        <image-slot id="kr-album" shape="rect" placeholder="Mütevelliler Albümü — Das Album der Stifter (1997)"></image-slot>
+        <figcaption><span>Mütevelliler Albümü</span><span>1997</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
 <!-- TIMELINE -->
 <section class="band--mist">
   <div class="band band--tight wrap">
@@ -101,6 +189,139 @@
       <div class="tl__row"><div class="tl__yr">1993</div><div><h3>Resmi kuruluş</h3><p>15 Mart 1993'te 51 kurucu mütevelli ve 131 kurucu katılımcı ile TADEV resmen tescil edildi ve faaliyetlerine başladı.</p></div></div>
       <div class="tl__row"><div class="tl__yr">1995</div><div><h3>İlk burslar</h3><p>Burs Yönetmeliği çerçevesinde başarılı öğrencilere karşılıksız burs verilmeye başlandı — bu, vakfın bugün de süren öncelikli faaliyetidir.</p></div></div>
       <div class="tl__row"><div class="tl__yr">Bugün</div><div><h3>Kurumsal köprü</h3><p>TADEV; mütevellileri, akademisyenleri ve iş insanları aracılığıyla eğitim, bilim ve iş dünyasında iki ülke arasında köprü kuran kurumsal bir yapıya dönüşmüştür.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDING TRUSTEES -->
+<section class="band band--tight wrap">
+  <div class="sec-head reveal"><div class="eyebrow-num">Kurucu Mütevelliler</div><h2 class="h2">Vakfı kuran 51 imza.</h2><p class="lead">Yüksek öğrenimlerini Federal Almanya'da görmüş meslek sahipleri, akademisyenler ve iş insanları. Vakfı resmen tescil ettiren 51 kurucu mütevelli.</p></div>
+  <div class="roster-wrap reveal">
+    <ol class="roster">
+      <li><span class="rn">01</span><span class="nm2">Osman Abacı</span></li>
+      <li><span class="rn">02</span><span class="nm2">Erdoğan Akdağ</span></li>
+      <li><span class="rn">03</span><span class="nm2">Hüseyin Aksoy</span></li>
+      <li><span class="rn">04</span><span class="nm2">H. Avni Aksu</span></li>
+      <li><span class="rn">05</span><span class="nm2">Ali Alaybeyoğlu</span></li>
+      <li><span class="rn">06</span><span class="nm2">Tülay Arghan</span></li>
+      <li><span class="rn">07</span><span class="nm2">M. Elkut Atansay</span></li>
+      <li><span class="rn">08</span><span class="nm2">Ahmet Ateş</span></li>
+      <li><span class="rn">09</span><span class="nm2">H. Aka Baldaş</span></li>
+      <li><span class="rn">10</span><span class="nm2">Erdoğan Cengiz</span></li>
+      <li><span class="rn">11</span><span class="nm2">Ahmet Ceritoğlu</span></li>
+      <li><span class="rn">12</span><span class="nm2">Murat Dinçmen</span></li>
+      <li><span class="rn">13</span><span class="nm2">Yavuz Doğan</span></li>
+      <li><span class="rn">14</span><span class="nm2">Erdoğan Durakbaşa</span></li>
+      <li><span class="rn">15</span><span class="nm2">K. Kaya Ekinci</span></li>
+      <li><span class="rn">16</span><span class="nm2">Erdoğan Eksel</span></li>
+      <li><span class="rn">17</span><span class="nm2">Metin Eralp</span></li>
+      <li><span class="rn">18</span><span class="nm2">O. Şükrü Genişel</span></li>
+      <li><span class="rn">19</span><span class="nm2">Doğan Genç</span></li>
+      <li><span class="rn">20</span><span class="nm2">Ahmet Girin</span></li>
+      <li><span class="rn">21</span><span class="nm2">Kemal Günergun</span></li>
+      <li><span class="rn">22</span><span class="nm2">M. Şükrü Gök</span></li>
+      <li><span class="rn">23</span><span class="nm2">İ. Ergun Göknel</span></li>
+      <li><span class="rn">24</span><span class="nm2">Ertuğrul Hataylı</span></li>
+      <li><span class="rn">25</span><span class="nm2">Murat Işıl</span></li>
+      <li><span class="rn">26</span><span class="nm2">Arif Kök</span></li>
+      <li><span class="rn">27</span><span class="nm2">Eser Marmara</span></li>
+      <li><span class="rn">28</span><span class="nm2">K. Kutlu Memişoğlu</span></li>
+      <li><span class="rn">29</span><span class="nm2">Naci Otmanbölük</span></li>
+      <li><span class="rn">30</span><span class="nm2">Mehmet Samsunlu</span></li>
+      <li><span class="rn">31</span><span class="nm2">Ahmet Samsunlu</span></li>
+      <li><span class="rn">32</span><span class="nm2">Mehmet Sinirlioğlu</span></li>
+      <li><span class="rn">33</span><span class="nm2">Ersan Sirmen</span></li>
+      <li><span class="rn">34</span><span class="nm2">Yusuf Sünbül</span></li>
+      <li><span class="rn">35</span><span class="nm2">Tulga Tollu</span></li>
+      <li><span class="rn">36</span><span class="nm2">Hasan Tunç Koman</span></li>
+      <li><span class="rn">37</span><span class="nm2">Murat Türkmen</span></li>
+      <li><span class="rn">38</span><span class="nm2">Cengiz Ulusoy</span></li>
+      <li><span class="rn">39</span><span class="nm2">Orhan Uslu</span></li>
+      <li><span class="rn">40</span><span class="nm2">Arif Vidinli</span></li>
+      <li><span class="rn">41</span><span class="nm2">Teoman Yelkencioğlu</span></li>
+      <li><span class="rn">42</span><span class="nm2">Zekai Yüzbaşıoğulları</span></li>
+      <li><span class="rn">43</span><span class="nm2">Mustafa Çağan</span></li>
+      <li><span class="rn">44</span><span class="nm2">Sencer İmer</span></li>
+      <li><span class="rn">45</span><span class="nm2">Behzat İşçimen</span></li>
+      <li><span class="rn">46</span><span class="nm2">Muammer Öcal</span></li>
+      <li><span class="rn">47</span><span class="nm2">Özer Ölçmen</span></li>
+      <li><span class="rn">48</span><span class="nm2">Tahsin Önalp</span></li>
+      <li><span class="rn">49</span><span class="nm2">Polat Özalp</span></li>
+      <li><span class="rn">50</span><span class="nm2">Sedat Ünal</span></li>
+      <li><span class="rn">51</span><span class="nm2">Tekser A.Ş.</span></li>
+    </ol>
+    <div class="roster-meta">
+      <div><span class="n">51</span><span class="l">Kurucu mütevelli — resmi tescil</span></div>
+      <div><span class="n">131</span><span class="l">Vakfı oluşturan vakfeden mütevelli</span></div>
+      <div><span class="n">1937→</span><span class="l">Üç nesli kapsayan köklü bağ</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- LEADERSHIP / PRESIDENT HISTORY -->
+<section class="band--mist">
+  <div class="band band--tight wrap">
+    <div class="sec-head reveal"><div class="eyebrow-num">Yönetim</div><h2 class="h2">Kurucu kuşaktan bugüne.</h2></div>
+    <div class="lead-grid reveal">
+      <div class="prose">
+        <p class="lede">Vakfı tescil ettiren 51 kurucu mütevelli, ilk Yönetim Kurulu'nu seçerek TADEV'i faaliyete geçirdi.</p>
+        <p>O günden bu yana yönetim, Mütevelliler Heyeti tarafından seçilen Yönetim Kurulu eliyle yürütülüyor. Kurucu kuşağın bıraktığı emaneti, eğitim ve dayanışma önceliğini koruyarak yeni kuşak mütevelliler sürdürüyor.</p>
+        <p>Bugün vakfa, 30. yılını geride bırakan kurumsal birikimiyle, aşağıdaki Yönetim Kurulu başkanlık ediyor.</p>
+      </div>
+      <div>
+        <div class="board">
+          <div class="board__c board__c--lead"><span class="role">Yönetim Kurulu Başkanı</span><span class="nm">İsim Soyisim</span></div>
+          <div class="board__c"><span class="role">Başkan Yardımcısı</span><span class="nm">İsim Soyisim</span></div>
+          <div class="board__c"><span class="role">Genel Sekreter</span><span class="nm">İsim Soyisim</span></div>
+          <div class="board__c"><span class="role">Sayman</span><span class="nm">İsim Soyisim</span></div>
+          <div class="board__c"><span class="role">Üye</span><span class="nm">İsim Soyisim</span></div>
+          <div class="board__c"><span class="role">Üye</span><span class="nm">İsim Soyisim</span></div>
+          <div class="board__c"><span class="role">Üye</span><span class="nm">İsim Soyisim</span></div>
+        </div>
+        <div class="board__note">Denetim Kurulu ve alt kurullar için <a href="organlar.html">Organlarımız →</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 30TH ANNIVERSARY -->
+<section class="band band--tight wrap">
+  <div class="anniv reveal">
+    <div class="anniv__num"><b>30</b><span>1993 — 2023</span></div>
+    <div class="anniv__body">
+      <div class="kicker" style="color:var(--ember-hot)">30. Yıl</div>
+      <h2 style="margin-top:16px">Otuz yıllık bir köprü.</h2>
+      <p>2023'te TADEV kuruluşunun 30. yılını kutladı. 30. Yıl Komitesi, mütevellilerin yer aldığı bir anı kitapçığı ve geniş katılımlı bir kutlama etkinliği hazırladı — vakfın üç kuşağı bir araya getiren hikâyesine bir saygı duruşu.</p>
+      <div class="anniv__tags">
+        <span class="pill">30. Yıl Komitesi</span>
+        <span class="pill">Anı kitapçığı</span>
+        <span class="pill">Kutlama etkinliği</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TADEV BUGÜN -->
+<section class="band band--tight wrap">
+  <div class="sec-head reveal"><div class="eyebrow-num">TADEV Bugün</div><h2 class="h2">Köprü, bugün de ayakta.</h2><p class="lead">Kuruluş amaçları otuz yıl sonra her zamankinden güncel: eğitim, bilim ve iş dünyasında iki ülkeyi birbirine bağlamak.</p></div>
+  <div class="today reveal">
+    <div class="today__c">
+      <span class="ic">01</span>
+      <h3>Türk-Alman Üniversitesi</h3>
+      <p>Destek burslarının ağırlıklı bölümü Türk-Alman Üniversitesi (TAÜ) iş birliğiyle yürütülüyor; rektörlük, enerji laboratuvarı ve Teknopark ile ortak çalışmalar sürüyor.</p>
+      <a class="more" href="faaliyetler.html">Faaliyetler →</a>
+    </div>
+    <div class="today__c">
+      <span class="ic">02</span>
+      <h3>1995'ten beri burs</h3>
+      <p>Burs Yönetmeliği çerçevesinde başarılı öğrencilere karşılıksız burs; Almanya'da yüksek lisans ve doktora hedefleyen öğrencilere maddi ve manevi destek.</p>
+      <a class="more" href="burslar.html">Burslar →</a>
+    </div>
+    <div class="today__c">
+      <span class="ic">03</span>
+      <h3>Kurumsal diyalog</h3>
+      <p>Almanya İstanbul Başkonsolosluğu ve Alman üniversiteleriyle düzenli temas; seminerler, sunumlar ve endüstriyel network ile iki ülke arasında aktif köprü.</p>
+      <a class="more" href="etkinlikler.html">Etkinlikler →</a>
     </div>
   </div>
 </section>
@@ -123,7 +344,7 @@
     <h2 style="margin-top:16px">Bu hikâyenin bir parçası olun.</h2>
     <p>Birikiminizi ve Almanya bağlantılarınızı Türkiye'nin geleceği için paylaşın.</p>
     <div class="cta__actions">
-      <a class="btn btn--white btn--lg" href="iletisim.html#mutevelli">Mütevelli Olun →</a>
+      <a class="btn btn--white btn--lg" href="mutevelli-basvuru.html">Mütevelli Olun →</a>
       <a class="btn btn--dark btn--lg" href="organlar.html">Organlarımız</a>
     </div>
   </div>
@@ -135,7 +356,7 @@
     <div class="foot__top">
       <div><div class="foot__brand"><img src="assets/tadev-logo-white.png" alt="TADEV"><strong>TADEV</strong></div><p>Türk-Alman Dayanışma ve Eğitim Vakfı.<br>İki ülke, üç kuşak, ortak bir gelecek.</p></div>
       <div class="foot__col"><h4>Vakıf</h4><a href="kurulus.html">Kuruluş</a><a href="amaclar.html">Amaçlarımız</a><a href="organlar.html">Organlarımız</a></div>
-      <div class="foot__col"><h4>Çalışmalar</h4><a href="faaliyetler.html">Faaliyetler</a><a href="etkinlikler.html">Etkinlikler</a><a href="duyurular.html">Duyurular</a><a href="iletisim.html#mutevelli">Mütevelli Olun</a></div>
+      <div class="foot__col"><h4>Çalışmalar</h4><a href="faaliyetler.html">Faaliyetler</a><a href="burslar.html">Burslar</a><a href="etkinlikler.html">Etkinlikler</a><a href="duyurular.html">Duyurular</a><a href="mutevelli-basvuru.html">Mütevelli Olun</a></div>
       <div class="foot__col"><h4>İletişim</h4><p>İstinye Caddesi Mertoğlu Apt.<br>No: 52/6, İstinye – Sarıyer<br>İstanbul 34460</p><p style="margin-top:10px"><a href="tel:+902122299201">+90 212 229 92 01</a><br><a href="mailto:tadev@tadev.org.tr">tadev@tadev.org.tr</a></p></div>
     </div>
     <div class="foot__bottom">

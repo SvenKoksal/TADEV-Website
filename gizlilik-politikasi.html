@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gizlilik Politikası ve KVKK Aydınlatma Metni — TADEV</title>
+<meta name="description" content="TADEV gizlilik politikası ve 6698 sayılı KVKK kapsamında aydınlatma metni: işlenen veriler, amaçlar, aktarım, saklama süreleri ve ilgili kişinin hakları.">
+<link rel="icon" href="assets/tadev-logo-ember.png">
+<link rel="stylesheet" href="css/brand.css">
+<link rel="stylesheet" href="css/site.css">
+<!--
+  ============================================================
+  TEKİL YASAL BELGE ŞABLONU · SINGLE LEGAL DOCUMENT TEMPLATE
+  Bu sayfa diğer yasal belgeler için de şablon olarak kullanılır
+  (Mütevellilik Şartları, Çerez Politikası, Kullanım Koşulları vb.)
+  Değiştirin: başlık, meta, belge başlığı, TOC ve .legaldoc içeriği.
+  ============================================================
+-->
+<style>
+/* ---- compact document hero ---- */
+.lhead{padding-bottom:clamp(34px,4.5vw,56px)}
+.lhead__tags{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:6px 0 18px}
+.lhead__cat{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;padding:7px 13px;border-radius:100px;background:var(--ember);color:#fff}
+.lhead__ver{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:#9b969f;border:1px solid rgba(255,255,255,.18);border-radius:100px;padding:6px 12px}
+.lhead h1{color:#fff;font-size:clamp(30px,4.4vw,58px);letter-spacing:-.035em;line-height:1.03;font-weight:700;font-family:var(--display);max-width:20ch}
+.lhead__sub{color:#C9C4CC;font-size:clamp(15px,1.6vw,18px);line-height:1.55;margin-top:20px;max-width:62ch}
+.lhead__bar{display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:30px;padding-top:24px;border-top:1px solid rgba(255,255,255,.14)}
+.lhead__bar .it{display:flex;flex-direction:column;gap:4px}
+.lhead__bar .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:#8d888f}
+.lhead__bar .v{font-size:14px;color:#EDEAE6;font-weight:600}
+.lhead__bar .v a{color:var(--ember-hot)}
+.lhead__dl{margin-left:auto;align-self:center}
+
+/* ---- two-column doc layout ---- */
+.legalwrap{display:grid;grid-template-columns:248px 1fr;gap:clamp(32px,5vw,80px);align-items:start}
+
+/* TOC */
+.toc{position:sticky;top:88px}
+.toc__lbl{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--slate);padding-bottom:14px;margin-bottom:14px;border-bottom:1px solid var(--line)}
+.toc ol{list-style:none;counter-reset:toc;display:flex;flex-direction:column;gap:1px}
+.toc li{counter-increment:toc}
+.toc a{display:flex;gap:11px;align-items:baseline;padding:8px 10px;border-radius:8px;font-size:13.5px;line-height:1.35;color:var(--slate-deep);transition:.15s}
+.toc a::before{content:counter(toc,decimal-leading-zero);font-family:var(--mono);font-size:11px;color:var(--slate);flex:none}
+.toc a:hover{background:var(--mist);color:var(--onyx)}
+.toc a.active{background:var(--onyx);color:#fff}
+.toc a.active::before{color:var(--ember-hot)}
+
+/* document body */
+.legaldoc{max-width:760px;counter-reset:sec}
+.legaldoc__note{display:flex;gap:14px;align-items:flex-start;background:var(--mist);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin-bottom:40px}
+.legaldoc__note .hex{width:30px;height:30px;flex:none;color:var(--ember);margin-top:1px}
+.legaldoc__note p{font-size:14px;line-height:1.6;color:var(--slate-deep);margin:0}
+.legaldoc section{padding-top:14px;margin-bottom:36px;scroll-margin-top:84px}
+.legaldoc h2{counter-increment:sec;font-size:clamp(21px,2.4vw,28px);letter-spacing:-.02em;line-height:1.2;display:flex;gap:14px;align-items:baseline;margin-bottom:16px}
+.legaldoc h2::before{content:counter(sec,decimal-leading-zero);font-family:var(--mono);font-size:13px;font-weight:700;color:var(--ember);flex:none;padding-top:4px}
+.legaldoc h3{font-size:17px;margin:24px 0 10px;color:var(--ink)}
+.legaldoc p{font-size:16px;color:var(--slate-deep);line-height:1.72;margin-bottom:16px}
+.legaldoc a{color:var(--ember-deep);text-decoration:underline;text-underline-offset:2px}
+.legaldoc ul{list-style:none;display:flex;flex-direction:column;gap:11px;margin:0 0 18px}
+.legaldoc ul li{position:relative;padding-left:24px;color:var(--slate-deep);font-size:15.5px;line-height:1.6}
+.legaldoc ul li::before{content:"";position:absolute;left:0;top:9px;width:8px;height:8px;background:var(--ember);border-radius:2px}
+.legaldoc ul li strong{color:var(--ink)}
+.legaldoc ol.rights{list-style:none;counter-reset:r;display:flex;flex-direction:column;gap:12px;margin:0 0 18px}
+.legaldoc ol.rights li{counter-increment:r;position:relative;padding-left:38px;color:var(--slate-deep);font-size:15.5px;line-height:1.6}
+.legaldoc ol.rights li::before{content:counter(r);position:absolute;left:0;top:0;width:25px;height:25px;background:var(--mist);border:1px solid var(--line);border-radius:7px;font-family:var(--mono);font-size:12px;font-weight:700;color:var(--ember);display:grid;place-items:center}
+
+/* definition / contact table */
+.deftable{border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:8px 0 20px}
+.deftable .row{display:grid;grid-template-columns:200px 1fr;gap:0;border-bottom:1px solid var(--line)}
+.deftable .row:last-child{border-bottom:0}
+.deftable .k{background:var(--mist);padding:14px 18px;font-family:var(--mono);font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--slate-deep);font-weight:700}
+.deftable .v{padding:14px 18px;font-size:15px;color:var(--ink);line-height:1.55}
+
+/* doc footer */
+.legaldoc__foot{max-width:760px;margin-top:48px;padding-top:30px;border-top:1px solid var(--line)}
+.reldocs{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:20px}
+.reldoc{border:1px solid var(--line);border-radius:13px;padding:18px 20px;display:flex;flex-direction:column;gap:5px;transition:.18s}
+.reldoc:hover{border-color:var(--onyx);transform:translateY(-2px)}
+.reldoc .c{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ember);font-weight:700}
+.reldoc strong{font-family:var(--display);font-weight:600;font-size:16px;color:var(--ink)}
+.reldoc .more{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--slate);margin-top:4px}
+
+@media(max-width:880px){
+  .legalwrap{grid-template-columns:1fr;gap:8px}
+  .toc{position:static;margin-bottom:36px;border:1px solid var(--line);border-radius:14px;padding:18px 20px;background:var(--paper)}
+  .toc__lbl{border-bottom:1px solid var(--line)}
+  .lhead__dl{margin-left:0}
+}
+@media(max-width:560px){
+  .deftable .row{grid-template-columns:1fr}
+  .deftable .k{border-bottom:1px solid var(--line)}
+  .reldocs{grid-template-columns:1fr}
+}
+@media print{
+  .nav,.mnav,.foot,.toc,.lhead__dl,.lhead__bar{display:none!important}
+  .legalwrap{grid-template-columns:1fr}
+  .lhead{background:#fff!important;color:#000!important}
+  .lhead h1,.lhead__sub{color:#000!important}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav__in">
+    <a class="nav__brand" href="index.html"><img src="assets/tadev-logo.png" alt="TADEV"><span>TADEV</span></a>
+    <div class="nav__links">
+      <a href="index.html">Anasayfa</a><a href="kurulus.html">Kuruluş</a><a href="amaclar.html">Amaçlarımız</a><a href="organlar.html">Organlarımız</a><a href="faaliyetler.html">Faaliyetler</a><a href="burslar.html">Burslar</a><a href="etkinlikler.html">Etkinlikler</a><a href="duyurular.html">Duyurular</a></div>
+    <div class="nav__right">
+      <div class="lang"><button data-lang="TR">TR</button><button data-lang="DE">DE</button><button data-lang="EN">EN</button></div>
+      <a class="nav__cta nav__cta--sub" href="iletisim.html">İletişim</a>
+      <a class="nav__cta" href="mutevelli-basvuru.html">Mütevelli Olun</a>
+      <button class="nav__burger" id="burger" aria-label="Menü"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="mnav" id="mnav">
+  <div class="mnav__top"><a class="nav__brand" href="index.html" style="color:#fff"><img src="assets/tadev-logo-white.png" alt="TADEV" style="height:28px"><span>TADEV</span></a><button class="mnav__close" id="mclose" aria-label="Kapat">✕</button></div>
+  <a href="index.html">Anasayfa</a><a href="kurulus.html">Kuruluş</a><a href="amaclar.html">Amaçlarımız</a><a href="organlar.html">Organlarımız</a><a href="faaliyetler.html">Faaliyetler</a><a href="burslar.html">Burslar</a><a href="etkinlikler.html">Etkinlikler</a><a href="duyurular.html">Duyurular</a><a href="iletisim.html">İletişim</a>
+  <div class="mnav__foot"><div class="lang"><button data-lang="TR">TR</button><button data-lang="DE">DE</button><button data-lang="EN">EN</button></div><a class="nav__cta nav__cta--sub" href="iletisim.html">İletişim</a>
+      <a class="nav__cta" href="mutevelli-basvuru.html">Mütevelli Olun</a></div>
+</div>
+
+<!-- DOCUMENT HERO -->
+<header class="phead lhead">
+  <img class="phead__mark" src="assets/tadev-logo-ember.png" alt="">
+  <div class="wrap phead__in">
+    <div class="crumb"><a href="index.html">Anasayfa</a> / <a href="yasal-belgeler.html">Yasal Belgeler</a> / <span>Gizlilik Politikası</span></div>
+    <div class="lhead__tags">
+      <span class="lhead__cat">Gizlilik · KVKK</span>
+      <span class="lhead__ver">Sürüm v1.0</span>
+    </div>
+    <h1>Gizlilik Politikası ve KVKK Aydınlatma Metni</h1>
+    <p class="lhead__sub">Bu metin, Türk-Alman Dayanışma ve Eğitim Vakfı (TADEV) tarafından, 6698 sayılı Kişisel Verilerin Korunması Kanunu uyarınca veri sorumlusu sıfatıyla hazırlanmıştır.</p>
+    <div class="lhead__bar">
+      <div class="it"><span class="k">Yürürlük tarihi</span><span class="v">12 Haziran 2026</span></div>
+      <div class="it"><span class="k">Son güncelleme</span><span class="v">12 Haziran 2026</span></div>
+      <div class="it"><span class="k">Veri sorumlusu</span><span class="v">TADEV</span></div>
+      <a class="btn btn--white btn--md lhead__dl" href="#" onclick="window.print();return false;">PDF olarak indir ↓</a>
+    </div>
+  </div>
+</header>
+
+<!-- DOCUMENT BODY -->
+<section class="band band--tight wrap">
+  <div class="legalwrap">
+
+    <!-- TABLE OF CONTENTS -->
+    <aside class="toc" aria-label="İçindekiler">
+      <div class="toc__lbl">İçindekiler</div>
+      <ol>
+        <li><a href="#kapsam">Giriş ve Kapsam</a></li>
+        <li><a href="#sorumlu">Veri Sorumlusunun Kimliği</a></li>
+        <li><a href="#veriler">İşlenen Kişisel Veriler</a></li>
+        <li><a href="#amaclar">İşlenme Amaçları</a></li>
+        <li><a href="#sebep">Hukuki Sebepler</a></li>
+        <li><a href="#aktarim">Verilerin Aktarılması</a></li>
+        <li><a href="#yontem">Toplama Yöntemleri</a></li>
+        <li><a href="#sure">Saklama Süreleri</a></li>
+        <li><a href="#guvenlik">Veri Güvenliği</a></li>
+        <li><a href="#haklar">İlgili Kişinin Hakları</a></li>
+        <li><a href="#basvuru">Başvuru Yöntemi</a></li>
+        <li><a href="#cerez">Çerezler</a></li>
+        <li><a href="#degisiklik">Değişiklikler</a></li>
+        <li><a href="#iletisim">İletişim</a></li>
+      </ol>
+    </aside>
+
+    <!-- ARTICLE -->
+    <article class="legaldoc reveal">
+
+      <div class="legaldoc__note">
+        <svg class="hex" viewBox="0 0 120 120"><polygon points="100,60 80,94.6 40,94.6 20,60 40,25.4 80,25.4" fill="none" stroke="currentColor" stroke-width="6"/></svg>
+        <p>Bu aydınlatma metni bilgilendirme amaçlıdır. Vakfımız, mevzuattaki değişikliklere ve faaliyetlerindeki gelişmelere bağlı olarak metni güncel tutar. Güncel sürüm her zaman bu sayfada yayımlanır.</p>
+      </div>
+
+      <section id="kapsam">
+        <h2>Giriş ve Kapsam</h2>
+        <p>Türk-Alman Dayanışma ve Eğitim Vakfı (“TADEV”, “Vakıf” veya “biz”) olarak, mütevellilerimizin, burs öğrencilerimizin, bağışçılarımızın, etkinlik katılımcılarımızın ve internet sitemizi ziyaret edenlerin kişisel verilerinin korunmasına büyük önem veriyoruz.</p>
+        <p>Bu metin; tadev.org.tr internet sitesi ve Vakfın yürüttüğü faaliyetler kapsamında elde edilen kişisel verilerin, 6698 sayılı Kişisel Verilerin Korunması Kanunu (“KVKK”) ve ilgili ikincil mevzuata uygun olarak nasıl işlendiğini açıklamak amacıyla hazırlanmıştır.</p>
+      </section>
+
+      <section id="sorumlu">
+        <h2>Veri Sorumlusunun Kimliği</h2>
+        <p>KVKK uyarınca kişisel verileriniz, veri sorumlusu sıfatıyla aşağıda bilgileri yer alan Vakıf tarafından işlenmektedir:</p>
+        <div class="deftable">
+          <div class="row"><div class="k">Veri Sorumlusu</div><div class="v">Türk-Alman Dayanışma ve Eğitim Vakfı (TADEV)</div></div>
+          <div class="row"><div class="k">Adres</div><div class="v">İstinye Caddesi, Mertoğlu Apt. No: 52/6, İstinye – Sarıyer, İstanbul 34460</div></div>
+          <div class="row"><div class="k">E-posta</div><div class="v">tadev@tadev.org.tr</div></div>
+          <div class="row"><div class="k">Telefon</div><div class="v">+90 212 229 92 01</div></div>
+        </div>
+      </section>
+
+      <section id="veriler">
+        <h2>İşlenen Kişisel Veriler</h2>
+        <p>Faaliyetlerimiz kapsamında, ilişkinin niteliğine göre aşağıdaki veri kategorileri işlenebilir:</p>
+        <ul>
+          <li><strong>Kimlik bilgileri:</strong> ad, soyad, doğum tarihi, T.C. kimlik numarası (yalnızca yasal yükümlülük gerektirdiğinde).</li>
+          <li><strong>İletişim bilgileri:</strong> e-posta adresi, telefon numarası, posta adresi.</li>
+          <li><strong>Eğitim ve mesleki bilgiler:</strong> öğrenim durumu, üniversite, bölüm, akademik başarı ve mesleki geçmiş (burs ve mütevellilik süreçlerinde).</li>
+          <li><strong>Finansal bilgiler:</strong> bağış ve aidat ödemelerine ilişkin işlem kayıtları.</li>
+          <li><strong>İşlem güvenliği bilgileri:</strong> IP adresi, çerez kayıtları ve site kullanım verileri.</li>
+          <li><strong>Görsel kayıtlar:</strong> etkinliklerde, açık rıza alınarak çekilen fotoğraf ve video kayıtları.</li>
+        </ul>
+      </section>
+
+      <section id="amaclar">
+        <h2>Kişisel Verilerin İşlenme Amaçları</h2>
+        <p>Kişisel verileriniz, KVKK’nın 5. ve 6. maddelerinde belirtilen şartlara dayanılarak aşağıdaki amaçlarla işlenir:</p>
+        <ul>
+          <li>Burs başvurularının alınması, değerlendirilmesi ve burs ilişkisinin yürütülmesi.</li>
+          <li>Mütevellilik başvuru ve üyelik süreçlerinin yönetilmesi.</li>
+          <li>Etkinlik, seminer ve duyuruların organizasyonu ile katılımcı iletişiminin sağlanması.</li>
+          <li>Bağış ve aidat süreçlerinin yürütülmesi ile mali ve hukuki yükümlülüklerin yerine getirilmesi.</li>
+          <li>İnternet sitesinin işletilmesi, güvenliğinin sağlanması ve hizmet kalitesinin geliştirilmesi.</li>
+        </ul>
+      </section>
+
+      <section id="sebep">
+        <h2>İşlemenin Hukuki Sebepleri</h2>
+        <p>Verileriniz; bir sözleşmenin kurulması veya ifası, Vakfın hukuki yükümlülüklerini yerine getirmesi, bir hakkın tesisi veya korunması ve temel hak ve özgürlüklerinize zarar vermemek kaydıyla meşru menfaatlerimiz hukuki sebeplerine dayanılarak işlenir. Bu sebeplerin bulunmadığı hâllerde açık rızanız esas alınır.</p>
+      </section>
+
+      <section id="aktarim">
+        <h2>Kişisel Verilerin Aktarılması</h2>
+        <p>Kişisel verileriniz, yalnızca yukarıda belirtilen amaçların gerektirdiği ölçüde ve KVKK’nın 8. ve 9. maddelerine uygun olarak aktarılabilir:</p>
+        <ul>
+          <li><strong>Yetkili kurum ve kuruluşlar:</strong> yasal yükümlülükler kapsamında kamu kurumları ve adli makamlar.</li>
+          <li><strong>İş ortakları ve hizmet sağlayıcılar:</strong> barındırma, e-posta ve ödeme altyapısı gibi hizmetleri sunan tedarikçiler.</li>
+          <li><strong>İş birliği yapılan kurumlar:</strong> ortak proje, seminer ve burs faaliyetlerinde yalnızca gerekli veriler.</li>
+        </ul>
+        <p>Vakfımız, kişisel verileri pazarlama amacıyla üçüncü kişilerle paylaşmaz veya satmaz.</p>
+      </section>
+
+      <section id="yontem">
+        <h2>Veri Toplama Yöntemleri</h2>
+        <p>Kişisel verileriniz; internet sitemizdeki formlar, e-posta yazışmaları, başvuru ve üyelik belgeleri, etkinlik kayıtları ve site kullanımı sırasında otomatik olarak (çerezler aracılığıyla) toplanır.</p>
+      </section>
+
+      <section id="sure">
+        <h2>Saklama Süreleri</h2>
+        <p>Kişisel verileriniz, işleme amacının gerektirdiği süre boyunca ve ilgili mevzuatta öngörülen zamanaşımı ve saklama süreleri dikkate alınarak muhafaza edilir. Amaç ortadan kalktığında ve yasal süreler sona erdiğinde verileriniz silinir, yok edilir veya anonim hâle getirilir.</p>
+      </section>
+
+      <section id="guvenlik">
+        <h2>Veri Güvenliği</h2>
+        <p>Vakfımız, kişisel verilerin hukuka aykırı olarak işlenmesini ve verilere yetkisiz erişimi önlemek amacıyla, teknik ve idari tedbirleri uygular. Bu kapsamda erişim yetkilerinin sınırlandırılması, güvenli barındırma ve düzenli gözden geçirme gibi önlemler alınır.</p>
+      </section>
+
+      <section id="haklar">
+        <h2>İlgili Kişinin Hakları</h2>
+        <p>KVKK’nın 11. maddesi uyarınca, veri sorumlusu olan Vakfımıza başvurarak aşağıdaki haklarınızı kullanabilirsiniz:</p>
+        <ol class="rights">
+          <li>Kişisel verilerinizin işlenip işlenmediğini öğrenme.</li>
+          <li>İşlenmişse buna ilişkin bilgi talep etme.</li>
+          <li>İşlenme amacını ve amaca uygun kullanılıp kullanılmadığını öğrenme.</li>
+          <li>Yurt içinde veya yurt dışında aktarıldığı üçüncü kişileri bilme.</li>
+          <li>Eksik veya yanlış işlenmişse düzeltilmesini isteme.</li>
+          <li>Mevzuatta öngörülen şartlarda silinmesini veya yok edilmesini isteme.</li>
+          <li>Düzeltme, silme ve yok etme işlemlerinin aktarıldığı kişilere bildirilmesini isteme.</li>
+          <li>Münhasıran otomatik sistemlerle analiz edilmesi sonucu aleyhinize bir sonucun ortaya çıkmasına itiraz etme.</li>
+          <li>Hukuka aykırı işleme nedeniyle zarara uğramanız hâlinde zararın giderilmesini talep etme.</li>
+        </ol>
+      </section>
+
+      <section id="basvuru">
+        <h2>Başvuru Yöntemi</h2>
+        <p>Yukarıdaki haklarınıza ilişkin taleplerinizi, kimliğinizi tevsik edici bilgilerle birlikte yazılı olarak Vakıf adresimize veya <a href="mailto:tadev@tadev.org.tr">tadev@tadev.org.tr</a> e-posta adresine iletebilirsiniz. Talepleriniz, niteliğine göre en kısa sürede ve en geç otuz gün içinde ücretsiz olarak sonuçlandırılır.</p>
+      </section>
+
+      <section id="cerez">
+        <h2>Çerezler</h2>
+        <p>İnternet sitemizde, sitenin çalışması ve kullanım deneyiminin iyileştirilmesi amacıyla çerezler kullanılır. Çerezlerin türleri ve yönetimine ilişkin ayrıntılar için <a href="yasal-belgeler.html">Çerez Politikası</a> metnini inceleyebilir, tarayıcı ayarlarınızdan çerez tercihlerinizi her zaman değiştirebilirsiniz.</p>
+      </section>
+
+      <section id="degisiklik">
+        <h2>Metindeki Değişiklikler</h2>
+        <p>Vakfımız, bu metni mevzuat değişiklikleri ve faaliyetlerindeki gelişmeler doğrultusunda güncelleme hakkını saklı tutar. Güncel sürüm, yürürlük tarihiyle birlikte bu sayfada yayımlanır.</p>
+      </section>
+
+      <section id="iletisim">
+        <h2>İletişim</h2>
+        <p>Gizlilik ve kişisel verilerinizle ilgili her türlü soru ve talebiniz için bizimle iletişime geçebilirsiniz:</p>
+        <div class="deftable">
+          <div class="row"><div class="k">E-posta</div><div class="v">tadev@tadev.org.tr</div></div>
+          <div class="row"><div class="k">Telefon</div><div class="v">+90 212 229 92 01</div></div>
+          <div class="row"><div class="k">Adres</div><div class="v">İstinye Caddesi, Mertoğlu Apt. No: 52/6, İstinye – Sarıyer, İstanbul 34460</div></div>
+        </div>
+      </section>
+
+      <!-- DOC FOOTER -->
+      <div class="legaldoc__foot">
+        <div class="eyebrow-num">İlgili belgeler</div>
+        <div class="reldocs">
+          <a class="reldoc" href="yasal-belgeler.html"><span class="c">Üyelik</span><strong>Mütevellilik Şartları</strong><span class="more">Belgeyi görüntüle →</span></a>
+          <a class="reldoc" href="yasal-belgeler.html"><span class="c">Çerezler</span><strong>Çerez Politikası</strong><span class="more">Belgeyi görüntüle →</span></a>
+        </div>
+      </div>
+
+    </article>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__top">
+      <div><div class="foot__brand"><img src="assets/tadev-logo-white.png" alt="TADEV"><strong>TADEV</strong></div><p>Türk-Alman Dayanışma ve Eğitim Vakfı.<br>İki ülke, üç kuşak, ortak bir gelecek.</p></div>
+      <div class="foot__col"><h4>Vakıf</h4><a href="kurulus.html">Kuruluş</a><a href="amaclar.html">Amaçlarımız</a><a href="organlar.html">Organlarımız</a></div>
+      <div class="foot__col"><h4>Çalışmalar</h4><a href="faaliyetler.html">Faaliyetler</a><a href="burslar.html">Burslar</a><a href="etkinlikler.html">Etkinlikler</a><a href="duyurular.html">Duyurular</a><a href="mutevelli-basvuru.html">Mütevelli Olun</a></div>
+      <div class="foot__col"><h4>İletişim</h4><p>İstinye Caddesi Mertoğlu Apt.<br>No: 52/6, İstinye – Sarıyer<br>İstanbul 34460</p><p style="margin-top:10px"><a href="tel:+902122299201">+90 212 229 92 01</a><br><a href="mailto:tadev@tadev.org.tr">tadev@tadev.org.tr</a></p></div>
+    </div>
+    <div class="foot__bottom">
+      <p>© <span data-year></span> TADEV — Türk-Alman Dayanışma ve Eğitim Vakfı. Tüm hakları saklıdır.</p>
+      <div class="lang"><button data-lang="TR">TR</button><button data-lang="DE">DE</button><button data-lang="EN">EN</button></div>
+    </div>
+    <div class="foot__credit"><a href="https://svenkoksal.com" target="_blank" rel="noopener">Tasarım & geliştirme — Sven Ata Can Köksal</a></div>
+  </div>
+</footer>
+
+<script src="js/site.js"></script>
+<script>
+// TOC active-section highlighting
+(function(){
+  var links = Array.prototype.slice.call(document.querySelectorAll('.toc a'));
+  var map = {};
+  links.forEach(function(a){ map[a.getAttribute('href').slice(1)] = a; });
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        links.forEach(function(a){ a.classList.remove('active'); });
+        var a = map[e.target.id];
+        if(a) a.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-80px 0px -70% 0px', threshold: 0 });
+  document.querySelectorAll('.legaldoc section[id]').forEach(function(s){ io.observe(s); });
+})();
+</script>
+</body>
+</html>
