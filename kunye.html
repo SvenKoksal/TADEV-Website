@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Künye / Impressum — TADEV</title>
+<meta name="description" content="TADEV künyesi ve Impressum: vakfın yasal kimliği, tescil ve sicil bilgileri, temsile yetkili kişiler, içerik sorumluluğu, barındırma ve iletişim bilgileri.">
+<link rel="icon" href="assets/tadev-logo-ember.png">
+<link rel="stylesheet" href="css/brand.css">
+<link rel="stylesheet" href="css/site.css">
+<!--
+  ============================================================
+  TEKİL YASAL BELGE ŞABLONU · SINGLE LEGAL DOCUMENT TEMPLATE
+  Bu sayfa diğer yasal belgeler için de şablon olarak kullanılır
+  (Mütevellilik Şartları, Çerez Politikası, Kullanım Koşulları vb.)
+  Değiştirin: başlık, meta, belge başlığı, TOC ve .legaldoc içeriği.
+  ============================================================
+-->
+<style>
+/* ---- compact document hero ---- */
+.lhead{padding-bottom:clamp(34px,4.5vw,56px)}
+.lhead__tags{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:6px 0 18px}
+.lhead__cat{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;padding:7px 13px;border-radius:100px;background:var(--ember);color:#fff}
+.lhead__ver{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:#9b969f;border:1px solid rgba(255,255,255,.18);border-radius:100px;padding:6px 12px}
+.lhead h1{color:#fff;font-size:clamp(30px,4.4vw,58px);letter-spacing:-.035em;line-height:1.03;font-weight:700;font-family:var(--display);max-width:20ch}
+.lhead__sub{color:#C9C4CC;font-size:clamp(15px,1.6vw,18px);line-height:1.55;margin-top:20px;max-width:62ch}
+.lhead__bar{display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:30px;padding-top:24px;border-top:1px solid rgba(255,255,255,.14)}
+.lhead__bar .it{display:flex;flex-direction:column;gap:4px}
+.lhead__bar .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:#8d888f}
+.lhead__bar .v{font-size:14px;color:#EDEAE6;font-weight:600}
+.lhead__bar .v a{color:var(--ember-hot)}
+.lhead__dl{margin-left:auto;align-self:center}
+
+/* ---- two-column doc layout ---- */
+.legalwrap{display:grid;grid-template-columns:248px 1fr;gap:clamp(32px,5vw,80px);align-items:start}
+
+/* TOC */
+.toc{position:sticky;top:88px}
+.toc__lbl{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--slate);padding-bottom:14px;margin-bottom:14px;border-bottom:1px solid var(--line)}
+.toc ol{list-style:none;counter-reset:toc;display:flex;flex-direction:column;gap:1px}
+.toc li{counter-increment:toc}
+.toc a{display:flex;gap:11px;align-items:baseline;padding:8px 10px;border-radius:8px;font-size:13.5px;line-height:1.35;color:var(--slate-deep);transition:.15s}
+.toc a::before{content:counter(toc,decimal-leading-zero);font-family:var(--mono);font-size:11px;color:var(--slate);flex:none}
+.toc a:hover{background:var(--mist);color:var(--onyx)}
+.toc a.active{background:var(--onyx);color:#fff}
+.toc a.active::before{color:var(--ember-hot)}
+
+/* document body */
+.legaldoc{max-width:760px;counter-reset:sec}
+.legaldoc__note{display:flex;gap:14px;align-items:flex-start;background:var(--mist);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin-bottom:40px}
+.legaldoc__note .hex{width:30px;height:30px;flex:none;color:var(--ember);margin-top:1px}
+.legaldoc__note p{font-size:14px;line-height:1.6;color:var(--slate-deep);margin:0}
+.legaldoc section{padding-top:14px;margin-bottom:36px;scroll-margin-top:84px}
+.legaldoc h2{counter-increment:sec;font-size:clamp(21px,2.4vw,28px);letter-spacing:-.02em;line-height:1.2;display:flex;gap:14px;align-items:baseline;margin-bottom:16px}
+.legaldoc h2::before{content:counter(sec,decimal-leading-zero);font-family:var(--mono);font-size:13px;font-weight:700;color:var(--ember);flex:none;padding-top:4px}
+.legaldoc h3{font-size:17px;margin:24px 0 10px;color:var(--ink)}
+.legaldoc p{font-size:16px;color:var(--slate-deep);line-height:1.72;margin-bottom:16px}
+.legaldoc a{color:var(--ember-deep);text-decoration:underline;text-underline-offset:2px}
+.legaldoc ul{list-style:none;display:flex;flex-direction:column;gap:11px;margin:0 0 18px}
+.legaldoc ul li{position:relative;padding-left:24px;color:var(--slate-deep);font-size:15.5px;line-height:1.6}
+.legaldoc ul li::before{content:"";position:absolute;left:0;top:9px;width:8px;height:8px;background:var(--ember);border-radius:2px}
+.legaldoc ul li strong{color:var(--ink)}
+.legaldoc ol.rights{list-style:none;counter-reset:r;display:flex;flex-direction:column;gap:12px;margin:0 0 18px}
+.legaldoc ol.rights li{counter-increment:r;position:relative;padding-left:38px;color:var(--slate-deep);font-size:15.5px;line-height:1.6}
+.legaldoc ol.rights li::before{content:counter(r);position:absolute;left:0;top:0;width:25px;height:25px;background:var(--mist);border:1px solid var(--line);border-radius:7px;font-family:var(--mono);font-size:12px;font-weight:700;color:var(--ember);display:grid;place-items:center}
+
+/* definition / contact table */
+.deftable{border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:8px 0 20px}
+.deftable .row{display:grid;grid-template-columns:200px 1fr;gap:0;border-bottom:1px solid var(--line)}
+.deftable .row:last-child{border-bottom:0}
+.deftable .k{background:var(--mist);padding:14px 18px;font-family:var(--mono);font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--slate-deep);font-weight:700}
+.deftable .v{padding:14px 18px;font-size:15px;color:var(--ink);line-height:1.55}
+
+/* doc footer */
+.legaldoc__foot{max-width:760px;margin-top:48px;padding-top:30px;border-top:1px solid var(--line)}
+.reldocs{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:20px}
+.reldoc{border:1px solid var(--line);border-radius:13px;padding:18px 20px;display:flex;flex-direction:column;gap:5px;transition:.18s}
+.reldoc:hover{border-color:var(--onyx);transform:translateY(-2px)}
+.reldoc .c{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ember);font-weight:700}
+.reldoc strong{font-family:var(--display);font-weight:600;font-size:16px;color:var(--ink)}
+.reldoc .more{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--slate);margin-top:4px}
+
+@media(max-width:880px){
+  .legalwrap{grid-template-columns:1fr;gap:8px}
+  .toc{position:static;margin-bottom:36px;border:1px solid var(--line);border-radius:14px;padding:18px 20px;background:var(--paper)}
+  .toc__lbl{border-bottom:1px solid var(--line)}
+  .lhead__dl{margin-left:0}
+}
+@media(max-width:560px){
+  .deftable .row{grid-template-columns:1fr}
+  .deftable .k{border-bottom:1px solid var(--line)}
+  .reldocs{grid-template-columns:1fr}
+}
+@media print{
+  .nav,.mnav,.foot,.toc,.lhead__dl,.lhead__bar{display:none!important}
+  .legalwrap{grid-template-columns:1fr}
+  .lhead{background:#fff!important;color:#000!important}
+  .lhead h1,.lhead__sub{color:#000!important}
+}
+</style>
+</head>
+<body>
+
+<header id="site-nav"></header>
+
+
+<!-- DOCUMENT HERO -->
+<header class="phead lhead">
+  <img class="phead__mark" src="assets/tadev-logo-ember.png" alt="">
+  <div class="wrap phead__in">
+    <div class="crumb"><a href="index.html">Anasayfa</a> / <a href="yasal-belgeler.html">Yasal Belgeler</a> / <span>Künye</span></div>
+    <div class="lhead__tags">
+      <span class="lhead__cat">Künye · Impressum</span>
+      <span class="lhead__ver">Sürüm v1.0</span>
+    </div>
+    <h1>Künye / Impressum</h1>
+    <p class="lhead__sub">Bu sayfa, Türk-Alman Dayanışma ve Eğitim Vakfı’na (TADEV) ait yasal kimlik, sorumluluk ve iletişim bilgilerini içerir. Almanca konuşan ziyaretçiler için § 5 DDG kapsamındaki Impressum bilgileri de aşağıda yer almaktadır.</p>
+    <div class="lhead__bar">
+      <div class="it"><span class="k">Son güncelleme</span><span class="v">12 Haziran 2026</span></div>
+      <div class="it"><span class="k">Tüzel kişilik</span><span class="v">Vakıf</span></div>
+      <div class="it"><span class="k">İçerik sorumlusu</span><span class="v">TADEV Yönetim Kurulu</span></div>
+      <a class="btn btn--white btn--md lhead__dl" href="#" onclick="window.print();return false;">PDF olarak indir ↓</a>
+    </div>
+  </div>
+</header>
+
+<!-- DOCUMENT BODY -->
+<section class="band band--tight wrap">
+  <div class="legalwrap">
+
+    <!-- TABLE OF CONTENTS -->
+    <aside class="toc" aria-label="İçindekiler">
+      <div class="toc__lbl">İçindekiler</div>
+      <ol>
+        <li><a href="#kimlik">Yasal Kimlik</a></li>
+        <li><a href="#tescil">Tescil ve Sicil Bilgileri</a></li>
+        <li><a href="#temsil">Temsile Yetkili Kişiler</a></li>
+        <li><a href="#sorumlu">İçerik Sorumluluğu</a></li>
+        <li><a href="#barindirma">Teknik Künye ve Barındırma</a></li>
+        <li><a href="#impressum">Impressum (§ 5 DDG)</a></li>
+        <li><a href="#telif">Telif ve Marka Hakları</a></li>
+        <li><a href="#sorumluluk">Sorumluluğun Sınırlandırılması</a></li>
+        <li><a href="#baglanti">Dış Bağlantılar</a></li>
+        <li><a href="#uyusmazlik">Uyuşmazlık Çözümü</a></li>
+        <li><a href="#iletisim">İletişim</a></li>
+      </ol>
+    </aside>
+
+    <!-- ARTICLE -->
+    <article class="legaldoc reveal">
+
+      <div class="legaldoc__note">
+        <svg class="hex" viewBox="0 0 120 120"><polygon points="100,60 80,94.6 40,94.6 20,60 40,25.4 80,25.4" fill="none" stroke="currentColor" stroke-width="6"/></svg>
+        <p>Bu künye, 5253 sayılı mevzuat ve Türk Medenî Kanunu hükümlerine tabi bir vakıf olan TADEV’in yasal kimlik ve iletişim bilgilerini içerir. Bilgiler güncel tutulur; en son sürüm her zaman bu sayfada yayımlanır.</p>
+      </div>
+
+      <section id="kimlik">
+        <h2>Yasal Kimlik</h2>
+        <p>İnternet sitesinin sahibi ve işleteni, aşağıda bilgileri yer alan vakıftır:</p>
+        <div class="deftable">
+          <div class="row"><div class="k">Kuruluşun Adı</div><div class="v">Türk-Alman Dayanışma ve Eğitim Vakfı (TADEV)</div></div>
+          <div class="row"><div class="k">Hukuki Statü</div><div class="v">Türk Medenî Kanunu hükümlerine göre kurulmuş vakıf</div></div>
+          <div class="row"><div class="k">Merkez Adresi</div><div class="v">İstinye Caddesi, Mertoğlu Apt. No: 52/6, İstinye – Sarıyer, İstanbul 34460, Türkiye</div></div>
+          <div class="row"><div class="k">E-posta</div><div class="v"><a href="mailto:tadev@tadev.org.tr">tadev@tadev.org.tr</a></div></div>
+          <div class="row"><div class="k">Telefon</div><div class="v"><a href="tel:+902122299201">+90 212 229 92 01</a></div></div>
+        </div>
+      </section>
+
+      <section id="tescil">
+        <h2>Tescil ve Sicil Bilgileri</h2>
+        <p>Vakfımız, Vakıflar Genel Müdürlüğü nezdinde tutulan merkezî sicile kayıtlıdır. Resmî yazışmalarda esas alınacak güncel sicil ve vergi bilgileri aşağıda yer alır:</p>
+        <div class="deftable">
+          <div class="row"><div class="k">Sicil Mercii</div><div class="v">T.C. Vakıflar Genel Müdürlüğü — Merkezî Sicil</div></div>
+          <div class="row"><div class="k">Vergi Dairesi</div><div class="v">Sarıyer Vergi Dairesi</div></div>
+          <div class="row"><div class="k">Vergi / Sicil No</div><div class="v">İlgili resmî belgelerde belirtilmiştir; talep üzerine iletilir.</div></div>
+        </div>
+        <p>Sicil ve vergi numaralarına ilişkin ayrıntılı belgelere <a href="yasal-belgeler.html">Belgeler</a> sayfasından ulaşabilir veya yazılı olarak talep edebilirsiniz.</p>
+      </section>
+
+      <section id="temsil">
+        <h2>Temsile Yetkili Kişiler</h2>
+        <p>Vakıf, Türk Medenî Kanunu ve vakıf senedi uyarınca Yönetim Kurulu tarafından temsil edilir. Vakfı temsile yetkili organlar ve bunların oluşumu için <a href="organlar.html">Organlarımız</a> sayfasını inceleyebilirsiniz.</p>
+        <div class="deftable">
+          <div class="row"><div class="k">Temsile Yetkili Organ</div><div class="v">TADEV Yönetim Kurulu</div></div>
+          <div class="row"><div class="k">Sorumlu Birim</div><div class="v">Genel Sekreterlik</div></div>
+        </div>
+      </section>
+
+      <section id="sorumlu">
+        <h2>İçerik Sorumluluğu</h2>
+        <p>Bu internet sitesinde yayımlanan içeriklerden, 5187 sayılı Basın Kanunu ve ilgili mevzuat anlamında — Almanya’da geçerli olan § 18 Abs. 2 MStV karşılığı kapsamında — sorumlu kişi/birim:</p>
+        <div class="deftable">
+          <div class="row"><div class="k">İçerik Sorumlusu</div><div class="v">TADEV Yönetim Kurulu adına Genel Sekreterlik</div></div>
+          <div class="row"><div class="k">İletişim</div><div class="v"><a href="mailto:tadev@tadev.org.tr">tadev@tadev.org.tr</a></div></div>
+        </div>
+      </section>
+
+      <section id="barindirma">
+        <h2>Teknik Künye ve Barındırma</h2>
+        <p>İnternet sitemiz, hizmet sağlayıcı bir barındırma altyapısı üzerinde yayımlanmaktadır. Site, tasarım ve geliştirme süreçleri aşağıdaki bilgilerle yürütülmüştür:</p>
+        <ul>
+          <li><strong>Tasarım &amp; geliştirme:</strong> Sven Ata Can Köksal — <a href="https://svenkoksal.com" target="_blank" rel="noopener">svenkoksal.com</a></li>
+          <li><strong>Barındırma:</strong> Sunucu altyapısı, sözleşmeli hizmet sağlayıcılar tarafından sağlanır; ayrıntılar talep üzerine iletilir.</li>
+        </ul>
+        <p>Sitenin teknik işleyişinde toplanan verilere ilişkin bilgiler için <a href="gizlilik-politikasi.html">Gizlilik Politikası ve KVKK Aydınlatma Metni</a> belgesini inceleyebilirsiniz.</p>
+      </section>
+
+      <section id="impressum">
+        <h2>Impressum (Angaben gemäß § 5 DDG)</h2>
+        <p>Für deutschsprachige Besucher: Diese Website wird betrieben von der türkisch-deutschen Stiftung TADEV (Türk-Alman Dayanışma ve Eğitim Vakfı).</p>
+        <div class="deftable">
+          <div class="row"><div class="k">Name</div><div class="v">Türk-Alman Dayanışma ve Eğitim Vakfı (TADEV)</div></div>
+          <div class="row"><div class="k">Rechtsform</div><div class="v">Stiftung nach türkischem Recht</div></div>
+          <div class="row"><div class="k">Anschrift</div><div class="v">İstinye Caddesi, Mertoğlu Apt. No: 52/6, İstinye – Sarıyer, 34460 İstanbul, Türkei</div></div>
+          <div class="row"><div class="k">Vertreten durch</div><div class="v">Den Vorstand (Yönetim Kurulu)</div></div>
+          <div class="row"><div class="k">Kontakt</div><div class="v"><a href="mailto:tadev@tadev.org.tr">tadev@tadev.org.tr</a> · <a href="tel:+902122299201">+90 212 229 92 01</a></div></div>
+          <div class="row"><div class="k">Verantwortlich i.S.d. § 18 Abs. 2 MStV</div><div class="v">Der Vorstand, Anschrift wie oben</div></div>
+        </div>
+      </section>
+
+      <section id="telif">
+        <h2>Telif ve Marka Hakları</h2>
+        <p>Bu sitede yer alan metin, görsel, logo ve diğer içerikler ile “TADEV” adı ve amblemi üzerindeki haklar, aksi belirtilmedikçe Vakfımıza aittir ve ilgili mevzuatla korunmaktadır. İçeriklerin izinsiz kopyalanması, çoğaltılması veya ticari amaçla kullanılması yasaktır. İzin talepleri için lütfen bizimle iletişime geçin.</p>
+      </section>
+
+      <section id="sorumluluk">
+        <h2>Sorumluluğun Sınırlandırılması</h2>
+        <p>Sitedeki içerikler azami özenle hazırlanır; ancak güncellik, doğruluk ve eksiksizlik bakımından bağlayıcı bir taahhüt oluşturmaz. Vakfımız, içeriklerin kullanımından doğabilecek doğrudan veya dolaylı zararlardan, mevzuatın izin verdiği ölçüde sorumlu tutulamaz.</p>
+      </section>
+
+      <section id="baglanti">
+        <h2>Dış Bağlantılar</h2>
+        <p>Sitemiz, üçüncü kişilere ait internet sitelerine bağlantılar içerebilir. Bu sitelerin içeriğinden ilgili sağlayıcılar sorumludur. Bağlantı verildiği anda hukuka aykırı bir içeriğe rastlanmamıştır; haberdar olmamız hâlinde ilgili bağlantılar kaldırılır.</p>
+      </section>
+
+      <section id="uyusmazlik">
+        <h2>Uyuşmazlık Çözümü</h2>
+        <p>Avrupa Komisyonu, çevrim içi uyuşmazlık çözümü (ODR) için bir platform sunmaktadır. Vakfımız, bir tüketici hakem heyeti önünde uyuşmazlık çözüm sürecine katılmakla yükümlü değildir ve esasen katılmamaktadır. Talep ve şikâyetlerinizi doğrudan bize iletmenizi rica ederiz.</p>
+      </section>
+
+      <section id="iletisim">
+        <h2>İletişim</h2>
+        <p>Künye bilgileri veya site içeriğiyle ilgili her türlü soru ve talebiniz için bizimle iletişime geçebilirsiniz:</p>
+        <div class="deftable">
+          <div class="row"><div class="k">E-posta</div><div class="v"><a href="mailto:tadev@tadev.org.tr">tadev@tadev.org.tr</a></div></div>
+          <div class="row"><div class="k">Telefon</div><div class="v"><a href="tel:+902122299201">+90 212 229 92 01</a></div></div>
+          <div class="row"><div class="k">Adres</div><div class="v">İstinye Caddesi, Mertoğlu Apt. No: 52/6, İstinye – Sarıyer, İstanbul 34460</div></div>
+        </div>
+      </section>
+
+      <!-- DOC FOOTER -->
+      <div class="legaldoc__foot">
+        <div class="eyebrow-num">İlgili belgeler</div>
+        <div class="reldocs">
+          <a class="reldoc" href="gizlilik-politikasi.html"><span class="c">Gizlilik · KVKK</span><strong>Gizlilik Politikası</strong><span class="more">Belgeyi görüntüle →</span></a>
+          <a class="reldoc" href="yasal-belgeler.html"><span class="c">Arşiv</span><strong>Tüm Belgeler</strong><span class="more">Belgeyi görüntüle →</span></a>
+        </div>
+      </div>
+
+    </article>
+  </div>
+</section>
+
+<footer class="foot" data-footer></footer>
+
+<script src="js/site.js"></script>
+<script>
+// TOC active-section highlighting
+(function(){
+  var links = Array.prototype.slice.call(document.querySelectorAll('.toc a'));
+  var map = {};
+  links.forEach(function(a){ map[a.getAttribute('href').slice(1)] = a; });
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        links.forEach(function(a){ a.classList.remove('active'); });
+        var a = map[e.target.id];
+        if(a) a.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-80px 0px -70% 0px', threshold: 0 });
+  document.querySelectorAll('.legaldoc section[id]').forEach(function(s){ io.observe(s); });
+})();
+</script>
+</body>
+</html>
